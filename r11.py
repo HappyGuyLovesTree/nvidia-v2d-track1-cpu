@@ -7,7 +7,7 @@ from tracking import digest
 from r11_inputs import *
 from r11_state import *
 
-DEFAULT=P/'config_r11_20261017.json'
+DEFAULT=P/'config_r11_20261017a1.json'
 def next_dated(directory,stem,date):
     directory=Path(directory);directory.mkdir(parents=True,exist_ok=True);base=directory/f'{stem}_{date}.json'
     existing=list(directory.glob(f'{stem}_{date}*.json'))
@@ -21,7 +21,7 @@ def next_dated(directory,stem,date):
     return directory/f'{stem}_{date}{chr(97+n//9)}{1+n%9}.json'
 
 def prepare(root,config):
-    cfg,roster=load_config(config);ledger=Ledger(root,cfg);ledger.check_time(model=True)
+    cfg,roster=load_config(config);require(cfg.get('budget_parent'),'C2 requires explicit closed C1 budget parent');require(root==Path(cfg['budget_run_root']).resolve(),'C2 only approved production root; no budget reset roots');ledger=Ledger(root,cfg);ledger.check_time(model=True);ledger.assert_no_unknown()
     code=code_identity()
     for v in cfg['assets'].values():verify_ref(v)
     require(Path(sys.executable).resolve()==Path('/Users/zhuanz/.venvs/openwebui/bin/python').resolve(),'use frozen Python environment')
@@ -30,7 +30,7 @@ def prepare(root,config):
         man=load(manifest_path);require(man['config']==ref(config) and man['code']==code and man['audit']==audit,'existing run identity changed')
     else:
         require(not list((root/'episode_runs').glob('*')),'unmanifested experiment directory')
-        man={'schema':'r11_run_v1','task':'T011.08','created_at':now(),'run_id':root.name,'output':str(root),'python':sys.executable,'cwd':str(P),'code':code,'config':ref(config),'numeric_hash':numerical_hash(cfg),'scheduling_hash':digest({'deadlines':cfg['deadlines'],'limits':cfg['call_limits'],'storage':cfg['storage_limits']}),'audit':audit,'spec':cfg['spec'],'adoption':cfg['adoption'],'kit_source_hashes':{str(p):sha(p) for p in Path(cfg['kit']).rglob('*.py')},'source_reports':[ref(Path(cfg['root'])/'DD/调研'/name) for name in ('DD_调研_Q011.01_20261017a1.md','DD_调研_Q011.02_20261017.md','DD_调研_Q011.03_20261017a1.md')],'old_producer_P':'d73f2cd7ea6f8f97093558f820884ae4d74ee0bf','tracker_producer':'eeaa540ca1a0d46134e04fca76ab8c1205ffca5a','old_P_cache_import':'disabled','provenance_kind':'local_git','submission_eligible':False}
+        man={'schema':'r11_run_v1','task':'T011.08','created_at':now(),'run_id':root.name,'output':str(root),'python':sys.executable,'cwd':str(P),'code':code,'config':ref(config),'budget_parent':cfg.get('budget_parent'),'numeric_hash':numerical_hash(cfg),'scheduling_hash':digest({'deadlines':cfg['deadlines'],'limits':cfg['call_limits'],'storage':cfg['storage_limits']}),'audit':audit,'spec':cfg['spec'],'adoption':cfg['adoption'],'kit_source_hashes':{str(p):sha(p) for p in Path(cfg['kit']).rglob('*.py')},'source_reports':[ref(Path(cfg['root'])/'DD/调研'/name) for name in ('DD_调研_Q011.01_20261017a1.md','DD_调研_Q011.02_20261017.md','DD_调研_Q011.03_20261017a1.md')],'old_producer_P':'d73f2cd7ea6f8f97093558f820884ae4d74ee0bf','tracker_producer':'eeaa540ca1a0d46134e04fca76ab8c1205ffca5a','old_P_cache_import':'disabled','provenance_kind':'local_git','submission_eligible':False}
         writer.json(manifest_path,man,exclusive=True);writer.json(root/'audit_frozen.json',audit,exclusive=True)
     inputs=[]
     for row in roster['episodes']:
@@ -76,7 +76,7 @@ def evidence(root,cfg,man):
         try:verify_ref(load(agg));aggregate=load(agg)
         except Exception as e:errors.append({'aggregate':repr(e)})
     roster=load(cfg['assets']['roster']['path']);state=Ledger(root,cfg).snapshot()
-    result={'schema':'r11_evidence_index_v1','as_of':now(),'date':cfg['date'],'run_id':root.name,'run_manifest':ref(root/'run_manifest.json'),'code':{'commit':man['code']['commit'],'tree':man['code']['tree']},'spec':cfg['spec'],'adoption':cfg['adoption'],'data_snapshot':load(root/'data_snapshot_latest.json') if (root/'data_snapshot_latest.json').exists() else None,'audit_frozen':ref(root/'audit_frozen.json'),'episodes':episodes,'completed_episodes':sorted(complete),'remaining_episodes':[r['episode'] for r in roster['episodes'] if r['episode'] not in complete],'completed_frame_count':sum(map(len,complete.values())),'required_frame_count':9877,'aggregate':aggregate,'cost':state,'load_counts':{k+'_count':state['counts'].get(k,0) for k in ('dnn_load','ort_session_load','rig_load')},'unknown_attempts':list(state['pending'].values()),'errors':errors,'states':{'implementation':'frozen_local_source','numerical':'see_per_episode_receipts','coverage':'full' if len(complete)==30 and sum(map(len,complete.values()))==9877 else 'partial','quality':'pending','real_scale_contact':'unknown','numeric_index_mesh_pack':'see_pack_receipts','official_writer':'not_used_original_terminal_write_local_L1','official_code_commit_url_format':'failed_local_marker_expected','remote_commit_accessibility':'unpublished','kaggle_scoring':'not_run','public_row':'not_run','website_record':'not_run'},'provenance_kind':'local_git','submission_eligible':False,'runtime_hard_stop':cfg['deadlines']['hard_stop']}
+    result={'schema':'r11_evidence_index_v1','as_of':now(),'date':cfg['date'],'run_id':root.name,'run_manifest':ref(root/'run_manifest.json'),'code':{'commit':man['code']['commit'],'tree':man['code']['tree']},'spec':cfg['spec'],'adoption':cfg['adoption'],'data_snapshot':load(root/'data_snapshot_latest.json') if (root/'data_snapshot_latest.json').exists() else None,'audit_frozen':ref(root/'audit_frozen.json'),'episodes':episodes,'completed_episodes':sorted(complete),'remaining_episodes':[r['episode'] for r in roster['episodes'] if r['episode'] not in complete],'completed_frame_count':sum(map(len,complete.values())),'required_frame_count':9877,'aggregate':aggregate,'cost':state,'budget_accounting':state['accounting'],'budget_parent':cfg.get('budget_parent'),'load_counts':{k+'_count':state['counts'].get(k,0) for k in ('dnn_load','ort_session_load','rig_load')},'unknown_attempts':list(state['pending'].values()),'errors':errors,'states':{'implementation':'frozen_local_source','numerical':'see_per_episode_receipts','coverage':'full' if len(complete)==30 and sum(map(len,complete.values()))==9877 else 'partial','quality':'pending','real_scale_contact':'unknown','numeric_index_mesh_pack':'see_pack_receipts','official_writer':'not_used_original_terminal_write_local_L1','official_code_commit_url_format':'failed_local_marker_expected','remote_commit_accessibility':'unpublished','kaggle_scoring':'not_run','public_row':'not_run','website_record':'not_run'},'provenance_kind':'local_git','submission_eligible':False,'runtime_hard_stop':cfg['deadlines']['hard_stop']}
     snap=next_dated(root/'evidence_snapshots','evidence_index',cfg['date'].replace('-',''));atomic_json(snap,result,True);atomic_json(root/'evidence_index.json',{**result,'snapshot':ref(snap)})
     return {'evidence_index':str(root/'evidence_index.json'),'snapshot':ref(snap),'complete_episodes':sorted(complete),'completed_frames':sum(map(len,complete.values())),'errors':errors}
 
@@ -95,7 +95,7 @@ def global_new_bytes(cfg):
 
 def supervise(root,cfg,man,stage,ep):
     import psutil
-    stagekey='C' if stage=='aggregate' else stage;ledger=Ledger(root,cfg);ledger.check_time(model=True);verify_code(man)
+    stagekey='C' if stage=='aggregate' else stage;ledger=Ledger(root,cfg);ledger.check_time(model=True);ledger.assert_no_unknown();verify_code(man)
     for p,h in man['kit_source_hashes'].items():require(sha(p)==h,'kit changed')
     limits=cfg['stage_limits'][stagekey];directory=root/'supervision';directory.mkdir(parents=True,exist_ok=True);aid=__import__('uuid').uuid4().hex
     logprefix=directory/f'{stage}_{ep}_{aid}';started=time.monotonic();lastscan=0;peak=0;reason=None;newbytes=global_new_bytes(cfg)
@@ -162,9 +162,10 @@ def validate_completed(root,ep,cfg):
     return True
 
 def run(root,cfg,man,episodes):
-    ledger=Ledger(root,cfg)
+    ledger=Ledger(root,cfg);ledger.assert_no_unknown()
     with Owner(root/'supervisor_owner','run',None):
         for e in episodes:
+            ledger.assert_no_unknown()
             inp=root/'inputs'/f'episode_{e:06d}.json';require(inp.exists(),'episode data not frozen: '+str(e));ep=load(inp);verify_episode(ep,cfg)
             if validate_completed(root,ep,cfg):continue
             er=root/'episode_runs'/inp.stem
@@ -174,6 +175,7 @@ def run(root,cfg,man,episodes):
             prior=ledger.snapshot()['episode_counts']
             if not any(prior.get(str(e)+':'+k,0) for k in ('dnn_load','ort_session_load','rig_load')):ledger.check_time(new_episode=True,model=True)
             for stage in ('A','B','C'):
+                ledger.assert_no_unknown()
                 r=stage_receipt(er,stage)
                 if r and r['status']=='completed':
                     if stage=='A':
@@ -185,11 +187,12 @@ def run(root,cfg,man,episodes):
                     continue
                 try:supervise(root,cfg,man,stage,e)
                 finally:evidence(root,cfg,man)
+    ledger.assert_no_unknown()
     return evidence(root,cfg,man)
 
 def aggregate_worker(root,cfg,man):
     from r11_pack import pack_local,check_dense
-    ledger=Ledger(root,cfg);writer=Writer(ledger);coverage={};inputs={}
+    ledger=Ledger(root,cfg);ledger.assert_no_unknown();writer=Writer(ledger);coverage={};inputs={}
     with Owner(root/'aggregate_owner','aggregate',None):
         for p in sorted((root/'inputs').glob('episode_*.json')):
             ep=load(p)
@@ -197,15 +200,17 @@ def aggregate_worker(root,cfg,man):
             er=root/'episode_runs'/p.stem;r=stage_receipt(er,'C');entry=r['details']['inputs'] if r and r['status']=='completed' else load(er/'C_numeric_committed.json')['inputs'];data=read_npz(verify_ref(entry['npz']));mask=read_npz(verify_ref(entry['mask']))['mask'];check_dense(data,ep['required'],mask)
             coverage[ep['episode']]=ep['required'];inputs[ep['episode']]=entry
         require(coverage,'no completed episode candidate');label='aggregate_'+digest({str(k):v for k,v in inputs.items()})[:16]
-        result=pack_local(root,cfg,man,coverage,inputs,writer,label);writer.json(root/'aggregate_latest.json',ref(root/'packs'/label/'validation.json'))
+        result=pack_local(root,cfg,man,coverage,inputs,writer,label);ledger.assert_no_unknown();writer.json(root/'aggregate_latest.json',ref(root/'packs'/label/'validation.json'))
         return {'candidate':result['candidate'],'rows':result['rows'],'coverage':result['coverage']}
 
 def main():
     ap=argparse.ArgumentParser();ap.add_argument('--stage',choices=['prepare','run','aggregate','status','aggregate-worker'],required=True);ap.add_argument('--output',type=Path,required=True);ap.add_argument('--config',type=Path,default=DEFAULT);ap.add_argument('--episodes',default='16');args=ap.parse_args();root=args.output.resolve()
     if args.stage=='prepare':
+        preflight,_=load_config(args.config.resolve());require(preflight.get('budget_parent') and root==Path(preflight['budget_run_root']).resolve(),'C2 only approved production root')
+        parent=load(verify_ref(preflight['budget_parent']));require(root!=Path(parent['parent_run']).resolve(),'C1 root is read only')
         with Owner(root/'supervisor_owner','prepare',None):result=prepare(root,args.config.resolve())
     else:
-        man=load(root/'run_manifest.json');verify_ref(man['config']);cfg,roster=load_config(man['config']['path']);verify_code(man)
+        man=load(root/'run_manifest.json');verify_ref(man['config']);cfg,roster=load_config(man['config']['path']);require(root==Path(cfg['budget_run_root']).resolve(),'C2 only approved root');verify_code(man)
         if args.stage=='status':result=evidence(root,cfg,man)
         elif args.stage=='run':
             episodes=[16]+[r['episode'] for r in roster['episodes'] if r['episode']!=16] if args.episodes=='all' else [r['episode'] for r in roster['episodes'] if r['episode']!=16] if args.episodes=='remaining' else [int(x) for x in args.episodes.split(',')]

@@ -81,6 +81,7 @@ def main(output,failure_mode='exception'):
             case('A_closed_failure_commit_crash',interrupted)
             def resume():
                 with Owner(epdir/'owners/A','A',16) as owner:r=stage_a(root,epdir,ep,cfg,man,ledger,writer,owner)
+                assert not list((epdir/'prepared').glob('*.json'))
                 assert r['hmr_valid']==[50,52] and r['hmr_failed']==[51] and fake_counts['hmr']==3 and fake_counts['detector']==3
                 atomic_json(epdir/'A_synthetic.json',{'status':'completed','details':r})
             case('A_sameC_resume_no_failed_forward_repeat',resume)
@@ -89,6 +90,15 @@ def main(output,failure_mode='exception'):
                 with Owner(epdir/'owners/A','A',16) as owner:stage_a(root,epdir,ep,cfg,man,ledger,writer,owner)
                 assert before==fake_counts
             case('A_all_committed_revalidation_zero_load_or_forward',already)
+            def completed_unknown():
+                badledger=Ledger(root/'unknown_after_completion',cfg)
+                try:badledger.invoke('dnn_load',lambda:(_ for _ in ()).throw(BudgetStop('synthetic unfinished load')),episode=99,frame=None,attempt='unknown',stage='B',n=1)
+                except BudgetStop:pass
+                before=dict(fake_counts)
+                with Owner(epdir/'owners/A','A',16) as owner:reject(lambda:stage_a(root,epdir,ep,cfg,man,badledger,Writer(badledger),owner),BudgetStop)
+                assert before==fake_counts and badledger.snapshot()['pending']
+            case('A_all_committed_still_rejects_other_episode_stage_load_unknown',completed_unknown)
+
             def changed_rgb():
                 original=Frame.to_ndarray
                 with patch.object(Frame,'to_ndarray',lambda self,format:np.zeros((24,32,3),np.uint8)):
@@ -165,15 +175,17 @@ def main(output,failure_mode='exception'):
             with Owner(root/'active','A',1):reject(lambda:Owner(root/'active','A',1).__enter__())
         case('owner_active_lock_rejected_history_retained',active_owner)
         def unknown():
-            try:ledger.invoke('hmr',lambda:(_ for _ in ()).throw(BudgetStop('simulated kill')),episode=7,frame=1,attempt='synthetic',stage='A',n=2)
+            unknownledger=Ledger(root/'unknown_only',cfg)
+            try:unknownledger.invoke('hmr',lambda:(_ for _ in ()).throw(BudgetStop('simulated kill')),episode=7,frame=1,attempt='synthetic',stage='A',n=2)
             except BudgetStop:pass
-            assert len(ledger.unknown_for(7,1))==1
-            assert all(x['frame']!=51 for x in ledger.unknown_for(16))
-            try:ledger.invoke('hmr',lambda:(_ for _ in ()).throw(BudgetStop('synthetic end/state crash')),episode=8,frame=1,attempt='synthetic',stage='A',n=2)
+            assert len(unknownledger.unknown_for(7,1))==1
+            reject(lambda:unknownledger.assert_no_unknown(),BudgetStop)
+            closedledger=Ledger(root/'closed_only',cfg)
+            try:closedledger.invoke('hmr',lambda:(_ for _ in ()).throw(BudgetStop('end/state crash')),episode=8,frame=1,attempt='synthetic',stage='A',n=2)
             except BudgetStop:pass
-            pending=ledger.snapshot()['pending'];cid,start=next((k,v) for k,v in pending.items() if v['episode']==8)
-            append_line(ledger.journal,{**start,'kind':'call_end','outcome':'failed','error':'synthetic closed exception','time':now(),'elapsed_s':0.,'output_identity':None})
-            assert not ledger.unknown_for(8,1) and len(ledger.unknown_for(7,1))==1
+            cid,start=next(iter(closedledger.snapshot()['pending'].items()))
+            append_line(closedledger.journal,{**start,'kind':'call_end','outcome':'failed','error':'synthetic closed exception','time':now(),'elapsed_s':0.,'output_identity':None})
+            closedledger.assert_no_unknown();assert not closedledger.unknown_for(8,1)
         case('call_start_without_end_unknown_charged',unknown)
         def budgets():
             tiny=copy.deepcopy(cfg);tiny['storage_limits']['small']=8;l=Ledger(root/'tiny',tiny);w=Writer(l);w.bytes(root/'tiny/a',b'12345678');reject(lambda:w.bytes(root/'tiny/b',b'x'),BudgetStop);w.remove(root/'tiny/a','small');w.bytes(root/'tiny/b',b'1234')

@@ -106,6 +106,7 @@ def render_audit(er,ep,man,br,writer):
     return statuses
 
 def stage_c(root,er,ep,cfg,man,ledger,writer,owner):
+    ledger.assert_no_unknown()
     bref=load(er/'B_latest.json');verify_ref(bref);b=load(bref['path']);require(b['status']=='completed','B not complete');planref=b['details']['plan'];verify_ref(planref);plan=load(planref['path']);br=Path(planref['path']).parent;ids=ep['required']
     identity=read_npz(verify_ref(b['details']['identity']));mesh=read_npz(verify_ref(b['details']['mesh']));T=max(ids)+1
     data={'pose':np.full((T,136),np.nan),'scales':identity['scales'],'shape':identity['shape'],'object_rotation':np.full((T,3,3),np.nan),'object_translation':np.full((T,3),np.nan),'object_scale':np.array(1.)};mask=np.zeros(T,bool)
@@ -118,4 +119,5 @@ def stage_c(root,er,ep,cfg,man,ledger,writer,owner):
     result=pack_local(root,cfg,man,{ep['episode']:ids},inputs,writer,f'episode_{ep["episode"]:06d}')
     writer.json(er/'C_numeric_committed.json',{'schema':'r11_C_numeric_commit_v1','pack':ref(root/'packs'/f'episode_{ep["episode"]:06d}'/'validation.json'),'frames':ids,'inputs':inputs[ep['episode']],'quality_audit':None},'C')
     result['quality_audit']=render_audit(er,ep,man,br,writer)
+    ledger.assert_no_unknown()
     return {'status':'completed','pack':ref(root/'packs'/f'episode_{ep["episode"]:06d}'/'validation.json'),'frames':ids,'inputs':inputs[ep['episode']],'quality_audit':ref(er/'quality_audit.json')}

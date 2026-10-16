@@ -66,6 +66,7 @@ def save_audit_frame(er,fid,rgb,audit,writer,detection_path):
         writer.remove(Path(load(detection_path)['raw']['path']),'A');writer.remove(detection_path,'A')
 
 def stage_a(root,er,ep,cfg,man,ledger,writer,owner):
+    ledger.assert_no_unknown()
     import cv2,av,onnxruntime as ort
     from vendor.nanodet import NanoDet
     from vendor.letterbox import letterbox,unletterbox
@@ -123,6 +124,7 @@ def stage_a(root,er,ep,cfg,man,ledger,writer,owner):
                 require(existing['transform']==transform,'transform identity mismatch')
                 if fid not in records:store.append_commit(fid,ref(er/'frames'/f'{fid:06d}.json'));records[fid]=existing
                 previous=digest(existing)
+                writer.remove(er/'prepared'/f'{fid:06d}.json','A')
                 save_audit_frame(er,fid,rgb,audit,writer,detection_path)
                 continue
             decision=tracker.step(fid,cs,w,h,episode=ep['episode'],source_segment=source,pts=int(frame.pts),time_base=str(Fraction(frame.time_base)),input_parents=parents)
@@ -157,12 +159,14 @@ def stage_a(root,er,ep,cfg,man,ledger,writer,owner):
                     if not valid_raw(raw):failure={'kind':'schema_or_nonfinite','checks':{k:{'shape':list(v.shape),'dtype':str(v.dtype),'finite':bool(np.isfinite(v).all())} for k,v in raw.items()}}
             record={**prep,'hmr_outcome':'hmr_failed' if failure else 'hmr_valid','failure':failure,'raw':rawref,'hmr_call_end':endref}
             store.commit(record);records[fid]=record;previous=digest(record)
+            writer.remove(pp,'A')
             save_audit_frame(er,fid,rgb,audit,writer,detection_path)
     require(decoded==ep['decoded_frame_count'] and seen==required,'full decode/required coverage mismatch')
-    verify_episode(ep,cfg)
+    verify_episode(ep,cfg);ledger.assert_no_unknown()
     return {'status':'completed','decoded_frames':decoded,'frames':sorted(records),'hmr_valid':[f for f,r in records.items() if r['hmr_outcome']=='hmr_valid'],'hmr_failed':[f for f,r in records.items() if r['hmr_outcome']=='hmr_failed'],'branches':dict(collections.Counter(r['decision']['branch'] for r in records.values())),'elapsed_s':time.monotonic()-start,'frame_journal':ref(store.journal),'runtime':ref(rp)}
 
 def stage_b(root,er,ep,cfg,man,ledger,writer,owner):
+    ledger.assert_no_unknown()
     import torch
     torch.set_num_threads(1);torch.set_num_interop_threads(1)
     rt=runtime_identity(['numpy','torch']);rp=er/'runtime_B.json'
@@ -230,6 +234,7 @@ def stage_b(root,er,ep,cfg,man,ledger,writer,owner):
         # Complete pair is checked over all vertices. Release transient full meshes.
         for label in ('baseline','adapted'):
             writer.remove(br/'inflight'/f'{f:06d}_{label}.npz','B');writer.remove(br/'inflight'/f'{f:06d}_{label}.json','B')
+    ledger.assert_no_unknown()
     return {'status':'completed','plan':ref(br/'plan.json'),'identity':ref(br/'identity.npz'),'mesh':ref(br/'mesh.npz'),'rig_checked':checked,'hmr_filled':[f for f in ids if f!=parents[f]],'identity_samples':S,'runtime':ref(rp),'quality':'unknown'}
 
 def main():
@@ -253,11 +258,12 @@ def main():
     status='failed';details={};started=time.monotonic()
     with Owner(er/'owners'/args.stage,args.stage,args.episode) as owner:
         try:
+            ledger.assert_no_unknown()
             if args.stage=='C':
                 from r11_pack import stage_c
                 details=stage_c(root,er,ep,cfg,man,ledger,writer,owner)
             else:details={'A':stage_a,'B':stage_b}[args.stage](root,er,ep,cfg,man,ledger,writer,owner)
-            status='completed'
+            ledger.assert_no_unknown();status='completed'
         except BaseException as e:
             status='interrupted' if isinstance(e,BudgetStop) else 'failed';details={'error':repr(e),'traceback':traceback.format_exc()};raise
         finally:
