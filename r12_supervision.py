@@ -670,6 +670,13 @@ def control_scope(owner, prefix, *, metadata=None, evidence=None, save=atomic_js
         primary = exc
         value['errors']['primary_error'] = error(exc, 'controller_body_or_owner_enter')
     finally:
+        # Evidence can update the shared ledger/index. Keep the acquired Owner
+        # lock through that callback; only the immutable control receipt follows exit.
+        if evidence and entered:
+            try:
+                evidence()
+            except BaseException as exc:
+                value['errors']['evidence_errors'].append(error(exc, 'controller_evidence'))
         if entered:
             try:
                 owner.__exit__(type(primary) if primary else None, primary,
@@ -686,11 +693,6 @@ def control_scope(owner, prefix, *, metadata=None, evidence=None, save=atomic_js
                 fd.close()
             except BaseException as exc:
                 value['errors']['owner_errors'].append(error(exc, 'Owner.fd_close'))
-        if evidence and entered:
-            try:
-                evidence()
-            except BaseException as exc:
-                value['errors']['evidence_errors'].append(error(exc, 'controller_evidence'))
         value.update(phase='terminal', finished_at=now(),
                      supervisor_outcome='failed' if primary or any(value['errors'][key] for key in ERROR_LISTS) else 'passed')
         try:

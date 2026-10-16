@@ -434,6 +434,19 @@ class SupervisionTests(unittest.TestCase):
         with self.assertRaises(sup.SupervisionFailure):
             with sup.control_scope(RefusedOwner(),self.root/'control',evidence=lambda:self.fail('no ownership for evidence write')):
                 self.fail('must not enter')
+    def test_writing_evidence_runs_while_actual_owner_lock_held(self):
+        import fcntl
+        import r11_state
+        owner=r11_state.Owner(self.root/'owner','fixture',None)
+        calls=[]
+        def evidence():
+            self.assertFalse(owner.fd.closed)
+            with (self.root/'owner/owner.lock').open('a+') as competing:
+                self.assertRaises(BlockingIOError,fcntl.flock,competing,fcntl.LOCK_EX|fcntl.LOCK_NB)
+            calls.append('under_owner_lock')
+        with sup.control_scope(owner,self.root/'control',evidence=evidence):pass
+        self.assertEqual(calls,['under_owner_lock'])
+        self.assertTrue(owner.fd.closed)
     def test_actual_owner_end_write_failure_preserves_primary_and_unlocks(self):
         import fcntl
         import r11_state
