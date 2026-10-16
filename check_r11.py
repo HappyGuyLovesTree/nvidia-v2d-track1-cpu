@@ -198,19 +198,27 @@ def main(output,failure_mode='exception'):
                 reject(lambda:l.invoke(kind,lambda:None,episode=99,frame=None,attempt='synthetic',stage='A',n=1),BudgetStop)
             assert sum(l.snapshot()['counts'].values())==105
         case('three_independent_35_load_limits',load_budgets)
-        def process_group_stop():
-            import subprocess,psutil,sys
-            import r11
-            c=copy.deepcopy(cfg);c['stage_limits']['A']['wall_s']=.2;c['monitor_interval_s']=.05
-            real_popen=subprocess.Popen
-            script="import subprocess,sys,time; c=subprocess.Popen([sys.executable,'-c','import time;time.sleep(30)']);print(c.pid,flush=True);time.sleep(30)"
-            def fake_worker(cmd,**kwargs):return real_popen([sys.executable,'-c',script],**kwargs)
-            with patch.object(r11,'verify_code',lambda *a:None),patch.object(r11,'global_new_bytes',lambda *a:0),patch.object(subprocess,'Popen',fake_worker):
-                reject(lambda:r11.supervise(root/'supervisor_fixture',c,{'code':{'commit':'e'*40},'kit_source_hashes':{}},'A',16),BudgetStop)
-            logs=list((root/'supervisor_fixture/supervision').glob('*.stdout.log'));pid=int(logs[0].read_text().strip())
-            time.sleep(.1)
-            if psutil.pid_exists(pid):assert psutil.Process(pid).status()==psutil.STATUS_ZOMBIE
-        case('supervisor_real_subprocess_group_timeout_no_model',process_group_stop)
+        def registered_tree_stop():
+            import sys
+            from r12_supervision import execute_attempt,SupervisionFailure
+            session={'session_id':'check-r11-supervision-fixture','hard_stop':future,
+                'cleanup':{'exit_grace_s':.35,'term_wait_s':.35,'kill_wait_s':.35,
+                    'cleanup_total_s':1.5,'telemetry_retry_count':2,'telemetry_retry_total_s':.2}}
+            try:
+                execute_attempt(directory=root/'supervisor_fixture/supervision',
+                    command=[sys.executable,'-B',str(base/'tests/supervision_dummy.py'),'tree',str(root/'dummy_tree')],
+                    cwd=base,session=session,code=man['code'],config_ref=None,
+                    stage='fixture',episode=16,owner_id='check-r11-fixture',
+                    monitor_interval_s=.02,wall_s=.4)
+            except SupervisionFailure as exc:
+                assert exc.record['supervisor_outcome']=='stopped'
+                assert exc.record['reap']['status']=='reaped_by_popen'
+                assert exc.record['group_observation']['status']=='registered_targets_gone'
+                assert len(exc.record['registered_targets'])==3
+                assert len(exc.record['cleanup']['signals'])==3
+                assert all(row['signal']=='SIGTERM' for row in exc.record['cleanup']['signals'])
+            else:raise AssertionError('fixture wall stop must be non-success')
+        case('supervisor_real_registered_tree_timeout_no_model',registered_tree_stop)
         def atomic_index_crash():
             store=FrameStore(epdir,writer);before=store.journal.read_bytes()
             real_replace=os.replace
