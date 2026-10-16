@@ -263,6 +263,23 @@ class SupervisionTests(unittest.TestCase):
         self.assertEqual(len(backend.signals), 2)
         self.assertEqual(record['errors']['cleanup_errors'][0]['type'], 'AccessDenied')
         self.assertEqual(record['supervisor_outcome'], 'failed')
+    def test_psutil_accessdenied_retains_underlying_eperm(self):
+        try:
+            try:raise PermissionError(errno.EPERM,'OS denied signal')
+            except PermissionError as original:raise psutil.AccessDenied(900001) from original
+        except psutil.AccessDenied as exc:
+            value=sup.error(exc,'signal')
+        self.assertEqual(value['type'],'AccessDenied')
+        self.assertEqual(value['errno'],errno.EPERM)
+        self.assertIn('OS denied signal',value['traceback'])
+    def test_nondefault_sigchld_denied_before_spawn(self):
+        original=signal.getsignal(signal.SIGCHLD)
+        signal.signal(signal.SIGCHLD,signal.SIG_IGN)
+        try:
+            record,backend=self.mock_run(must_fail=True)
+            self.assertEqual(backend.spawn_count,0)
+            self.assertIn('SIGCHLD',record['errors']['primary_error']['message'])
+        finally:signal.signal(signal.SIGCHLD,original)
     def test_esrch_does_not_manufacture_exit_code(self):
         backend = FakeBackend(exit_at=100.)
         backend.signal_fault[signal.SIGTERM] = ProcessLookupError(errno.ESRCH, 'mock exit race')

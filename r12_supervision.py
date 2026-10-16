@@ -36,8 +36,15 @@ def now():
 
 
 def error(exc, operation, target=None):
+    cause, seen, number = exc, set(), None
+    while cause is not None and id(cause) not in seen:
+        seen.add(id(cause))
+        number = getattr(cause, 'errno', None)
+        if number is not None:
+            break
+        cause = cause.__cause__ or cause.__context__
     return {'type': type(exc).__name__, 'message': str(exc),
-            'errno': getattr(exc, 'errno', None),
+            'errno': number,
             'traceback': ''.join(traceback.format_exception(exc)),
             'operation': operation, 'observed_at': now(),
             'target_identity': target}
@@ -502,6 +509,8 @@ def execute_attempt(*, directory, command, cwd, session, code, config_ref,
             raise ValueError('positive finite monitor, wall and RSS limits required')
         if preflight:
             preflight()
+        if signal.getsignal(signal.SIGCHLD) != signal.SIG_DFL:
+            raise ValueError('default SIGCHLD required for exclusive Popen reaping ownership')
         record['prior_worker_artifact'] = artifact() if artifact else None
         finalizing = False
         def interrupt(signum, _frame):
