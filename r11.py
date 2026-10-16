@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
-"""Frozen R011 prepare / serial episodes / resume / aggregate / status CLI."""
+"""R011 numerical pipeline with an explicit R12 bounded supervision adapter."""
 from pathlib import Path
-import argparse,datetime,json,os,signal,subprocess,sys,time,traceback
+import argparse,datetime,json,os,sys,uuid
 from common import load,sha
 from tracking import digest
 from r11_inputs import *
 from r11_state import *
+from r12_supervision import control_scope,execute_attempt,file_ref
 
 DEFAULT=P/'config_r11_20261017a1.json'
 def next_dated(directory,stem,date):
@@ -93,63 +94,72 @@ def global_new_bytes(cfg):
             except FileNotFoundError:pass
     return total
 
-def supervise(root,cfg,man,stage,ep):
-    import psutil
-    stagekey='C' if stage=='aggregate' else stage;ledger=Ledger(root,cfg);ledger.check_time(model=True);ledger.assert_no_unknown();verify_code(man)
-    for p,h in man['kit_source_hashes'].items():require(sha(p)==h,'kit changed')
-    limits=cfg['stage_limits'][stagekey];directory=root/'supervision';directory.mkdir(parents=True,exist_ok=True);aid=__import__('uuid').uuid4().hex
-    logprefix=directory/f'{stage}_{ep}_{aid}';started=time.monotonic();lastscan=0;peak=0;reason=None;newbytes=global_new_bytes(cfg)
-    if newbytes>=cfg['global_new_file_limit']:
-        with ledger.edit() as state:state['stop_reason']='global_new_file_limit'
-        raise BudgetStop('global_new_file_limit')
-    with ledger.edit() as state:state['global_observation']={'global_bytes':newbytes,'local_accounted_bytes':sum(state['written_bytes'].values()),'as_of':now()}
-    if stage=='aggregate':cmd=[sys.executable,'-B',str(P/'r11.py'),'--stage','aggregate-worker','--output',str(root)]
-    else:cmd=[sys.executable,'-B',str(P/'r11_worker.py'),'--stage',stage,'--root',str(root),'--episode',str(ep)]
+def supervision_scope(root, stage, cfg, man, evidence_callback=None):
+    return control_scope(Owner(root/'supervisor_owner',stage,None),
+        root/'supervision'/('controller_'+stage+'_'+uuid.uuid4().hex),
+        metadata={'stage':stage,'code':man.get('code'),'config_ref':man.get('config'),
+                  'session_id':cfg.get('execution_session',{}).get('session_id')},
+        evidence=evidence_callback)
+
+def supervise(root,cfg,man,stage,ep,*,session=None,owner_id=None,parent_attempt=None,evidence_callback=None):
+    """R12 adapter. Session admission remains the responsibility of the R12 caller."""
+    session=session if session is not None else cfg.get('execution_session',{})
+    stagekey='C' if stage=='aggregate' else stage
+    limits=cfg['stage_limits'][stagekey];ledger=None;lastscan=0
+    def check_code():
+        verify_code(man)
+        for path,h in man['kit_source_hashes'].items():require(sha(path)==h,'kit changed')
+    def preflight():
+        nonlocal ledger
+        ledger=Ledger(root,cfg);ledger.check_time(model=True);ledger.assert_no_unknown();check_code()
+        reconcile()
+    def reconcile():
+        newbytes=global_new_bytes(cfg)
+        if newbytes>=cfg['global_new_file_limit']:
+            with ledger.edit() as state:state['stop_reason']='global_new_file_limit'
+            raise BudgetStop('global_new_file_limit')
+        with ledger.edit() as state:state['global_observation']={'global_bytes':newbytes,'local_accounted_bytes':sum(state['written_bytes'].values()),'as_of':now()}
+    def resources(elapsed,resident):
+        nonlocal lastscan
+        ledger.check_time(model=True)
+        if elapsed-lastscan>=cfg['global_scan_interval_s']:reconcile();lastscan=elapsed
+    def latch_stop(exc):
+        if ledger is not None and any(key in str(exc) for key in ('limit','hard_stop','candidate_stop','headroom')):
+            with ledger.edit() as state:state['stop_reason']=repr(exc)
+    er=root/'episode_runs'/f'episode_{ep:06d}' if ep is not None else None
+    def artifact():
+        latest=root/'aggregate_latest.json' if stage=='aggregate' else er/f'{stage}_latest.json'
+        if not latest.exists():return {'status':'absent','contract':'unverified','refs':[]}
+        rr=load(latest);verify_ref(rr);receipt=load(rr['path'])
+        status='completed' if stage=='aggregate' or receipt.get('status')=='completed' else 'failed'
+        return {'status':status,'contract':'unverified','refs':[file_ref(latest),file_ref(rr['path'])]}
+    def validate_artifact(value):
+        require(value['status']=='completed','missing completed worker artifact')
+        ledger.assert_no_unknown()
+        if stage=='aggregate':
+            pack=load(load(root/'aggregate_latest.json')['path']);verify_ref(pack['candidate'])
+            require(pack['producer']==man['code']['commit'] and pack['numeric_index_mesh_pack']=='passed','aggregate worker contract failed')
+            return
+        rr=stage_receipt(er,stage)
+        require(rr['stage']==stage and rr['episode']==ep and rr['producer']==man['code']['commit'],'worker receipt identity mismatch')
+        details=rr['details'];input_ep=load(root/'inputs'/f'episode_{ep:06d}.json')
+        if stage=='A':
+            verify_ref(details['frame_journal']);records=FrameStore(er,Writer(ledger)).records()
+            require(set(records)==set(input_ep['required']),'A completed coverage mismatch')
+            for record in records.values():
+                if record.get('raw'):verify_ref(record['raw'])
+        elif stage=='B':
+            for key in ('plan','identity','mesh'):verify_ref(details[key])
+            require(set(details['rig_checked'])==set(input_ep['required']),'B completed coverage mismatch')
+        else:require(validate_completed(root,input_ep,cfg),'C worker contract failed')
+    cmd=[sys.executable,'-B',str(P/'r11.py'),'--stage','aggregate-worker','--output',str(root)] if stage=='aggregate' else [sys.executable,'-B',str(P/'r11_worker.py'),'--stage',stage,'--root',str(root),'--episode',str(ep)]
     env=os.environ.copy();env.update({'PYTHONDONTWRITEBYTECODE':'1','OMP_NUM_THREADS':'1','OPENBLAS_NUM_THREADS':'1','VECLIB_MAXIMUM_THREADS':'1','MKL_NUM_THREADS':'1','TOKENIZERS_PARALLELISM':'false'})
-    def interrupt(*_):raise BudgetStop('supervisor_interrupt')
-    oldterm=signal.signal(signal.SIGTERM,interrupt);oldint=signal.signal(signal.SIGINT,interrupt);proc=None
-    try:
-        with logprefix.with_suffix('.stdout.log').open('xb') as stdout,logprefix.with_suffix('.stderr.log').open('xb') as stderr,logprefix.with_suffix('.resources.jsonl').open('xb') as monitor:
-            proc=subprocess.Popen(cmd,cwd=P,env=env,stdout=stdout,stderr=stderr,start_new_session=True);pp=psutil.Process(proc.pid)
-            while proc.poll() is None:
-                try:
-                    elapsed=time.monotonic()-started;resident=pp.memory_info().rss
-                    for c in pp.children(recursive=True):
-                        try:resident+=c.memory_info().rss
-                        except psutil.NoSuchProcess:pass
-                    peak=max(peak,resident);ledger.check_time(model=True)
-                    if elapsed>limits['wall_s']:raise BudgetStop('stage_wall_limit')
-                    if resident>limits['rss_bytes']:raise BudgetStop('process_tree_rss_limit')
-                    if elapsed-lastscan>=cfg['global_scan_interval_s']:
-                        newbytes=global_new_bytes(cfg);lastscan=elapsed
-                        with ledger.edit() as state:state['global_observation']={'global_bytes':newbytes,'local_accounted_bytes':sum(state['written_bytes'].values()),'as_of':now()}
-                        if newbytes>=cfg['global_new_file_limit']:raise BudgetStop('global_new_file_limit')
-                    monitor.write(json_bytes({'elapsed_s':elapsed,'tree_rss_bytes':resident,'sampled_peak_rss_bytes':peak,'global_new_bytes_last_reconciliation':newbytes})+b'\n');monitor.flush()
-                    time.sleep(cfg['monitor_interval_s'])
-                except psutil.NoSuchProcess:break
-    except BaseException as exc:
-        reason=repr(exc)
-        if isinstance(exc,BudgetStop) and any(k in str(exc) for k in ('limit','hard_stop','candidate_stop','headroom')):
-            with ledger.edit() as state:state['stop_reason']=reason
-        if proc and proc.poll() is None:
-            try:os.killpg(proc.pid,signal.SIGTERM)
-            except ProcessLookupError:pass
-            try:proc.wait(timeout=min(3,max(.1,datetime.datetime.fromisoformat(cfg['deadlines']['candidate_freeze']).timestamp()-time.time())))
-            except subprocess.TimeoutExpired:
-                try:os.killpg(proc.pid,signal.SIGKILL)
-                except ProcessLookupError:pass
-                proc.wait(timeout=3)
-        raise
-    finally:
-        signal.signal(signal.SIGTERM,oldterm);signal.signal(signal.SIGINT,oldint)
-        if proc and proc.poll() is None:
-            try:os.killpg(proc.pid,signal.SIGKILL)
-            except ProcessLookupError:pass
-            proc.wait(timeout=3)
-        atomic_json(logprefix.with_suffix('.json'),{'command':cmd,'cwd':str(P),'python':sys.executable,'commit':man['code']['commit'],'stage':stage,'episode':ep,'returncode':proc.returncode if proc else None,'reason':reason,'elapsed_s':time.monotonic()-started,'sampled_peak_tree_rss_bytes':peak,'global_new_bytes':newbytes,'finished_at':now()},True)
-    require(proc.returncode==0,'stage failed; see '+str(logprefix.with_suffix('.stderr.log')))
-    verify_code(man)
-    for p,h in man['kit_source_hashes'].items():require(sha(p)==h,'kit changed during stage')
+    return execute_attempt(directory=root/'supervision',command=cmd,cwd=P,session=session,
+        code=man['code'],config_ref=man.get('config'),stage=stage,episode=ep,
+        owner_id=owner_id,parent_attempt=parent_attempt,parent_refs=[man['config']] if man.get('config') else [],
+        env=env,monitor_interval_s=cfg['monitor_interval_s'],wall_s=limits['wall_s'],rss_bytes=limits['rss_bytes'],
+        preflight=preflight,artifact=artifact,validate_artifact=validate_artifact,resource_check=resources,
+        postflight=check_code,evidence=evidence_callback,on_stop=latch_stop,stop_types=(BudgetStop,))
 
 def validate_completed(root,ep,cfg):
     er=root/'episode_runs'/f'episode_{ep["episode"]:06d}';rr=stage_receipt(er,'C')
@@ -162,8 +172,10 @@ def validate_completed(root,ep,cfg):
     return True
 
 def run(root,cfg,man,episodes):
-    ledger=Ledger(root,cfg);ledger.assert_no_unknown()
-    with Owner(root/'supervisor_owner','run',None):
+    summary={}
+    def final_evidence():summary['result']=evidence(root,cfg,man)
+    with supervision_scope(root,'run',cfg,man,final_evidence) as owner:
+        ledger=Ledger(root,cfg);ledger.assert_no_unknown()
         for e in episodes:
             ledger.assert_no_unknown()
             inp=root/'inputs'/f'episode_{e:06d}.json';require(inp.exists(),'episode data not frozen: '+str(e));ep=load(inp);verify_episode(ep,cfg)
@@ -185,15 +197,14 @@ def run(root,cfg,man,episodes):
                     elif stage=='B':
                         for k in ('plan','identity','mesh'):verify_ref(r['details'][k])
                     continue
-                try:supervise(root,cfg,man,stage,e)
-                finally:evidence(root,cfg,man)
-    ledger.assert_no_unknown()
-    return evidence(root,cfg,man)
+                supervise(root,cfg,man,stage,e,owner_id=owner.attempt,parent_attempt=owner.record.get('parent_attempt'),evidence_callback=lambda:evidence(root,cfg,man))
+        ledger.assert_no_unknown()
+    return summary['result']
 
 def aggregate_worker(root,cfg,man):
     from r11_pack import pack_local,check_dense
     ledger=Ledger(root,cfg);ledger.assert_no_unknown();writer=Writer(ledger);coverage={};inputs={}
-    with Owner(root/'aggregate_owner','aggregate',None):
+    with control_scope(Owner(root/'aggregate_owner','aggregate',None),root/'supervision'/('aggregate_worker_'+uuid.uuid4().hex),metadata={'code':man['code']}):
         for p in sorted((root/'inputs').glob('episode_*.json')):
             ep=load(p)
             if not validate_completed(root,ep,cfg):continue
@@ -208,7 +219,7 @@ def main():
     if args.stage=='prepare':
         preflight,_=load_config(args.config.resolve());require(preflight.get('budget_parent') and root==Path(preflight['budget_run_root']).resolve(),'C2 only approved production root')
         parent=load(verify_ref(preflight['budget_parent']));require(root!=Path(parent['parent_run']).resolve(),'C1 root is read only')
-        with Owner(root/'supervisor_owner','prepare',None):result=prepare(root,args.config.resolve())
+        with supervision_scope(root,'prepare',preflight,{}):result=prepare(root,args.config.resolve())
     else:
         man=load(root/'run_manifest.json');verify_ref(man['config']);cfg,roster=load_config(man['config']['path']);require(root==Path(cfg['budget_run_root']).resolve(),'C2 only approved root');verify_code(man)
         if args.stage=='status':result=evidence(root,cfg,man)
@@ -217,8 +228,7 @@ def main():
             require(len(episodes)==len(set(episodes)) and set(episodes)<=set(range(30)),'invalid episode selection');result=run(root,cfg,man,episodes)
         elif args.stage=='aggregate-worker':result=aggregate_worker(root,cfg,man)
         else:
-            with Owner(root/'supervisor_owner','aggregate',None):
-                try:supervise(root,cfg,man,'aggregate',None)
-                finally:result=evidence(root,cfg,man)
+            with supervision_scope(root,'aggregate',cfg,man,lambda:evidence(root,cfg,man)) as owner:
+                result=supervise(root,cfg,man,'aggregate',None,owner_id=owner.attempt,parent_attempt=owner.record.get('parent_attempt'),evidence_callback=lambda:evidence(root,cfg,man))
     print(json.dumps(result,ensure_ascii=False,indent=2))
 if __name__=='__main__':main()
