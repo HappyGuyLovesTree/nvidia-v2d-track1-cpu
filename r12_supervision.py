@@ -531,7 +531,8 @@ def execute_attempt(*, directory, command, cwd, session, code, config_ref,
                 raise StopRequested('stage_wall_limit_or_cleanup_headroom')
             try:
                 resident = attempt.sample()
-            except TelemetryUnavailable:
+            except TelemetryUnavailable as exc:
+                attempt.event('telemetry_retry', 'unavailable', attempt.proc.pid, exc)
                 retry_deadline = retry_deadline or min(deadline, instant + attempt.policy.telemetry_retry_total_s)
                 if attempt.wait(min(.02, max(0, retry_deadline - backend.monotonic())), 'Popen.telemetry_wait'):
                     break
@@ -676,7 +677,7 @@ def control_scope(owner, prefix, *, metadata=None, evidence=None, save=atomic_js
                 fd.close()
             except BaseException as exc:
                 value['errors']['owner_errors'].append(error(exc, 'Owner.fd_close'))
-        if evidence:
+        if evidence and entered:
             try:
                 evidence()
             except BaseException as exc:

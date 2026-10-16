@@ -223,6 +223,17 @@ class SupervisionTests(unittest.TestCase):
         record, backend = self.mock_run(backend, must_fail=True)
         self.assertFalse(backend.signals)
         self.assertIn('denied', {x['status'] for x in record['telemetry']['events']})
+    def test_transient_telemetry_failure_remains_visible_after_clean_reap(self):
+        backend=FakeBackend(exit_at=.05)
+        def identity(pid,row):
+            if backend.clock>=.04:row['create_time']=101.
+            return row
+        backend.identity_hook=identity
+        record,backend=self.mock_run(backend)
+        self.assertEqual(record['supervisor_outcome'],'passed')
+        self.assertEqual(record['telemetry']['status'],'gap')
+        self.assertTrue(any(x['source']=='telemetry_retry' and 'mismatch' in x['error']['message'] for x in record['telemetry']['events']))
+        self.assertFalse(backend.signals)
     def test_term_once_clean_stopped(self):
         record, backend = self.mock_run(FakeBackend(exit_at=100.), wall_s=.08, must_fail=True)
         self.assertEqual(record['supervisor_outcome'], 'stopped')
@@ -400,6 +411,12 @@ class SupervisionTests(unittest.TestCase):
             with sup.control_scope(owner,self.root/'control'):self.fail('must not enter')
         self.assertTrue(owner.fd.closed)
         self.assertEqual(caught.exception.record['errors']['primary_error']['message'],'Owner enter fault')
+    def test_owner_refusal_does_not_run_writing_evidence(self):
+        class RefusedOwner:
+            def __enter__(self):raise ValueError('active owner')
+        with self.assertRaises(sup.SupervisionFailure):
+            with sup.control_scope(RefusedOwner(),self.root/'control',evidence=lambda:self.fail('no ownership for evidence write')):
+                self.fail('must not enter')
     def test_actual_owner_end_write_failure_preserves_primary_and_unlocks(self):
         import fcntl
         import r11_state
