@@ -176,12 +176,28 @@ def read_attempt(started_path):
     started_path = Path(started_path)
     terminal = started_path.with_name(started_path.name.replace('.started.json', '.json'))
     value = json.loads((terminal if terminal.exists() else started_path).read_text())
-    if not terminal.exists():
+    # Publication is not acknowledgement. A guard survives any controlled error
+    # after link/rename, including directory fsync failures. Its final unlink is
+    # deliberately followed by no fallible persistence operation. A crash may
+    # resurrect the guard (safe refusal), never justifies reconstructing success.
+    if not terminal.exists() or terminal.with_suffix('.commit_pending').exists():
         value['supervisor_outcome'] = 'unknown'
         if 'child_exit' in value:
             value['child_exit']['status'] = 'unknown'
             value['reap']['status'] = 'unverified'
     return value
+
+
+def publish_terminal(path, value, save):
+    path = Path(path)
+    guard = path.with_suffix('.commit_pending')
+    atomic_json(guard, {'schema': 'r12_terminal_commit_guard_v1',
+                        'terminal': str(path), 'created_at': now()}, True)
+    save(path, value, True)
+    # Do not fsync the directory after removal: a failed post-publication fsync
+    # must not leave a readable passed record. Under power loss, stale guard
+    # persistence only causes conservative unknown and independent review.
+    guard.unlink()
 
 
 def assert_prior_attempts_closed(directory, exclude=None):
@@ -634,7 +650,7 @@ def execute_attempt(*, directory, command, cwd, session, code, config_ref,
                                         'passed' if attempt.primary is None and closed and not ancillary and record['worker_artifact'].get('contract') == 'passed' else 'failed')
         try:
             attempt.reserve.unlink(missing_ok=True)
-            save(attempt.terminal, record, True)
+            publish_terminal(attempt.terminal, record, save)
         except BaseException as exc:
             record['errors']['receipt_errors'].append(error(exc, 'terminal_receipt'))
             record['supervisor_outcome'] = 'failed'
@@ -696,7 +712,7 @@ def control_scope(owner, prefix, *, metadata=None, evidence=None, save=atomic_js
         value.update(phase='terminal', finished_at=now(),
                      supervisor_outcome='failed' if primary or any(value['errors'][key] for key in ERROR_LISTS) else 'passed')
         try:
-            save(prefix.with_suffix('.json'), value, True)
+            publish_terminal(prefix.with_suffix('.json'), value, save)
         except BaseException as exc:
             value['errors']['receipt_errors'].append(error(exc, 'controller_terminal_receipt'))
             value['supervisor_outcome'] = 'failed'

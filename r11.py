@@ -112,6 +112,9 @@ def supervise(root,cfg,man,stage,ep,*,session=None,owner_id=None,parent_attempt=
     def preflight():
         nonlocal ledger
         ledger=Ledger(root,cfg);ledger.check_time(model=True);ledger.assert_no_unknown();check_code()
+        if cfg.get('execution_session'):
+            from r12_budget import validate_current
+            validate_current(root,cfg)
         reconcile()
     def reconcile():
         newbytes=global_new_bytes(cfg)
@@ -153,6 +156,8 @@ def supervise(root,cfg,man,stage,ep,*,session=None,owner_id=None,parent_attempt=
             require(set(details['rig_checked'])==set(input_ep['required']),'B completed coverage mismatch')
         else:require(validate_completed(root,input_ep,cfg),'C worker contract failed')
     cmd=[sys.executable,'-B',str(P/'r11.py'),'--stage','aggregate-worker','--output',str(root)] if stage=='aggregate' else [sys.executable,'-B',str(P/'r11_worker.py'),'--stage',stage,'--root',str(root),'--episode',str(ep)]
+    if stage=='aggregate' and cfg.get('execution_session'):
+        cmd=[sys.executable,'-B',str(P/'r12.py'),'aggregate-worker','--root',str(root)]
     env=os.environ.copy();env.update({'PYTHONDONTWRITEBYTECODE':'1','OMP_NUM_THREADS':'1','OPENBLAS_NUM_THREADS':'1','VECLIB_MAXIMUM_THREADS':'1','MKL_NUM_THREADS':'1','TOKENIZERS_PARALLELISM':'false'})
     return execute_attempt(directory=root/'supervision',command=cmd,cwd=P,session=session,
         code=man['code'],config_ref=man.get('config'),stage=stage,episode=ep,

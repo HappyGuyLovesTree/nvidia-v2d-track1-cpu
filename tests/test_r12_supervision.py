@@ -170,6 +170,38 @@ class SupervisionTests(unittest.TestCase):
         self.assertEqual(record['reap']['status'], 'reaped_by_popen')
         self.assertEqual(record['child_exit']['returncode'], 0)
         self.assertFalse(backend.signals)
+    def test_terminal_postpublish_directory_fsync_failure_not_accepted(self):
+        import stat
+        real_fsync = os.fsync
+        def save(path, value, exclusive=False):
+            if value.get('phase') != 'terminal':
+                return sup.atomic_json(path, value, exclusive)
+            def failed(fd):
+                if stat.S_ISDIR(os.fstat(fd).st_mode):
+                    raise OSError(errno.EIO, 'fixture after terminal publication')
+                return real_fsync(fd)
+            with patch.object(sup.os, 'fsync', failed):
+                return sup.atomic_json(path, value, exclusive)
+        record, _ = self.mock_run(save=save, must_fail=True)
+        self.assertEqual(record['supervisor_outcome'], 'failed')
+        started = next((self.root/'attempts').glob('*.started.json'))
+        self.assertEqual(sup.read_attempt(started)['supervisor_outcome'], 'unknown')
+        self.assertRaises(ValueError, sup.assert_prior_attempts_closed, self.root/'attempts')
+    def test_terminal_failure_after_successful_fsync_not_accepted(self):
+        def save(path, value, exclusive=False):
+            result = sup.atomic_json(path, value, exclusive)
+            if value.get('phase') == 'terminal':
+                raise OSError(errno.EIO, 'fixture after completed terminal fsync')
+            return result
+        self.mock_run(save=save, must_fail=True)
+        started = next((self.root/'attempts').glob('*.started.json'))
+        self.assertEqual(sup.read_attempt(started)['supervisor_outcome'], 'unknown')
+        self.assertRaises(ValueError, sup.assert_prior_attempts_closed, self.root/'attempts')
+    def test_successful_terminal_removes_commit_guard(self):
+        self.mock_run()
+        started = next((self.root/'attempts').glob('*.started.json'))
+        self.assertEqual(sup.read_attempt(started)['supervisor_outcome'], 'passed')
+        self.assertFalse(list((self.root/'attempts').glob('*.commit_pending')))
     def test_started_durable_before_spawn(self):
         backend = FakeBackend()
         def check():

@@ -74,6 +74,11 @@ class Owner:
 
 class Ledger:
     def __init__(self,root,cfg):
+        if cfg.get('execution_session'):
+            from r12_session import validate_session, check_registry, global_directory
+            validate_session(cfg['execution_session'],root)
+            require(Path(root).resolve()==Path(cfg['budget_run_root']).resolve(),'session ledger root mismatch')
+            check_registry(global_directory(cfg),root,cfg['budget_parent'])
         self.root=Path(root);self.cfg=cfg;self.directory=self.root/'budget';self.directory.mkdir(parents=True,exist_ok=True)
         self.state_path=self.directory/'state.json';self.journal=self.directory/'calls.jsonl'
         if cfg.get('budget_parent'):
@@ -87,8 +92,12 @@ class Ledger:
             else:
                 baseline={}
                 if self.cfg.get('budget_parent'):
-                    from r11_budget import validate_parent
-                    baseline=validate_parent(self.cfg['budget_parent'])
+                    if self.cfg.get('execution_session'):
+                        from r12_budget import validate_chain
+                        baseline=validate_chain(self.cfg['budget_parent'])
+                    else:
+                        from r11_budget import validate_parent
+                        baseline=validate_parent(self.cfg['budget_parent'])
                 s={'schema':'r11_budget_v2','counts':{},'episode_counts':{},'pending':{},'written_bytes':{},'created_at':now()}
                 for key in ('counts','outcomes','written_bytes','cumulative_write_bytes'):s[key]=json.loads(json.dumps(baseline.get(key,{})))
                 s['baseline']={'source':self.cfg.get('budget_parent'),**json.loads(json.dumps(baseline))}

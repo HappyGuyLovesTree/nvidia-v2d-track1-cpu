@@ -240,6 +240,9 @@ def stage_b(root,er,ep,cfg,man,ledger,writer,owner):
 def main():
     ap=argparse.ArgumentParser();ap.add_argument('--stage',choices=['A','B','C'],required=True);ap.add_argument('--root',type=Path,required=True);ap.add_argument('--episode',type=int,required=True);args=ap.parse_args()
     root=args.root.resolve();man=load(root/'run_manifest.json');cfg=load(man['config']['path']);verify_ref(man['config']);verify_code(man)
+    if man.get('schema')=='r12_run_v1':
+        from r12_session import runtime_config, child_bridge
+        cfg=runtime_config(man,root);child_bridge(root,cfg,args.episode,args.stage)
     ep=load(root/'inputs'/f'episode_{args.episode:06d}.json');verify_episode(ep,cfg)
     for v in cfg['assets'].values():verify_ref(v)
     er=root/'episode_runs'/f'episode_{args.episode:06d}';ledger=Ledger(root,cfg);writer=Writer(ledger)
