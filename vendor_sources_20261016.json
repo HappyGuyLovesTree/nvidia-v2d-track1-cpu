@@ -1,0 +1,12 @@
+{
+  "source_files": {
+    "/Volumes/My PSSD/NIVIDA/DD/证据/Q005.02/april/instanthmr/inference.py": "45d4a8973845a5d87b3a950a2045600881f44cf05f6d35e898977ef737cd4e1e",
+    "/Volumes/My PSSD/NIVIDA/DD/实验/T009.10_NanoDet八帧/resume_direct_20261016/assets/nanodet.py": "5ba84922eaefdc48d0066cffdfb721d0d434c5f3b92213563161e00da26cea1b",
+    "/Volumes/My PSSD/NIVIDA/DD/实验/T009.10_NanoDet八帧/resume_direct_20261016/assets/demo.py": "43aee38581c4b9c22e5aa16317082f998b4a5164b80f4440f3d692f8e30854e1",
+    "/Volumes/My PSSD/NIVIDA/DD/证据/Q009.04/mhr70.py": "695c2c7d472e32757c480114fdb054d54ee4af53f69b2a6e040b00a55b270dc9"
+  },
+  "nano_copy_exact": true,
+  "preprocess_AST_exact": true,
+  "letterbox": "AST extraction of letterbox/unletterbox only",
+  "student_internal_graph_analysis": false
+}

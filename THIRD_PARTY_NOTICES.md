@@ -1,0 +1,13 @@
+# Third-party notices
+
+日期：2026-10-16。
+
+- OpenCV Zoo NanoDet paired `nanodet.py` is copied unchanged. `letterbox`/`unletterbox` are extracted from its paired demo, with unrelated CLI/UI removed. Apache-2.0 text is retained in `licenses/NanoDet-Apache-2.0.txt`. Original source paths and hashes: `vendor_sources_20261016.json`.
+- April/InstantHMR `_preprocess` is extracted with identical AST, with its required constants/imports and no session constructor. Apache-2.0 text is retained in `licenses/April-source-Apache-2.0.txt`. Upstream project: https://github.com/Maximlius/InstantHMR (the frozen project evidence records the exact paired source). The ONNX student is an external asset at frozen Hugging Face revision `3504446fc31e7f76fdb1cd7e463189e7cf0fdd0f`; its applicable SAM license text is retained separately in `licenses/Student-SAM-License.txt`. Exact student training-run provenance remains unknown. Only public I/O forward is used; no graph/internal analysis.
+- MHR TorchScript artifact is external and used only through its public forward. Its paired Apache-2.0 text is retained in `licenses/MHR-artifact-Apache-2.0.txt`. Its asset SHA256 is fixed in config. No rig source internals are copied into this implementation.
+- NVIDIA video_to_data official kit is used from its existing fixed snapshot at commit `193382a184308f6800331f3db829f76dc4294cfe`: https://github.com/nvidia-isaac/video_to_data/commit/193382a184308f6800331f3db829f76dc4294cfe . No disk source or public regex is modified. The sole local L1 adaptation is replacement of the terminal writer binding for this process. Official assembly remains in the kit. No substitute scoring function is introduced.
+- `trimesh==4.8.3` and `fast-simplification==0.1.12` are installed only in the external-drive target. MIT notices from wheels are retained in `licenses/`. Versions, official PyPI wheel URLs, SHA256 and download evidence remain in the preparation receipts and `dependencies.lock_20261016.json`.
+- NumPy, pandas, PyArrow, PyAV, ONNX Runtime, PyTorch, OpenCV and psutil are reused from the installed runtime. Their actual imports and paths are recorded; they are not redistributed here.
+- IoU association is independently implemented from the adopted specification. No SORT implementation or GPL source is copied. Geometry uses the adopted independent head70 formula; it does not claim measured object contact or surface.
+
+External weights and video are neither copied into this repository nor uploaded. Paths, hashes and revision identities are in config/run-manifest; licensing statements apply to those specific frozen entities, not to similarly named files.
