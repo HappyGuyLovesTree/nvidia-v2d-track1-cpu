@@ -4,6 +4,7 @@ import argparse,collections,datetime,hashlib,importlib,importlib.metadata as met
 from pathlib import Path
 import numpy as np
 from common import sha,dump,load,Tracker,candidate,nearest,proxy_geometry,complete_proxy,box_mesh
+from tracking import LowScoreTracker, METHOD, RULES, digest, validate_raw
 
 P=Path(__file__).resolve().parent
 EXPECTED={'mhr_params':[1,204],'shape_params':[1,45],'cam_trans':[1,3],'joints_2d':[1,70,2],'joints_3d':[1,70,3]}
@@ -47,11 +48,17 @@ def stageA():
  dump(O/'logs/model_schema_20261016.json',{'inputs':[{'name':x.name,'shape':x.shape,'type':x.type} for x in sess.get_inputs()], 'outputs':[{'name':x.name,'shape':x.shape,'type':x.type} for x in sess.get_outputs()],'providers':sess.get_providers(),'actual_input_batch':1})
  assert schema_matches(sess.get_inputs(),{'image':[1,3,224,224],'cliff_cond':[1,3]}) and schema_matches(sess.get_outputs(),EXPECTED)
  assert sess.get_providers()==['CPUExecutionProvider']
- detector=call('dnn_load',lambda:NanoDet(asset('nanodet'),.35,.6,cv2.dnn.DNN_BACKEND_OPENCV,cv2.dnn.DNN_TARGET_CPU),1)
- dump(O/'logs/dnn_contract_20261016.json',{'output_names':list(detector.net.getUnconnectedOutLayersNames()),'mean':detector.mean.reshape(-1).tolist(),'std':detector.std.reshape(-1).tolist(),'strides':list(detector.strides),'score':.35,'nms':.6,'backend':'OPENCV','target':'CPU','all_class_argmax_class_agnostic_nms':True})
+ method=CFG.get('method','single_iou_hold_v1')
+ if method not in ('single_iou_hold_v1',METHOD):raise ValueError('unsupported tracker method')
+ score_floor=.10 if method==METHOD else .35
+ detector=call('dnn_load',lambda:NanoDet(asset('nanodet'),score_floor,.6,cv2.dnn.DNN_BACKEND_OPENCV,cv2.dnn.DNN_TARGET_CPU),1)
+ dump(O/'logs/dnn_contract_20261016.json',{'output_names':list(detector.net.getUnconnectedOutLayersNames()),'mean':detector.mean.reshape(-1).tolist(),'std':detector.std.reshape(-1).tolist(),'strides':list(detector.strides),'score':score_floor,'nms':.6,'method':method,'backend':'OPENCV','target':'CPU','all_class_argmax_class_agnostic_nms':True})
  container=av.open(asset('video'));stream=container.streams.video[0];stream.codec_context.thread_count=1;stream.codec_context.thread_type='NONE'
  dump(O/'source/stream_20261016.json',{'index':stream.index,'time_base':str(stream.time_base),'average_rate':str(stream.average_rate),'frames_declared':stream.frames,'decoder_threads':stream.codec_context.thread_count,'decoder_thread_type':str(stream.codec_context.thread_type)})
- tracker=Tracker();records=[];prev_time=None;shape=None;tdecode=time.perf_counter()
+ if method==METHOD:
+  tracker=LowScoreTracker(identity={'video_sha256':MAN['assets']['video']['sha256'],'detector_sha256':MAN['assets']['nanodet']['sha256'],'postprocess_sha256':digest({n:sha(P/n) for n in ('vendor/nanodet.py','vendor/letterbox.py','common.py')}),'runtime_sha256':digest({'cv2':cv2.__version__,'numpy':np.__version__,'backend':'OPENCV','target':'CPU','precision':'float32'})},numeric_config_hash=CFG.get('tracker_numeric_config_hash',digest(RULES)))
+ else:tracker=Tracker()
+ records=[];prev_time=None;shape=None;tdecode=time.perf_counter()
  for fid,frame in enumerate(container.decode(stream)):
   if fid>MAN['stop']:break
   assert frame.pts is not None
@@ -72,6 +79,7 @@ def stageA():
    detector.net.setInput(blob);return detector.net.forward(detector.net.getUnconnectedOutLayersNames())
   detraw=call('detector',detect,32)
   np.savez_compressed(O/'detector'/f'raw_{fid:06d}.npz',**{f'output_{i}':v for i,v in enumerate(detraw)})
+  validate_raw(detraw)
   preds=detector.post_process(detraw)
   if preds.size==0:preds=np.empty((0,6))
   assert preds.ndim==2 and preds.shape[1]==6
@@ -82,7 +90,11 @@ def stageA():
    xy=unletterbox(box,(h,w),scale) if valid else [float('nan')]*4
    c=candidate(index,xy,float(row[4]),int(row[5]) if valid else -1,w,h,letterbox_xyxy=box.tolist() if valid else None,inverse_float_unclipped=inv,paired_inverse_int32=np.asarray(xy,dtype=np.int32).tolist() if valid else None)
    cs.append(c)
-  rec=tracker.step(fid,cs,w,h);rec['identity']=identity;rec['letterbox_scale']=scale
+  if method==METHOD:
+   rec=tracker.step(fid,cs,w,h,episode=MAN['episode'],source_segment=0,pts=frame.pts,time_base=str(frame.time_base),input_parents={'rgb_sha256':identity['rgb_sha256'],'blob_sha256':hashlib.sha256(blob.tobytes()).hexdigest(),'raw_sha256':sha(O/'detector'/f'raw_{fid:06d}.npz')})
+   rec['tracker_after']=tracker.export_state()
+  else:rec=tracker.step(fid,cs,w,h)
+  rec['identity']=identity;rec['letterbox_scale']=scale
   dump(O/'detector'/f'decision_{fid:06d}.json',rec)
   crop,sx,sy,ss,cliff=_preprocess(rgb,np.asarray(rec['bbox'],np.float32),h,w)
   assert crop.shape==(3,224,224) and crop.dtype==np.float32 and cliff.shape==(3,) and cliff.dtype==np.float32 and np.isfinite(crop).all() and np.isfinite(cliff).all()
@@ -109,7 +121,7 @@ def stageA():
   event('frame_completed',frame_index=fid,branch=rec['branch'],raw_valid=rec['raw_valid'])
  container.close();TIMES['decode_and_loop_wall']=time.perf_counter()-tdecode
  assert [r['frame_index'] for r in records]==frame_ids() and COUNTS['detector_attempted']==len(frame_ids()) and COUNTS['hmr_attempted']==len(frame_ids())
- dump(O/'source/final_tracker_state_20261016.json',{'state':tracker.__dict__,'config_sha256':MAN['config_sha256'],'commit':MAN['commit'],'video_sha256':MAN['assets']['video']['sha256'],'last_raw_sha256':records[-1].get('raw_sha256')})
+ dump(O/'source/final_tracker_state_20261016.json',{'state':tracker.export_state() if method==METHOD else tracker.__dict__,'config_sha256':MAN['config_sha256'],'commit':MAN['commit'],'video_sha256':MAN['assets']['video']['sha256'],'last_raw_sha256':records[-1].get('raw_sha256')})
  return {'frames':len(records),'raw_valid':sum(r['raw_valid'] for r in records),'branches':dict(collections.Counter(r['branch'] for r in records))}
 
 def stageB():
