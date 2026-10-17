@@ -77,6 +77,8 @@ def main(argv=None):
     with control_scope(st.Owner(er/'owners'/a.stage,a.stage,a.episode),er/'control'/('worker_'+uuid_token()),metadata={'mode':'fresh_reproduction','scope':man['scope'],'stage':a.stage,'episode':a.episode}) as owner:
         try:
             validate_budget(root,cfg)
+            # Recheck after child startup/input checks, before the first A work.
+            ledger.check_time(model=True,new_episode=a.stage=='A')
             if a.stage=='fixture':details={'fixture':True,'real_model_calls':0,'real_video_decodes':0}
             elif a.stage=='C':details=dense_stage(root,er,ep,cfg,man,ledger,writer,owner)
             else:

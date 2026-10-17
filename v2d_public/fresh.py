@@ -190,6 +190,8 @@ def execute(root,episodes,*,allow_models=False,fixture=False,extra_sites=()):
             for stage in (('fixture',) if fixture else ('A','B','C')):
                 if observe_artifact(root,episode,stage)['status']=='completed':validate_stage(root,episode,stage,man,cfg);continue
                 validate_budget(root,cfg);resource_gate(root,cfg)
+                # Only unfinished A starts a new episode; completed A may finish B/C.
+                FreshLedger(root,cfg).check_time(model=True,new_episode=stage=='A')
                 lease={'schema':'r12_public_fresh_worker_lease_v1','root':str(root),'session_ref':cfg['fresh_session_ref'],'code':man['code'],
                     'controller_pid':os.getpid(),'controller_create_time':psutil.Process().create_time(),'controller_attempt':current.attempt,
                     'episode':episode,'stage':stage,'scope':man['scope'],'model_permission':allow_models and not fixture}
@@ -202,6 +204,7 @@ def execute(root,episodes,*,allow_models=False,fixture=False,extra_sites=()):
                     # Global prior-attempt checks ran before acquiring this sole
                     # controller owner; execute_attempt excludes its own attempt.
                     verify_code(man);validate_budget(root,cfg)
+                    FreshLedger(root,cfg).check_time(model=True,new_episode=stage=='A')
                 last_scan=[time.monotonic()]
                 def resources(elapsed,rss):
                     FreshLedger(root,cfg).check_time(model=True)
