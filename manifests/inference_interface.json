@@ -1,0 +1,54 @@
+{
+  "schema": "r12_fresh_inference_interface_v1",
+  "implementation_status": "implemented_candidate_on_frozen_C3",
+  "input_episode_schema": "r12_public_episode_input_v1",
+  "input_index_schema": "r12_public_input_preparation_v1",
+  "assets_schema": "r12_external_assets_v1",
+  "paths_schema": "r12_public_paths_v1",
+  "required_runtime_fields": [
+    "actual_producer_commit",
+    "recipe_commit",
+    "session_id",
+    "monotonic_deadline",
+    "finite_stage_limits",
+    "fresh_baseline_zero",
+    "current_call_journal",
+    "required_digest",
+    "input_video_sha256",
+    "assets_sha256",
+    "runtime_identity"
+  ],
+  "input_compatibility": "newly generated PTS/checker/roster hashes remain new facts; do not substitute historical hashes",
+  "outputs": {
+    "episodes": "episodes/episode_XXXXXX.npz with exact six arrays",
+    "masks": "masks/episode_XXXXXX.npz mask+original_frames",
+    "mesh": "episodes/episode_XXXXXX_object.obj",
+    "provenance": "r12_public_provenance_v1; historical imported producers vs real fresh actual producers and recipe commits separated"
+  },
+  "not_implemented": [
+    "actual new7 production provenance and complete production view",
+    "final actual refs/target/publication verification"
+  ],
+  "no_historical_call_records_fabricated": true,
+  "official_binding_interface": {
+    "top_level": "entries list; supplied as --bindings JSON",
+    "entry_fields": [
+      "episode",
+      "source_repository",
+      "revision",
+      "repository_path",
+      "declared_size_bytes",
+      "lfs_content_sha256",
+      "result",
+      "evidence_refs"
+    ],
+    "required_result": "passed",
+    "evidence_ref_fields": [
+      "path",
+      "sha256"
+    ],
+    "note": "runtime-only local evidence paths; not for public source publication. Validate actual official-response source in the designated source task, then normalize deliberately; no binding is inferred from local hash or PTS."
+  },
+  "controller": "v2d_public.fresh",
+  "worker": "v2d_public.fresh_worker"
+}

@@ -1,0 +1,7 @@
+{
+  "schema": "r12_public_paths_v1",
+  "workspace": null,
+  "asset_overrides": {},
+  "python_extra_sites": [],
+  "note": "Set workspace or pass --workspace. Optional asset_overrides map explicit keys to existing local files/directories. No personal path is embedded."
+}

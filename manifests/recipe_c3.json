@@ -1,0 +1,68 @@
+{
+  "schema": "r12_numerical_recipe_v1",
+  "name": "frozen_C3",
+  "recipe_commit": "b433752cdd1828c34fa2ca9c328dd8b6ac2157e0",
+  "recipe_tree": "ec91ae800b38723b4ecfe79374b8169e7a70789f",
+  "original_config_sha256": "294ad6929d6e38c041f65ca0905d30ffaae827b12538fd4eba01d034025291ac",
+  "historical_numeric_hash": "f1a77d55d0b33eb7c2f093182e26b361ff2f140697078535b9e00ff77f6fb308",
+  "method": "single_iou_low_v1",
+  "numerical_contract": {
+    "nms_iou": 0.6,
+    "score_floor": 0.1,
+    "high_score": 0.35,
+    "high_iou": 0.3,
+    "low_iou": 0.5,
+    "hold_frames": 2,
+    "identity": "componentwise_numpy_median_finite_204_45_cam",
+    "root": "copy_then_root_plus_10_F_cam",
+    "host": "once_F_div100",
+    "proxy": "original_head70_no_filter",
+    "fallback": "nearest_same_source_earlier_tie",
+    "warmup": 0,
+    "automatic_model_retry": 0
+  },
+  "asset_sha256": {
+    "nanodet": "4b82da9944b88577175ee23a459dce2e26e6e4be573def65b1055dc2d9720186",
+    "hmr": "f717558094f57d7c9cd084d7981874dbcc3f08e7308501eb98c12844e2cce3b7",
+    "rig": "352e271a6c42729c68554ceaea0c955e866970160c31e35506d782dc0f7377bc",
+    "semantics": "695c2c7d472e32757c480114fdb054d54ee4af53f69b2a6e040b00a55b270dc9"
+  },
+  "fresh_inference_adapter": "v2d_public.fresh and fresh_worker; explicit fresh-only mode",
+  "production_budget_parent_not_required_for_fresh": true,
+  "execution": {
+    "requested": {
+      "provider": "CPUExecutionProvider",
+      "precision": "float32",
+      "ORT_execution": "ORT_SEQUENTIAL",
+      "intra_op_num_threads": 1,
+      "inter_op_num_threads": 1,
+      "cv2_threads": 1,
+      "OpenCL": false,
+      "decoder_threads": 1,
+      "decoder_thread_type": "NONE",
+      "torch_threads": 1,
+      "torch_interop_threads": 1,
+      "environment_threads": {
+        "MKL_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "OPENBLAS_NUM_THREADS": "1",
+        "VECLIB_MAXIMUM_THREADS": "1"
+      }
+    },
+    "observed_reference": {
+      "source_evidence_sha256": "27443b05eb034ccdef2845103c6f42550423dd975f9a4c2e3a148a3781a5233d",
+      "cv2_requested": 1,
+      "cv2_reported": 8,
+      "cv2_parallel_framework": "GCD",
+      "opencv_effective_single_thread": "not_proven",
+      "torch_intra": 1,
+      "torch_inter": 1,
+      "ORT_session_options_intra": 1,
+      "ORT_session_options_inter": 1,
+      "ORT_execution_mode": "ORT_SEQUENTIAL",
+      "ORT_actual_prediction_session_in_this_evidence": "not_constructed"
+    },
+    "actual_fresh_runtime": "not_run_this_task; record requested/effective in stage receipts separately"
+  },
+  "numerical_functions_equal_to_C2": true
+}

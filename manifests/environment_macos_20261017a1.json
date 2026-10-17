@@ -1,0 +1,1780 @@
+{
+  "schema": "r12_macos_distribution_lock_v1",
+  "created_at": "2026-10-17T07:43:13.229186+08:00",
+  "python": "3.12.7 (v3.12.7:0b05ead877f, Sep 30 2024, 23:18:00) [Clang 13.0.0 (clang-1300.0.29.30)]",
+  "platform": "macOS-15.7.7-arm64-arm-64bit",
+  "machine": "arm64",
+  "marker_environment": {
+    "implementation_name": "cpython",
+    "implementation_version": "3.12.7",
+    "os_name": "posix",
+    "platform_machine": "arm64",
+    "platform_release": "24.6.0",
+    "platform_system": "Darwin",
+    "platform_version": "Darwin Kernel Version 24.6.0: Tue Apr 21 20:13:48 PDT 2026; root:xnu-11417.140.69.710.16~1/RELEASE_ARM64_T8112",
+    "python_full_version": "3.12.7",
+    "platform_python_implementation": "CPython",
+    "python_version": "3.12",
+    "sys_platform": "darwin",
+    "extra": ""
+  },
+  "direct_requirements": [
+    "numpy",
+    "opencv-python-headless",
+    "av",
+    "onnxruntime",
+    "torch",
+    "pandas",
+    "pyarrow",
+    "trimesh",
+    "fast-simplification",
+    "psutil",
+    "packaging"
+  ],
+  "active_edges": [
+    {
+      "parent": "opencv-python-headless",
+      "dependency": "numpy",
+      "requirement": "numpy>=2; python_version >= \"3.9\""
+    },
+    {
+      "parent": "onnxruntime",
+      "dependency": "flatbuffers",
+      "requirement": "flatbuffers"
+    },
+    {
+      "parent": "onnxruntime",
+      "dependency": "numpy",
+      "requirement": "numpy>=1.21.6"
+    },
+    {
+      "parent": "onnxruntime",
+      "dependency": "packaging",
+      "requirement": "packaging"
+    },
+    {
+      "parent": "onnxruntime",
+      "dependency": "protobuf",
+      "requirement": "protobuf"
+    },
+    {
+      "parent": "torch",
+      "dependency": "filelock",
+      "requirement": "filelock"
+    },
+    {
+      "parent": "torch",
+      "dependency": "typing-extensions",
+      "requirement": "typing-extensions>=4.10.0"
+    },
+    {
+      "parent": "torch",
+      "dependency": "setuptools",
+      "requirement": "setuptools>=77.0.3"
+    },
+    {
+      "parent": "torch",
+      "dependency": "sympy",
+      "requirement": "sympy>=1.13.3"
+    },
+    {
+      "parent": "torch",
+      "dependency": "networkx",
+      "requirement": "networkx>=2.5.1"
+    },
+    {
+      "parent": "torch",
+      "dependency": "jinja2",
+      "requirement": "jinja2"
+    },
+    {
+      "parent": "torch",
+      "dependency": "fsspec",
+      "requirement": "fsspec>=0.8.5"
+    },
+    {
+      "parent": "pandas",
+      "dependency": "numpy",
+      "requirement": "numpy>=1.26.0; python_version < \"3.14\""
+    },
+    {
+      "parent": "pandas",
+      "dependency": "python-dateutil",
+      "requirement": "python-dateutil>=2.8.2"
+    },
+    {
+      "parent": "trimesh",
+      "dependency": "numpy",
+      "requirement": "numpy>=1.20"
+    },
+    {
+      "parent": "fast-simplification",
+      "dependency": "numpy",
+      "requirement": "numpy"
+    },
+    {
+      "parent": "sympy",
+      "dependency": "mpmath",
+      "requirement": "mpmath<1.4,>=1.1.0"
+    },
+    {
+      "parent": "jinja2",
+      "dependency": "markupsafe",
+      "requirement": "MarkupSafe>=2.0"
+    },
+    {
+      "parent": "python-dateutil",
+      "dependency": "six",
+      "requirement": "six >=1.5"
+    }
+  ],
+  "constraints_issues": [],
+  "distributions": [
+    {
+      "name": "av",
+      "version": "18.1.0",
+      "requires_active": [],
+      "metadata_sha256": "099bea9b1cb16fb24f323d349636dc26e97ba51ab299a3fdb2d8ae02803a9096",
+      "record_sha256": "c7e1474436c328887ce322a139816501112dcab13f4ee61e033aeb3ac40c71f5",
+      "wheel_text": "Wheel-Version: 1.0\nGenerator: setuptools (84.0.0)\nRoot-Is-Purelib: false\nTag: cp311-abi3-macosx_14_0_arm64\nGenerator: delocate 0.13.0\n\n",
+      "record_verified_files": 248,
+      "record_unhashed_files": 1,
+      "record_mismatches": [],
+      "license_files": [
+        {
+          "path": "licenses/dependencies/av/licenses/LICENSE.txt",
+          "sha256": "76af0461ffb92e19f1c14449e95557d83a2dfaa1baf202d49e5f1d8746c0da19",
+          "bytes": 1505
+        }
+      ],
+      "pypi": {
+        "source_url": "https://pypi.org/pypi/av/18.1.0/json",
+        "observed_at": "2026-10-17T07:43:10.738601+08:00",
+        "method": "system curl with default TLS verification",
+        "exit_code": 0,
+        "stderr": "",
+        "response_sha256": "656c855c626c8562f932b8c32afd5bb4667cdf72a76f1661f4945914f8a4c0ed",
+        "matching_installed_tag_wheels": [
+          {
+            "filename": "av-18.1.0-cp311-abi3-macosx_14_0_arm64.whl",
+            "url": "https://files.pythonhosted.org/packages/3f/c9/37a619297492256b77d5ed906e7d8166c10a26ed251dccf1ae03ab19bff6/av-18.1.0-cp311-abi3-macosx_14_0_arm64.whl",
+            "size": 18217603,
+            "digests": {
+              "blake2b_256": "3fc937a619297492256b77d5ed906e7d8166c10a26ed251dccf1ae03ab19bff6",
+              "md5": "2864d145588403962a7da47f7234773b",
+              "sha256": "b30a4e8d934558e19602b68998a4d9ac9f250fa0dacef216f7e8e40153b13316"
+            },
+            "yanked": false,
+            "requires_python": ">=3.11"
+          }
+        ],
+        "status": "fixed_official_wheel_metadata"
+      }
+    },
+    {
+      "name": "fast_simplification",
+      "version": "0.1.12",
+      "requires_active": [
+        "numpy"
+      ],
+      "metadata_sha256": "cd509a050550269ff8abd6038e7d2e30aa2e15441ddf3011156410d35416e3cb",
+      "record_sha256": "0a2eb740cc3d10b815b7248cda771663491c7cef7eb8c2ad422b6a56a6de3b8d",
+      "wheel_text": "Wheel-Version: 1.0\nGenerator: setuptools (80.9.0)\nRoot-Is-Purelib: false\nTag: cp312-cp312-macosx_11_0_arm64\nGenerator: delocate 0.13.0\n\n",
+      "record_verified_files": 16,
+      "record_unhashed_files": 1,
+      "record_mismatches": [],
+      "license_files": [
+        {
+          "path": "licenses/dependencies/fast-simplification/licenses/LICENSE",
+          "sha256": "8585978ddf4e1ce39a5bfe67f525dc0aa0008c107fe2c6de4d03ab739ecd5a84",
+          "bytes": 1088
+        }
+      ],
+      "pypi": {
+        "source_url": "https://pypi.org/pypi/fast-simplification/0.1.12/json",
+        "observed_at": "2026-10-17T07:43:10.738796+08:00",
+        "method": "system curl with default TLS verification",
+        "exit_code": 0,
+        "stderr": "",
+        "response_sha256": "c67ba5e30453afaefe0a2f7bcf30b5485fb75a9245c79563009eaf4aed56895d",
+        "matching_installed_tag_wheels": [
+          {
+            "filename": "fast_simplification-0.1.12-cp312-cp312-macosx_11_0_arm64.whl",
+            "url": "https://files.pythonhosted.org/packages/3e/f1/e97a477a186fce26662f1eb544bf5dcdf5129571add82e0309ff80930fe1/fast_simplification-0.1.12-cp312-cp312-macosx_11_0_arm64.whl",
+            "size": 228771,
+            "digests": {
+              "blake2b_256": "3ef1e97a477a186fce26662f1eb544bf5dcdf5129571add82e0309ff80930fe1",
+              "md5": "1c7850514fb6bb6fcb3e9dcffd24a24f",
+              "sha256": "84d88e8f08ba5ae974f3f70c8120ccea2388dc29b5c33fbdaf5a186bff910d8a"
+            },
+            "yanked": false,
+            "requires_python": ">=3.9"
+          }
+        ],
+        "status": "fixed_official_wheel_metadata"
+      }
+    },
+    {
+      "name": "filelock",
+      "version": "3.32.2",
+      "requires_active": [],
+      "metadata_sha256": "02c1fa9abf083b9bd5792cc1f300088bde118bbb3db9c9f7c19595cb4101d0ba",
+      "record_sha256": "29872bd99dcbb773451d0a701b019ff5df251ebacf02be4d103b001619b8a4b1",
+      "wheel_text": "Wheel-Version: 1.0\nGenerator: hatchling 1.31.0\nRoot-Is-Purelib: true\nTag: py3-none-any\n",
+      "record_verified_files": 27,
+      "record_unhashed_files": 1,
+      "record_mismatches": [],
+      "license_files": [
+        {
+          "path": "licenses/dependencies/filelock/licenses/LICENSE",
+          "sha256": "608c89d5060ae9921adccf3236695bc654a9946e12323ef6c021dfa04e294d48",
+          "bytes": 1088
+        }
+      ],
+      "pypi": {
+        "source_url": "https://pypi.org/pypi/filelock/3.32.2/json",
+        "observed_at": "2026-10-17T07:43:10.738962+08:00",
+        "method": "system curl with default TLS verification",
+        "exit_code": 0,
+        "stderr": "",
+        "response_sha256": "dd06c54be729dc4ea6b50d6d37984899e8266aca5d31d294fe36f89a7c079d29",
+        "matching_installed_tag_wheels": [
+          {
+            "filename": "filelock-3.32.2-py3-none-any.whl",
+            "url": "https://files.pythonhosted.org/packages/c1/e8/72f8cef9fdfeffe06213fe8508039396ee48daa0e3259457ed766173bfd6/filelock-3.32.2-py3-none-any.whl",
+            "size": 98830,
+            "digests": {
+              "blake2b_256": "c1e872f8cef9fdfeffe06213fe8508039396ee48daa0e3259457ed766173bfd6",
+              "md5": "de7ada91f73436987ec9be7e8e67abdc",
+              "sha256": "87dd94cf281e586d135fa51132b8e3d9a598b316e90377a288663c9321036c82"
+            },
+            "yanked": false,
+            "requires_python": ">=3.10"
+          }
+        ],
+        "status": "fixed_official_wheel_metadata"
+      }
+    },
+    {
+      "name": "flatbuffers",
+      "version": "25.12.19",
+      "requires_active": [],
+      "metadata_sha256": "9f38239f96faa21522a6aadab6912e1e560708bbe9c9f696a0679c9403fa089e",
+      "record_sha256": "731215f6ccac6f388f03039973bdfcad16911e24175e0b8c42fd9f63c51d8e31",
+      "wheel_text": "Wheel-Version: 1.0\nGenerator: setuptools (80.9.0)\nRoot-Is-Purelib: true\nTag: py2-none-any\nTag: py3-none-any\n\n",
+      "record_verified_files": 15,
+      "record_unhashed_files": 1,
+      "record_mismatches": [],
+      "license_files": [],
+      "pypi": {
+        "source_url": "https://pypi.org/pypi/flatbuffers/25.12.19/json",
+        "observed_at": "2026-10-17T07:43:10.740415+08:00",
+        "method": "system curl with default TLS verification",
+        "exit_code": 0,
+        "stderr": "",
+        "response_sha256": "3800bcba3177624044bb53f06f4a588061c10034f93467a0d163549b0928045a",
+        "matching_installed_tag_wheels": [
+          {
+            "filename": "flatbuffers-25.12.19-py2.py3-none-any.whl",
+            "url": "https://files.pythonhosted.org/packages/e8/2d/d2a548598be01649e2d46231d151a6c56d10b964d94043a335ae56ea2d92/flatbuffers-25.12.19-py2.py3-none-any.whl",
+            "size": 26661,
+            "digests": {
+              "blake2b_256": "e82dd2a548598be01649e2d46231d151a6c56d10b964d94043a335ae56ea2d92",
+              "md5": "28dd64588ca39c526975fe81483a9ee1",
+              "sha256": "7634f50c427838bb021c2d66a3d1168e9d199b0607e6329399f04846d42e20b4"
+            },
+            "yanked": false,
+            "requires_python": null
+          }
+        ],
+        "status": "fixed_official_wheel_metadata"
+      }
+    },
+    {
+      "name": "fsspec",
+      "version": "2026.7.0",
+      "requires_active": [],
+      "metadata_sha256": "88b1657585de14e3bb82aa5278aa9595b30aa4ca74ead073d8950615c808099d",
+      "record_sha256": "bf8970ef32f4fa1da4c23e55e648fbcd3980d3d67f14268a514a5973514fd2a0",
+      "wheel_text": "Wheel-Version: 1.0\nGenerator: hatchling 1.31.0\nRoot-Is-Purelib: true\nTag: py3-none-any\n",
+      "record_verified_files": 62,
+      "record_unhashed_files": 1,
+      "record_mismatches": [],
+      "license_files": [
+        {
+          "path": "licenses/dependencies/fsspec/licenses/LICENSE",
+          "sha256": "2dc35496ce53a7307915c008a844aad53e772b49b34cdd00445067691407ec94",
+          "bytes": 1513
+        }
+      ],
+      "pypi": {
+        "source_url": "https://pypi.org/pypi/fsspec/2026.7.0/json",
+        "observed_at": "2026-10-17T07:43:11.234143+08:00",
+        "method": "system curl with default TLS verification",
+        "exit_code": 0,
+        "stderr": "",
+        "response_sha256": "55eeed4d2aa6c53010b8dc6ac67ce83f2620ef17203c5922f5a642f479b484b0",
+        "matching_installed_tag_wheels": [
+          {
+            "filename": "fsspec-2026.7.0-py3-none-any.whl",
+            "url": "https://files.pythonhosted.org/packages/fd/3c/6a2bf344106328fd04963664a60b9bb6496fc25df8e962fcdc1367285fb9/fsspec-2026.7.0-py3-none-any.whl",
+            "size": 206583,
+            "digests": {
+              "blake2b_256": "fd3c6a2bf344106328fd04963664a60b9bb6496fc25df8e962fcdc1367285fb9",
+              "md5": "bad39d57c73f3bf58019843bd8c99760",
+              "sha256": "b57ddbafedfaef7018c1ecab32aa200a9d7ca26b77965f64e48b70061249d279"
+            },
+            "yanked": false,
+            "requires_python": ">=3.10"
+          }
+        ],
+        "status": "fixed_official_wheel_metadata"
+      }
+    },
+    {
+      "name": "Jinja2",
+      "version": "3.1.6",
+      "requires_active": [
+        "MarkupSafe>=2.0"
+      ],
+      "metadata_sha256": "68c5548fb67c4132a13898d9b31ec50c6bea2abdd915d921f214355c3a6499c8",
+      "record_sha256": "4551b3fb657b85a9f01e961c0f8a235da65d758149b619400211964b3ac02bdc",
+      "wheel_text": "Wheel-Version: 1.0\nGenerator: flit 3.11.0\nRoot-Is-Purelib: true\nTag: py3-none-any\n",
+      "record_verified_files": 32,
+      "record_unhashed_files": 1,
+      "record_mismatches": [],
+      "license_files": [
+        {
+          "path": "licenses/dependencies/jinja2/licenses/LICENSE.txt",
+          "sha256": "3b49dcee4105eb37bac10faf1be260408fe85d252b8e9df2e0979fc1e094437b",
+          "bytes": 1475
+        }
+      ],
+      "pypi": {
+        "source_url": "https://pypi.org/pypi/jinja2/3.1.6/json",
+        "observed_at": "2026-10-17T07:43:11.236891+08:00",
+        "method": "system curl with default TLS verification",
+        "exit_code": 0,
+        "stderr": "",
+        "response_sha256": "1bc757d7065f3e67d3a49e72ebc731d0774055575732592eede9820c136329cc",
+        "matching_installed_tag_wheels": [
+          {
+            "filename": "jinja2-3.1.6-py3-none-any.whl",
+            "url": "https://files.pythonhosted.org/packages/62/a1/3d680cbfd5f4b8f15abc1d571870c5fc3e594bb582bc3b64ea099db13e56/jinja2-3.1.6-py3-none-any.whl",
+            "size": 134899,
+            "digests": {
+              "blake2b_256": "62a13d680cbfd5f4b8f15abc1d571870c5fc3e594bb582bc3b64ea099db13e56",
+              "md5": "845b37cea56edd0f4dbd949244e9d798",
+              "sha256": "85ece4451f492d0c13c5dd7c13a64681a86afae63a5f347908daf103ce6d2f67"
+            },
+            "yanked": false,
+            "requires_python": ">=3.7"
+          }
+        ],
+        "status": "fixed_official_wheel_metadata"
+      }
+    },
+    {
+      "name": "MarkupSafe",
+      "version": "3.0.3",
+      "requires_active": [],
+      "metadata_sha256": "12b4cc61a7fa288cf7667ee3f213786d9619db57fb33ff6f934afbcb5c12ec81",
+      "record_sha256": "a700c61cc26f1410beeefba1dcb4fc63bf7d7da103e3d3ad7c34445463fa40b8",
+      "wheel_text": "Wheel-Version: 1.0\nGenerator: setuptools (80.9.0)\nRoot-Is-Purelib: false\nTag: cp312-cp312-macosx_11_0_arm64\nGenerator: delocate 0.13.0\n\n",
+      "record_verified_files": 12,
+      "record_unhashed_files": 1,
+      "record_mismatches": [],
+      "license_files": [
+        {
+          "path": "licenses/dependencies/markupsafe/licenses/LICENSE.txt",
+          "sha256": "489a8e1108509ed98a37bb983e11e0f7e1d31f0bd8f99a79c8448e7ff37d07ea",
+          "bytes": 1475
+        }
+      ],
+      "pypi": {
+        "source_url": "https://pypi.org/pypi/markupsafe/3.0.3/json",
+        "observed_at": "2026-10-17T07:43:11.263497+08:00",
+        "method": "system curl with default TLS verification",
+        "exit_code": 0,
+        "stderr": "",
+        "response_sha256": "0de4f18187d0fc2318de8504c4178f2297bc7cfa7a55adfb6d013190aff8cff4",
+        "matching_installed_tag_wheels": [
+          {
+            "filename": "markupsafe-3.0.3-cp312-cp312-macosx_11_0_arm64.whl",
+            "url": "https://files.pythonhosted.org/packages/9a/81/7e4e08678a1f98521201c3079f77db69fb552acd56067661f8c2f534a718/markupsafe-3.0.3-cp312-cp312-macosx_11_0_arm64.whl",
+            "size": 12020,
+            "digests": {
+              "blake2b_256": "9a817e4e08678a1f98521201c3079f77db69fb552acd56067661f8c2f534a718",
+              "md5": "06843eff5ffe519f2ad13143a70a50f6",
+              "sha256": "1872df69a4de6aead3491198eaf13810b565bdbeec3ae2dc8780f14458ec73ce"
+            },
+            "yanked": false,
+            "requires_python": ">=3.9"
+          }
+        ],
+        "status": "fixed_official_wheel_metadata"
+      }
+    },
+    {
+      "name": "mpmath",
+      "version": "1.3.0",
+      "requires_active": [],
+      "metadata_sha256": "44b66ea444b9c0d19ae94815d356bf047ae6b680c19268b5c265687cd6a81406",
+      "record_sha256": "09cbd04e87d0c5ab64aab08291b31883e4ea27e8d2c640710e0beb1995e86b9b",
+      "wheel_text": "Wheel-Version: 1.0\nGenerator: bdist_wheel (0.38.4)\nRoot-Is-Purelib: true\nTag: py3-none-any\n\n",
+      "record_verified_files": 93,
+      "record_unhashed_files": 1,
+      "record_mismatches": [],
+      "license_files": [
+        {
+          "path": "licenses/dependencies/mpmath/LICENSE",
+          "sha256": "c26cae81da4508e5e249985777a33821f183223ebb74d7f8cfbf90fe7eef2fb7",
+          "bytes": 1537
+        }
+      ],
+      "pypi": {
+        "source_url": "https://pypi.org/pypi/mpmath/1.3.0/json",
+        "observed_at": "2026-10-17T07:43:11.281627+08:00",
+        "method": "system curl with default TLS verification",
+        "exit_code": 0,
+        "stderr": "",
+        "response_sha256": "87119e683fa33e0fcbca594469c138ecd42294fa5194f525c86787eefdfb77aa",
+        "matching_installed_tag_wheels": [
+          {
+            "filename": "mpmath-1.3.0-py3-none-any.whl",
+            "url": "https://files.pythonhosted.org/packages/43/e3/7d92a15f894aa0c9c4b49b8ee9ac9850d6e63b03c9c32c0367a13ae62209/mpmath-1.3.0-py3-none-any.whl",
+            "size": 536198,
+            "digests": {
+              "blake2b_256": "43e37d92a15f894aa0c9c4b49b8ee9ac9850d6e63b03c9c32c0367a13ae62209",
+              "md5": "b602f86c858661636d89f4a40402360d",
+              "sha256": "a0b2b9fe80bbcd81a6647ff13108738cfb482d481d826cc0e02f5b35e5c88d2c"
+            },
+            "yanked": false,
+            "requires_python": null
+          }
+        ],
+        "status": "fixed_official_wheel_metadata"
+      }
+    },
+    {
+      "name": "networkx",
+      "version": "3.6.1",
+      "requires_active": [],
+      "metadata_sha256": "aca5d94a97d1f70f301d033addb635f6e66be8973a00aba4127637eed2ef316a",
+      "record_sha256": "f6833bb525b720a7809dd6280817601af3dbd78efef02d9e55d4b887ec1f52da",
+      "wheel_text": "Wheel-Version: 1.0\nGenerator: setuptools (80.9.0)\nRoot-Is-Purelib: true\nTag: py3-none-any\n\n",
+      "record_verified_files": 602,
+      "record_unhashed_files": 1,
+      "record_mismatches": [],
+      "license_files": [
+        {
+          "path": "licenses/dependencies/networkx/licenses/LICENSE.txt",
+          "sha256": "3cf7c3a179d817b23b8b8568211769fefdf93797d207d984b8b2fa24d0220b33",
+          "bytes": 1763
+        }
+      ],
+      "pypi": {
+        "source_url": "https://pypi.org/pypi/networkx/3.6.1/json",
+        "observed_at": "2026-10-17T07:43:11.495963+08:00",
+        "method": "system curl with default TLS verification",
+        "exit_code": 0,
+        "stderr": "",
+        "response_sha256": "086ea20eae0bce8c0100f4ad27141818546f904be441a713ce4c3a7f2d650d19",
+        "matching_installed_tag_wheels": [
+          {
+            "filename": "networkx-3.6.1-py3-none-any.whl",
+            "url": "https://files.pythonhosted.org/packages/9e/c9/b2622292ea83fbb4ec318f5b9ab867d0a28ab43c5717bb85b0a5f6b3b0a4/networkx-3.6.1-py3-none-any.whl",
+            "size": 2068504,
+            "digests": {
+              "blake2b_256": "9ec9b2622292ea83fbb4ec318f5b9ab867d0a28ab43c5717bb85b0a5f6b3b0a4",
+              "md5": "c4699122b7bf4783885c282aeb39bd33",
+              "sha256": "d47fbf302e7d9cbbb9e2555a0d267983d2aa476bac30e90dfbe5669bd57f3762"
+            },
+            "yanked": false,
+            "requires_python": "!=3.14.1,>=3.11"
+          }
+        ],
+        "status": "fixed_official_wheel_metadata"
+      }
+    },
+    {
+      "name": "numpy",
+      "version": "2.5.2",
+      "requires_active": [],
+      "metadata_sha256": "9a895d801184d2176f926af84eb47f2db1af2756afac99d64a2bf482d5d5e024",
+      "record_sha256": "49e14d916ae9b2a59e62438c4b67faeb88762899c6564342fca75ce9c668637c",
+      "wheel_text": "Wheel-Version: 1.0\nGenerator: meson\nRoot-Is-Purelib: false\nTag: cp312-cp312-macosx_14_0_arm64\nGenerator: delocate 0.13.0\n\n",
+      "record_verified_files": 926,
+      "record_unhashed_files": 1,
+      "record_mismatches": [],
+      "license_files": [
+        {
+          "path": "licenses/dependencies/numpy/licenses/LICENSE.txt",
+          "sha256": "649a589ab31076e79e9ce62ba24eae9959598124176640dbc95f87bd10f34fcf",
+          "bytes": 46826
+        },
+        {
+          "path": "licenses/dependencies/numpy/licenses/numpy/_core/include/numpy/libdivide/LICENSE.txt",
+          "sha256": "fbc539f47d0cf83bc61378080fb873d5c14630126cacbfe754035c3926daa5ec",
+          "bytes": 1018
+        },
+        {
+          "path": "licenses/dependencies/numpy/licenses/numpy/_core/src/common/pythoncapi-compat/COPYING",
+          "sha256": "3f2c1ffa76383a55ae0aac01c9737cd70050dff63e1f026694fbe9d662573c98",
+          "bytes": 690
+        },
+        {
+          "path": "licenses/dependencies/numpy/licenses/numpy/_core/src/highway/LICENSE",
+          "sha256": "e340270d4f64384569a91d546acb5b094d69ce47f0c015db77abb74dc6f815af",
+          "bytes": 20785
+        },
+        {
+          "path": "licenses/dependencies/numpy/licenses/numpy/_core/src/multiarray/dragon4_LICENSE.txt",
+          "sha256": "f7b14309e5f54e5022b26448eefd419988ada2aec01d3c1162d84a0ea8f21f2c",
+          "bytes": 1414
+        },
+        {
+          "path": "licenses/dependencies/numpy/licenses/numpy/_core/src/npysort/x86-simd-sort/LICENSE.md",
+          "sha256": "211e7d737d6179a08f791ebb0a99897ce7cd2457410c542876d125576edfe910",
+          "bytes": 1514
+        },
+        {
+          "path": "licenses/dependencies/numpy/licenses/numpy/_core/src/umath/svml/LICENSE",
+          "sha256": "c17011467b4fe6e20fbfbeda4df09e58c2bca5480a063e55735a4000a379aad9",
+          "bytes": 1543
+        },
+        {
+          "path": "licenses/dependencies/numpy/licenses/numpy/fft/pocketfft/LICENSE.md",
+          "sha256": "a85ca13fdf90160b64a0698215868c13b74d835ad0a4e2ba44713b8c5058a056",
+          "bytes": 1498
+        },
+        {
+          "path": "licenses/dependencies/numpy/licenses/numpy/linalg/lapack_lite/LICENSE.txt",
+          "sha256": "a14cc25e10d40a3aa705b7de2fb764a6535d8ee9b2db4e1724900585457dfd55",
+          "bytes": 2266
+        },
+        {
+          "path": "licenses/dependencies/numpy/licenses/numpy/ma/LICENSE",
+          "sha256": "05f3b88351988ecfad10abe92c0c50e5875c6452d5009a0084cc291551ffcca6",
+          "bytes": 1593
+        },
+        {
+          "path": "licenses/dependencies/numpy/licenses/numpy/random/LICENSE.md",
+          "sha256": "103166b62b80443afb9eb3488e052ea06be0cff566b908f199e561fde49af19f",
+          "bytes": 3511
+        },
+        {
+          "path": "licenses/dependencies/numpy/licenses/numpy/random/src/distributions/LICENSE.md",
+          "sha256": "469778be8f33d54e1bcaab28c281cc472916d2d273f835e55bc487d30503face",
+          "bytes": 2745
+        },
+        {
+          "path": "licenses/dependencies/numpy/licenses/numpy/random/src/mt19937/LICENSE.md",
+          "sha256": "0e111337b25494a773106695f0e799f642b8567aaacca4f116a74a8177179156",
+          "bytes": 2926
+        },
+        {
+          "path": "licenses/dependencies/numpy/licenses/numpy/random/src/pcg64/LICENSE.md",
+          "sha256": "e7d4f4fb20358f314210a892ae17351e04993813646f697ec387385ca2a36918",
+          "bytes": 1154
+        },
+        {
+          "path": "licenses/dependencies/numpy/licenses/numpy/random/src/philox/LICENSE.md",
+          "sha256": "6f5828a57223d4cc7f8ea505a2623e7b978b242752c1515e355f46ba2cec1800",
+          "bytes": 1509
+        },
+        {
+          "path": "licenses/dependencies/numpy/licenses/numpy/random/src/sfc64/LICENSE.md",
+          "sha256": "9d4098846018319cd68e228ee6220361787f73bccbf00237a85e4fc9621b998f",
+          "bytes": 1226
+        },
+        {
+          "path": "licenses/dependencies/numpy/licenses/numpy/random/src/splitmix64/LICENSE.md",
+          "sha256": "268b0ca06759d31ea3ca68dd35f20e877916e927b1c2a835e4592a3c4354b1f9",
+          "bytes": 332
+        }
+      ],
+      "pypi": {
+        "source_url": "https://pypi.org/pypi/numpy/2.5.2/json",
+        "observed_at": "2026-10-17T07:43:11.505105+08:00",
+        "method": "system curl with default TLS verification",
+        "exit_code": 0,
+        "stderr": "",
+        "response_sha256": "3a0ecb9a0e15d02d12f15375bf7e210453708ede8f3f721bb491896a330ddd00",
+        "matching_installed_tag_wheels": [
+          {
+            "filename": "numpy-2.5.2-cp312-cp312-macosx_14_0_arm64.whl",
+            "url": "https://files.pythonhosted.org/packages/f3/f4/29e78102a80601cf034d4e9767022cffeca2c3b4c926e1754572ca95593d/numpy-2.5.2-cp312-cp312-macosx_14_0_arm64.whl",
+            "size": 5350202,
+            "digests": {
+              "blake2b_256": "f3f429e78102a80601cf034d4e9767022cffeca2c3b4c926e1754572ca95593d",
+              "md5": "e3d8b52fc6d3b1a9138770e71814db02",
+              "sha256": "6e8172ddfcf5cf74b811d372b570b83c60bd2de87a6fbfbebdadb4a9bd9c6cbb"
+            },
+            "yanked": false,
+            "requires_python": ">=3.12"
+          }
+        ],
+        "status": "fixed_official_wheel_metadata"
+      }
+    },
+    {
+      "name": "onnxruntime",
+      "version": "1.26.0",
+      "requires_active": [
+        "flatbuffers",
+        "numpy>=1.21.6",
+        "packaging",
+        "protobuf"
+      ],
+      "metadata_sha256": "046e7a9ccc9936961d74ab96d0484e2b21139b0c92b6d4450197d76b9443dd0c",
+      "record_sha256": "72395390f7d49781808eb2c608fdb10d70ab0cf2ee93de0b661563176b4e7211",
+      "wheel_text": "Wheel-Version: 1.0\nGenerator: setuptools (78.1.1)\nRoot-Is-Purelib: false\nTag: cp312-cp312-macosx_14_0_arm64\nGenerator: delocate 0.13.0\n\n",
+      "record_verified_files": 321,
+      "record_unhashed_files": 1,
+      "record_mismatches": [],
+      "license_files": [],
+      "pypi": {
+        "source_url": "https://pypi.org/pypi/onnxruntime/1.26.0/json",
+        "observed_at": "2026-10-17T07:43:11.530912+08:00",
+        "method": "system curl with default TLS verification",
+        "exit_code": 0,
+        "stderr": "",
+        "response_sha256": "357fdb3509267c869acaafcba236524817b8aa61e1aad1d600ea2091c79dec94",
+        "matching_installed_tag_wheels": [
+          {
+            "filename": "onnxruntime-1.26.0-cp312-cp312-macosx_14_0_arm64.whl",
+            "url": "https://files.pythonhosted.org/packages/81/b1/d111b1df656761f980d9e298a60039a9cb66036b1d039e777537743d0ac3/onnxruntime-1.26.0-cp312-cp312-macosx_14_0_arm64.whl",
+            "size": 18016624,
+            "digests": {
+              "blake2b_256": "81b1d111b1df656761f980d9e298a60039a9cb66036b1d039e777537743d0ac3",
+              "md5": "a13d01c1a02683819560573bf76ddc6a",
+              "sha256": "05b028781b322ad74b57ce5b50aa5280bb1fe96ceec334628ade681e0b24c1ac"
+            },
+            "yanked": false,
+            "requires_python": ">=3.11"
+          }
+        ],
+        "status": "fixed_official_wheel_metadata"
+      }
+    },
+    {
+      "name": "opencv-python-headless",
+      "version": "4.13.0.92",
+      "requires_active": [
+        "numpy>=2; python_version >= \"3.9\""
+      ],
+      "metadata_sha256": "e4a77fb9b25b744ca4db9cdaef315e0dad2ddf173ee741cd95ba543c1cf28e20",
+      "record_sha256": "11e5634091cf02257f5c83393e468f04b547d6ad592b40baf164e2d8b5601af2",
+      "wheel_text": "Wheel-Version: 1.0\nGenerator: skbuild 0.18.1\nRoot-Is-Purelib: false\nTag: cp37-abi3-macosx_13_0_arm64\n\n",
+      "record_verified_files": 181,
+      "record_unhashed_files": 1,
+      "record_mismatches": [],
+      "license_files": [
+        {
+          "path": "licenses/dependencies/opencv-python-headless/LICENSE-3RD-PARTY.txt",
+          "sha256": "0e8fac55c2f5bff939c1e7aae1fa2799e1cece5fd0857d8e5fafeb46562aafc9",
+          "bytes": 177835
+        },
+        {
+          "path": "licenses/dependencies/opencv-python-headless/LICENSE.txt",
+          "sha256": "09d719058e782ac7bc71ba21c944e1136cde2bb957c0e888121f0218d6b5f02c",
+          "bytes": 1070
+        }
+      ],
+      "pypi": {
+        "source_url": "https://pypi.org/pypi/opencv-python-headless/4.13.0.92/json",
+        "observed_at": "2026-10-17T07:43:11.663728+08:00",
+        "method": "system curl with default TLS verification",
+        "exit_code": 0,
+        "stderr": "",
+        "response_sha256": "c2660e2f27856a0c3f078f22979368ee2ededb22ae50524a8f298e715340cf72",
+        "matching_installed_tag_wheels": [
+          {
+            "filename": "opencv_python_headless-4.13.0.92-cp37-abi3-macosx_13_0_arm64.whl",
+            "url": "https://files.pythonhosted.org/packages/79/42/2310883be3b8826ac58c3f2787b9358a2d46923d61f88fedf930bc59c60c/opencv_python_headless-4.13.0.92-cp37-abi3-macosx_13_0_arm64.whl",
+            "size": 46247192,
+            "digests": {
+              "blake2b_256": "79422310883be3b8826ac58c3f2787b9358a2d46923d61f88fedf930bc59c60c",
+              "md5": "0ad7f2599ded9ce63c78e416e68ace40",
+              "sha256": "1a7d040ac656c11b8c38677cc8cccdc149f98535089dbe5b081e80a4e5903209"
+            },
+            "yanked": false,
+            "requires_python": ">=3.6"
+          }
+        ],
+        "status": "fixed_official_wheel_metadata"
+      }
+    },
+    {
+      "name": "packaging",
+      "version": "26.3",
+      "requires_active": [],
+      "metadata_sha256": "70fdb89fc4d4a9a043bf7372b8972bcc883fddff34ab55e9cf80d73875384763",
+      "record_sha256": "1b8655965b0d83e9a067fd7f84b977bd1e117e0fb9f2874b2572781bdc9e2147",
+      "wheel_text": "Wheel-Version: 1.0\nGenerator: flit 3.12.0\nRoot-Is-Purelib: true\nTag: py3-none-any\n",
+      "record_verified_files": 30,
+      "record_unhashed_files": 1,
+      "record_mismatches": [],
+      "license_files": [
+        {
+          "path": "licenses/dependencies/packaging/licenses/LICENSE",
+          "sha256": "cad1ef5bd340d73e074ba614d26f7deaca5c7940c3d8c34852e65c4909686c48",
+          "bytes": 197
+        },
+        {
+          "path": "licenses/dependencies/packaging/licenses/LICENSE.APACHE",
+          "sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594",
+          "bytes": 10174
+        },
+        {
+          "path": "licenses/dependencies/packaging/licenses/LICENSE.BSD",
+          "sha256": "b70e7e9b742f1cc6f948b34c16aa39ffece94196364bc88ff0d2180f0028fac5",
+          "bytes": 1344
+        }
+      ],
+      "pypi": {
+        "source_url": "https://pypi.org/pypi/packaging/26.3/json",
+        "observed_at": "2026-10-17T07:43:11.745640+08:00",
+        "method": "system curl with default TLS verification",
+        "exit_code": 0,
+        "stderr": "",
+        "response_sha256": "4f190d2f0b312b3086058cee64ab4333bf3ce67fb78b4c2bdb43899049b29f4d",
+        "matching_installed_tag_wheels": [
+          {
+            "filename": "packaging-26.3-py3-none-any.whl",
+            "url": "https://files.pythonhosted.org/packages/63/34/ba1c580383c9eada3711951fef0795c80b829a078d72188184bcab9dd527/packaging-26.3-py3-none-any.whl",
+            "size": 129956,
+            "digests": {
+              "blake2b_256": "6334ba1c580383c9eada3711951fef0795c80b829a078d72188184bcab9dd527",
+              "md5": "e5b3bd8ce52e8a8fe1ab400079171a1e",
+              "sha256": "d7193f7c8e4e93f444fde0262bf90af30e16fa0ad0ad44cb553c87339b23cd1c"
+            },
+            "yanked": false,
+            "requires_python": ">=3.9"
+          }
+        ],
+        "status": "fixed_official_wheel_metadata"
+      }
+    },
+    {
+      "name": "pandas",
+      "version": "3.0.3",
+      "requires_active": [
+        "numpy>=1.26.0; python_version < \"3.14\"",
+        "python-dateutil>=2.8.2"
+      ],
+      "metadata_sha256": "52942cad9bd7e6625ad46f983a55bef6cdd99da3822ddb19393d6d6972d1c40a",
+      "record_sha256": "19578b8711f6fd767182c5e68a19a47e16d0f7f3bfd1768a7adaf7babc310d70",
+      "wheel_text": "Wheel-Version: 1.0\nGenerator: meson\nRoot-Is-Purelib: false\nTag: cp312-cp312-macosx_11_0_arm64\nGenerator: delocate 0.13.0\n\n",
+      "record_verified_files": 1522,
+      "record_unhashed_files": 1,
+      "record_mismatches": [],
+      "license_files": [
+        {
+          "path": "licenses/dependencies/pandas/LICENSE",
+          "sha256": "5c1052e921e62d36ccda50a61585e9c0444b80c62f39b57c4f3f0d5fb62f5071",
+          "bytes": 52127
+        }
+      ],
+      "pypi": {
+        "source_url": "https://pypi.org/pypi/pandas/3.0.3/json",
+        "observed_at": "2026-10-17T07:43:11.900436+08:00",
+        "method": "system curl with default TLS verification",
+        "exit_code": 0,
+        "stderr": "",
+        "response_sha256": "0ed14136170ca7b10d6f10580d5c5bcb4d682f9a3c427198a2bca4bcdce3e5b2",
+        "matching_installed_tag_wheels": [
+          {
+            "filename": "pandas-3.0.3-cp312-cp312-macosx_11_0_arm64.whl",
+            "url": "https://files.pythonhosted.org/packages/cf/3d/b16412745651e855f357e5e66930248688378853a6e2698a214e331fba1f/pandas-3.0.3-cp312-cp312-macosx_11_0_arm64.whl",
+            "size": 9899550,
+            "digests": {
+              "blake2b_256": "cf3db16412745651e855f357e5e66930248688378853a6e2698a214e331fba1f",
+              "md5": "f4ffcac4182fbc54ee30f5c94824ff01",
+              "sha256": "b168fc218fd80a6cbdbdbc1a97ddc7889ed057d7eb45f50d866ceab5f39904c4"
+            },
+            "yanked": false,
+            "requires_python": ">=3.11"
+          }
+        ],
+        "status": "fixed_official_wheel_metadata"
+      }
+    },
+    {
+      "name": "protobuf",
+      "version": "7.35.1",
+      "requires_active": [],
+      "metadata_sha256": "1c58cfd7acd805c087ceb1f14c27cdba3c52d074e1d7b05dacf31fdf413c0a8c",
+      "record_sha256": "680c6a559b82b5b434486569f8b325fe8f5dc3dfe0dc94c13863766aafef99af",
+      "wheel_text": "Wheel-Version: 1.0\nGenerator: bazel-wheelmaker 1.0\nRoot-Is-Purelib: false\nTag: cp310-abi3-macosx_10_9_universal2\n",
+      "record_verified_files": 60,
+      "record_unhashed_files": 1,
+      "record_mismatches": [],
+      "license_files": [
+        {
+          "path": "licenses/dependencies/protobuf/LICENSE",
+          "sha256": "6e5e117324afd944dcf67f36cf329843bc1a92229a8cd9bb573d7a83130fea7d",
+          "bytes": 1732
+        }
+      ],
+      "pypi": {
+        "source_url": "https://pypi.org/pypi/protobuf/7.35.1/json",
+        "observed_at": "2026-10-17T07:43:11.932503+08:00",
+        "method": "system curl with default TLS verification",
+        "exit_code": 0,
+        "stderr": "",
+        "response_sha256": "ed01e02cb82cfdfb4ce799d7e9fd0868a7b9cd29bfb38853f646712ce05ee8ac",
+        "matching_installed_tag_wheels": [
+          {
+            "filename": "protobuf-7.35.1-cp310-abi3-macosx_10_9_universal2.whl",
+            "url": "https://files.pythonhosted.org/packages/10/03/8aeeb7458d22546bf64b5250ca1daeb5ff757d900e8e4a7476c6f0db843e/protobuf-7.35.1-cp310-abi3-macosx_10_9_universal2.whl",
+            "size": 433226,
+            "digests": {
+              "blake2b_256": "10038aeeb7458d22546bf64b5250ca1daeb5ff757d900e8e4a7476c6f0db843e",
+              "md5": "1831d7af1a3fb5c4ab03ba4e19ac121b",
+              "sha256": "24f857477359a85c0c235261b8ba905fd51b2562f4a64ca1df5473f29850cbf6"
+            },
+            "yanked": false,
+            "requires_python": ">=3.10"
+          }
+        ],
+        "status": "fixed_official_wheel_metadata"
+      }
+    },
+    {
+      "name": "psutil",
+      "version": "7.2.2",
+      "requires_active": [],
+      "metadata_sha256": "525f8ba78523cf7bc3759d62a105e7c57fd679ea702402b9449fb0746aa0217f",
+      "record_sha256": "82a0585abe618fd6b841c095e45a9970cb4c8ace9aab3209d3602a8a1233ed49",
+      "wheel_text": "Wheel-Version: 1.0\nGenerator: setuptools (75.3.3)\nRoot-Is-Purelib: false\nTag: cp36-abi3-macosx_11_0_arm64\n\n",
+      "record_verified_files": 17,
+      "record_unhashed_files": 1,
+      "record_mismatches": [],
+      "license_files": [
+        {
+          "path": "licenses/dependencies/psutil/LICENSE",
+          "sha256": "b89c063b3786e28e0c0a38f1931db61fed35e69dd2a2966fbecffee0f46c8d10",
+          "bytes": 1548
+        }
+      ],
+      "pypi": {
+        "source_url": "https://pypi.org/pypi/psutil/7.2.2/json",
+        "observed_at": "2026-10-17T07:43:12.024117+08:00",
+        "method": "system curl with default TLS verification",
+        "exit_code": 0,
+        "stderr": "",
+        "response_sha256": "84f9d2597c3c15fe19d1ce069bfdbf25951dc423dc51d67c3979468c029b6415",
+        "matching_installed_tag_wheels": [
+          {
+            "filename": "psutil-7.2.2-cp36-abi3-macosx_11_0_arm64.whl",
+            "url": "https://files.pythonhosted.org/packages/80/c4/f5af4c1ca8c1eeb2e92ccca14ce8effdeec651d5ab6053c589b074eda6e1/psutil-7.2.2-cp36-abi3-macosx_11_0_arm64.whl",
+            "size": 129859,
+            "digests": {
+              "blake2b_256": "80c4f5af4c1ca8c1eeb2e92ccca14ce8effdeec651d5ab6053c589b074eda6e1",
+              "md5": "a17b3cbf9718fea225435c88973243c9",
+              "sha256": "1a7b04c10f32cc88ab39cbf606e117fd74721c831c98a27dc04578deb0c16979"
+            },
+            "yanked": false,
+            "requires_python": ">=3.6"
+          }
+        ],
+        "status": "fixed_official_wheel_metadata"
+      }
+    },
+    {
+      "name": "pyarrow",
+      "version": "20.0.0",
+      "requires_active": [],
+      "metadata_sha256": "efc7951a4d6c7f08e6b898fb5661668ca7fcc47046d5c9ae033b4699271b3ddf",
+      "record_sha256": "63640d50c3f5db3498f57941449d46146cb5b06f0e00f0d1d03e7794743bad9d",
+      "wheel_text": "Wheel-Version: 1.0\nGenerator: setuptools (79.0.0)\nRoot-Is-Purelib: false\nTag: cp312-cp312-macosx_12_0_arm64\n\n",
+      "record_verified_files": 765,
+      "record_unhashed_files": 1,
+      "record_mismatches": [],
+      "license_files": [
+        {
+          "path": "licenses/dependencies/pyarrow/licenses/LICENSE.txt",
+          "sha256": "36f65c663f1c9c910af64c73cb4302667d6513c3f0a617e42bd896d767ff4604",
+          "bytes": 111773
+        },
+        {
+          "path": "licenses/dependencies/pyarrow/licenses/NOTICE.txt",
+          "sha256": "b62ea242642d3a18f1e29b0c1fe082415a6943fe158ee22b48cff3762f354009",
+          "bytes": 3032
+        }
+      ],
+      "pypi": {
+        "source_url": "https://pypi.org/pypi/pyarrow/20.0.0/json",
+        "observed_at": "2026-10-17T07:43:12.030592+08:00",
+        "method": "system curl with default TLS verification",
+        "exit_code": 0,
+        "stderr": "",
+        "response_sha256": "04ff65cc9aa7631aad0c457e1d70b0f760ecdd676dffc6cfa871b495bd5fd4a4",
+        "matching_installed_tag_wheels": [
+          {
+            "filename": "pyarrow-20.0.0-cp312-cp312-macosx_12_0_arm64.whl",
+            "url": "https://files.pythonhosted.org/packages/a1/d6/0c10e0d54f6c13eb464ee9b67a68b8c71bcf2f67760ef5b6fbcddd2ab05f/pyarrow-20.0.0-cp312-cp312-macosx_12_0_arm64.whl",
+            "size": 30815067,
+            "digests": {
+              "blake2b_256": "a1d60c10e0d54f6c13eb464ee9b67a68b8c71bcf2f67760ef5b6fbcddd2ab05f",
+              "md5": "adb42e8e7acb8cd061ef044fd904da36",
+              "sha256": "75a51a5b0eef32727a247707d4755322cb970be7e935172b6a3a9f9ae98404ba"
+            },
+            "yanked": false,
+            "requires_python": ">=3.9"
+          }
+        ],
+        "status": "fixed_official_wheel_metadata"
+      }
+    },
+    {
+      "name": "python-dateutil",
+      "version": "2.9.0.post0",
+      "requires_active": [
+        "six >=1.5"
+      ],
+      "metadata_sha256": "a9d436da322be808332f98d88325998e87cb693a678a9969feb4cfad729a6e93",
+      "record_sha256": "e15e868a50b9c4e71df17b31369843617780146ac5adb1bbfdcced0ebe501824",
+      "wheel_text": "Wheel-Version: 1.0\nGenerator: bdist_wheel (0.42.0)\nRoot-Is-Purelib: true\nTag: py2-none-any\nTag: py3-none-any\n\n",
+      "record_verified_files": 26,
+      "record_unhashed_files": 1,
+      "record_mismatches": [],
+      "license_files": [
+        {
+          "path": "licenses/dependencies/python-dateutil/LICENSE",
+          "sha256": "ba00f51a0d92823b5a1cde27d8b5b9d2321e67ed8da9bc163eff96d5e17e577e",
+          "bytes": 2889
+        }
+      ],
+      "pypi": {
+        "source_url": "https://pypi.org/pypi/python-dateutil/2.9.0.post0/json",
+        "observed_at": "2026-10-17T07:43:12.366086+08:00",
+        "method": "system curl with default TLS verification",
+        "exit_code": 0,
+        "stderr": "",
+        "response_sha256": "65747bc111eb972ae6f477f211253f21e25738cb7d894ddb80ddd65f620b58a7",
+        "matching_installed_tag_wheels": [
+          {
+            "filename": "python_dateutil-2.9.0.post0-py2.py3-none-any.whl",
+            "url": "https://files.pythonhosted.org/packages/ec/57/56b9bcc3c9c6a792fcbaf139543cee77261f3651ca9da0c93f5c1221264b/python_dateutil-2.9.0.post0-py2.py3-none-any.whl",
+            "size": 229892,
+            "digests": {
+              "blake2b_256": "ec5756b9bcc3c9c6a792fcbaf139543cee77261f3651ca9da0c93f5c1221264b",
+              "md5": "2178749b926fe0e2c25905cdfebe3361",
+              "sha256": "a8b2bc7bffae282281c8140a97d3aa9c14da0b136dfe83f850eea9a5f7470427"
+            },
+            "yanked": false,
+            "requires_python": "!=3.0.*,!=3.1.*,!=3.2.*,>=2.7"
+          }
+        ],
+        "status": "fixed_official_wheel_metadata"
+      }
+    },
+    {
+      "name": "setuptools",
+      "version": "84.0.0",
+      "requires_active": [],
+      "metadata_sha256": "3ef2975718dd31cabdd5829455e9b868ca14dbf79ed8fed2de0af4e87347006e",
+      "record_sha256": "26b6656e2a9d04f4c1cc1e8580636454733af03d8dc2dac4b2d4636ff1ed6da8",
+      "wheel_text": "Wheel-Version: 1.0\nGenerator: setuptools (84.0.0)\nRoot-Is-Purelib: true\nTag: py3-none-any\n\n",
+      "record_verified_files": 344,
+      "record_unhashed_files": 1,
+      "record_mismatches": [],
+      "license_files": [
+        {
+          "path": "licenses/dependencies/setuptools/licenses/LICENSE",
+          "sha256": "86da0f01aeae46348a3c3d465195dc1ceccde79f79e87769a64b8da04b2a4741",
+          "bytes": 1023
+        }
+      ],
+      "pypi": {
+        "source_url": "https://pypi.org/pypi/setuptools/84.0.0/json",
+        "observed_at": "2026-10-17T07:43:12.414465+08:00",
+        "method": "system curl with default TLS verification",
+        "exit_code": 0,
+        "stderr": "",
+        "response_sha256": "24d07932459261bbf9e66e5cfdebfeba23a977234ab24bf9c3a1df053c53ba21",
+        "matching_installed_tag_wheels": [
+          {
+            "filename": "setuptools-84.0.0-py3-none-any.whl",
+            "url": "https://files.pythonhosted.org/packages/95/9c/c510029fc6ef33a6275cd2c5d3cecd6613dfd6aa401d57c54f1c18852ccf/setuptools-84.0.0-py3-none-any.whl",
+            "size": 818216,
+            "digests": {
+              "blake2b_256": "959cc510029fc6ef33a6275cd2c5d3cecd6613dfd6aa401d57c54f1c18852ccf",
+              "md5": "c553878e12d736f4ad1537f9aa15a489",
+              "sha256": "51a52592b3b99e102b609654876bd65f19f999935166d1352678931132b0c670"
+            },
+            "yanked": false,
+            "requires_python": ">=3.10"
+          }
+        ],
+        "status": "fixed_official_wheel_metadata"
+      }
+    },
+    {
+      "name": "six",
+      "version": "1.17.0",
+      "requires_active": [],
+      "metadata_sha256": "562042078c2752549f6d8a7c86dbc5dd708088a7be6d80672ec7b07100b72468",
+      "record_sha256": "d16e50f347969b1e1919fb0c88bac4b9c644f5305bcfcfb00f72b646dbd4065d",
+      "wheel_text": "Wheel-Version: 1.0\nGenerator: setuptools (75.6.0)\nRoot-Is-Purelib: true\nTag: py2-none-any\nTag: py3-none-any\n\n",
+      "record_verified_files": 7,
+      "record_unhashed_files": 1,
+      "record_mismatches": [],
+      "license_files": [
+        {
+          "path": "licenses/dependencies/six/LICENSE",
+          "sha256": "4375ba20e2b9c6c4e7cad2940a628fd90e95cc3d50ee92aae755715d8ba1fbd0",
+          "bytes": 1066
+        }
+      ],
+      "pypi": {
+        "source_url": "https://pypi.org/pypi/six/1.17.0/json",
+        "observed_at": "2026-10-17T07:43:12.422197+08:00",
+        "method": "system curl with default TLS verification",
+        "exit_code": 0,
+        "stderr": "",
+        "response_sha256": "d8de39dd52b73048d81a8fd78022ee2bc72f8b568bcf0d88e5d5069c302b1208",
+        "matching_installed_tag_wheels": [
+          {
+            "filename": "six-1.17.0-py2.py3-none-any.whl",
+            "url": "https://files.pythonhosted.org/packages/b7/ce/149a00dd41f10bc29e5921b496af8b574d8413afcd5e30dfa0ed46c2cc5e/six-1.17.0-py2.py3-none-any.whl",
+            "size": 11050,
+            "digests": {
+              "blake2b_256": "b7ce149a00dd41f10bc29e5921b496af8b574d8413afcd5e30dfa0ed46c2cc5e",
+              "md5": "090bac7d568f9c1f64b671de641ccdee",
+              "sha256": "4721f391ed90541fddacab5acf947aa0d3dc7d27b2e1e8eda2be8970586c3274"
+            },
+            "yanked": false,
+            "requires_python": "!=3.0.*,!=3.1.*,!=3.2.*,>=2.7"
+          }
+        ],
+        "status": "fixed_official_wheel_metadata"
+      }
+    },
+    {
+      "name": "sympy",
+      "version": "1.14.0",
+      "requires_active": [
+        "mpmath<1.4,>=1.1.0"
+      ],
+      "metadata_sha256": "b756c2fbfd5be05ac5bdb0ebca61f55618f30f633ed92d88a5687429313a7595",
+      "record_sha256": "7a44b0ed69eba681e72beafe3cb40846b70b8ce1971f88dbda6d352c20223007",
+      "wheel_text": "Wheel-Version: 1.0\nGenerator: setuptools (79.0.1)\nRoot-Is-Purelib: true\nTag: py3-none-any\n\n",
+      "record_verified_files": 1572,
+      "record_unhashed_files": 1,
+      "record_mismatches": [],
+      "license_files": [
+        {
+          "path": "licenses/dependencies/sympy/licenses/LICENSE",
+          "sha256": "07a5e9819f727b4986ad2829c7a29a6320d42575f720eb24d71b7fef573a0286",
+          "bytes": 7885
+        }
+      ],
+      "pypi": {
+        "source_url": "https://pypi.org/pypi/sympy/1.14.0/json",
+        "observed_at": "2026-10-17T07:43:12.592703+08:00",
+        "method": "system curl with default TLS verification",
+        "exit_code": 0,
+        "stderr": "",
+        "response_sha256": "7f17c97b2d9ccec17969f30bd7e43c58db3de1145cd1cf00773e48991048d176",
+        "matching_installed_tag_wheels": [
+          {
+            "filename": "sympy-1.14.0-py3-none-any.whl",
+            "url": "https://files.pythonhosted.org/packages/a2/09/77d55d46fd61b4a135c444fc97158ef34a095e5681d0a6c10b75bf356191/sympy-1.14.0-py3-none-any.whl",
+            "size": 6299353,
+            "digests": {
+              "blake2b_256": "a20977d55d46fd61b4a135c444fc97158ef34a095e5681d0a6c10b75bf356191",
+              "md5": "9f9b6994240343ef1f6889d194399de5",
+              "sha256": "e091cc3e99d2141a0ba2847328f5479b05d94a6635cb96148ccb3f34671bd8f5"
+            },
+            "yanked": false,
+            "requires_python": ">=3.9"
+          }
+        ],
+        "status": "fixed_official_wheel_metadata"
+      }
+    },
+    {
+      "name": "torch",
+      "version": "2.13.0",
+      "requires_active": [
+        "filelock",
+        "typing-extensions>=4.10.0",
+        "setuptools>=77.0.3",
+        "sympy>=1.13.3",
+        "networkx>=2.5.1",
+        "jinja2",
+        "fsspec>=0.8.5"
+      ],
+      "metadata_sha256": "88fb3dd280256bfb251623e7871406c7a6ca7013a4893d7c5360aa612bd3d172",
+      "record_sha256": "9c04eff3b82157e4b9a28e687e1974139707d40b5301e40dadc34f080ef1c7d8",
+      "wheel_text": "Wheel-Version: 1.0\nGenerator: setuptools (81.0.0)\nRoot-Is-Purelib: false\nTag: cp312-cp312-macosx_14_0_arm64\n\n",
+      "record_verified_files": 12713,
+      "record_unhashed_files": 1,
+      "record_mismatches": [],
+      "license_files": [
+        {
+          "path": "licenses/dependencies/torch/licenses/LICENSE",
+          "sha256": "bd018feef8825e88181c84eb7e3aa4eafb8f08a20d9fd6ef948569610c4a3e43",
+          "bytes": 3464
+        },
+        {
+          "path": "licenses/dependencies/torch/licenses/third_party/FP16/LICENSE",
+          "sha256": "17e4f539024be2749ee729d1e2f01d24cef12ece8c9bf18e91a4349be29c80bf",
+          "bytes": 1157
+        },
+        {
+          "path": "licenses/dependencies/torch/licenses/third_party/FXdiv/LICENSE",
+          "sha256": "7cac00006125b1486a27e4801ed66357236e984c540bd323945ab7b66b078ec3",
+          "bytes": 1117
+        },
+        {
+          "path": "licenses/dependencies/torch/licenses/third_party/NNPACK/LICENSE",
+          "sha256": "ab09e33621f513ebdd1ef685b324f39c1f6bee9221d15600bafd958322df1231",
+          "bytes": 1352
+        },
+        {
+          "path": "licenses/dependencies/torch/licenses/third_party/NVTX/LICENSE.txt",
+          "sha256": "abdfd8a6738b27cd1504e091f77b682dbae928339f040b8a6f59a548245991a0",
+          "bytes": 12483
+        },
+        {
+          "path": "licenses/dependencies/torch/licenses/third_party/NVTX/docs/LICENSE.txt",
+          "sha256": "abdfd8a6738b27cd1504e091f77b682dbae928339f040b8a6f59a548245991a0",
+          "bytes": 12483
+        },
+        {
+          "path": "licenses/dependencies/torch/licenses/third_party/NVTX/python/LICENSE.txt",
+          "sha256": "abdfd8a6738b27cd1504e091f77b682dbae928339f040b8a6f59a548245991a0",
+          "bytes": 12483
+        },
+        {
+          "path": "licenses/dependencies/torch/licenses/third_party/NVTX/tools/docs/github-markdown-css/LICENSE",
+          "sha256": "5c932d88256b4ab958f64a856fa48e8bd1f55bc1d96b8149c65689e0c61789d3",
+          "bytes": 1117
+        },
+        {
+          "path": "licenses/dependencies/torch/licenses/third_party/VulkanMemoryAllocator/LICENSE.txt",
+          "sha256": "8d70e4cf2a9941f6454da71cd60e38484dd3e34810c824760d550e982af6d97a",
+          "bytes": 1099
+        },
+        {
+          "path": "licenses/dependencies/torch/licenses/third_party/XNNPACK/LICENSE",
+          "sha256": "63f519e15726f4c4f830bd958f694c84fecb4e0a4cacc527d2696bb71ef95ada",
+          "bytes": 1560
+        },
+        {
+          "path": "licenses/dependencies/torch/licenses/third_party/aiter/3rdparty/composable_kernel/LICENSE",
+          "sha256": "20f3b83dfda01bd18d285e0edbb9d044be6dde04cdf76a1ec18d9fc7127936bf",
+          "bytes": 1726
+        },
+        {
+          "path": "licenses/dependencies/torch/licenses/third_party/aiter/3rdparty/composable_kernel/docs/LICENSE.rst",
+          "sha256": "527eec8a9670f793119a685a3510369e5fd64b45515a885c7226641777ecff8b",
+          "bytes": 330
+        },
+        {
+          "path": "licenses/dependencies/torch/licenses/third_party/aiter/LICENSE",
+          "sha256": "0baca809927cad448401b252ce3bae12687c2987597ad7088cf3423f872d5bcd",
+          "bytes": 1100
+        },
+        {
+          "path": "licenses/dependencies/torch/licenses/third_party/benchmark/LICENSE",
+          "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+          "bytes": 11358
+        },
+        {
+          "path": "licenses/dependencies/torch/licenses/third_party/composable_kernel/LICENSE",
+          "sha256": "20f3b83dfda01bd18d285e0edbb9d044be6dde04cdf76a1ec18d9fc7127936bf",
+          "bytes": 1726
+        },
+        {
+          "path": "licenses/dependencies/torch/licenses/third_party/composable_kernel/docs/LICENSE.rst",
+          "sha256": "527eec8a9670f793119a685a3510369e5fd64b45515a885c7226641777ecff8b",
+          "bytes": 330
+        },
+        {
+          "path": "licenses/dependencies/torch/licenses/third_party/cpp-httplib/LICENSE",
+          "sha256": "4b45cbe16d7b71b89ae6127e26e0d90a029198ca5e958ad8e3d0b8bbed364d8b",
+          "bytes": 1075
+        },
+        {
+          "path": "licenses/dependencies/torch/licenses/third_party/cpuinfo/LICENSE",
+          "sha256": "8e7e60636c3aa0cb03571a1a841ce5697f9551ff92b3c426c2561613d15ade70",
+          "bytes": 1424
+        },
+        {
+          "path": "licenses/dependencies/torch/licenses/third_party/cpuinfo/deps/clog/LICENSE",
+          "sha256": "68a14c3e79add023eecd83d611e73f05b8bf1d16852efeb7eb4033a96736da9e",
+          "bytes": 1384
+        },
+        {
+          "path": "licenses/dependencies/torch/licenses/third_party/cudnn_frontend/LICENSE.txt",
+          "sha256": "3fc4b473a2c08768a8066bf7e4a58a1185060f3ad674f2ca9e2011bca4adf2ce",
+          "bytes": 1148
+        },
+        {
+          "path": "licenses/dependencies/torch/licenses/third_party/cutlass/LICENSE.txt",
+          "sha256": "7bc733829f16663593865344541c6dcc433beb6b6b555c8f86a43e9b399993cf",
+          "bytes": 1854
+        },
+        {
+          "path": "licenses/dependencies/torch/licenses/third_party/cutlass/python/LICENSE.txt",
+          "sha256": "00bf1806f664ac1afe4221f5f04b384fb6f1ca6eb33efcb6dccf599eb06d08b9",
+          "bytes": 1547
+        },
+        {
+          "path": "licenses/dependencies/torch/licenses/third_party/fbgemm/LICENSE",
+          "sha256": "12c2370ec32e78115dcd71ba22cdcb1297320fdc4ade81f798136d42357c58b8",
+          "bytes": 1535
+        },
+        {
+          "path": "licenses/dependencies/torch/licenses/third_party/fbgemm/external/composable_kernel/LICENSE",
+          "sha256": "20f3b83dfda01bd18d285e0edbb9d044be6dde04cdf76a1ec18d9fc7127936bf",
+          "bytes": 1726
+        },
+        {
+          "path": "licenses/dependencies/torch/licenses/third_party/fbgemm/external/composable_kernel/docs/LICENSE.rst",
+          "sha256": "527eec8a9670f793119a685a3510369e5fd64b45515a885c7226641777ecff8b",
+          "bytes": 330
+        },
+        {
+          "path": "licenses/dependencies/torch/licenses/third_party/fbgemm/external/cpuinfo/LICENSE",
+          "sha256": "8e7e60636c3aa0cb03571a1a841ce5697f9551ff92b3c426c2561613d15ade70",
+          "bytes": 1424
+        },
+        {
+          "path": "licenses/dependencies/torch/licenses/third_party/fbgemm/external/cpuinfo/deps/clog/LICENSE",
+          "sha256": "68a14c3e79add023eecd83d611e73f05b8bf1d16852efeb7eb4033a96736da9e",
+          "bytes": 1384
+        },
+        {
+          "path": "licenses/dependencies/torch/licenses/third_party/fbgemm/external/cutlass/LICENSE.txt",
+          "sha256": "80a7a18b73d41f64dd9ca881af35938f8de88b18c728703251f4c94d1299884d",
+          "bytes": 1854
+        },
+        {
+          "path": "licenses/dependencies/torch/licenses/third_party/fbgemm/external/cutlass/python/LICENSE.txt",
+          "sha256": "42fec630f410aa308f70a51a89fadcd19586fa620f9831a32bee528a9a10000e",
+          "bytes": 1547
+        },
+        {
+          "path": "licenses/dependencies/torch/licenses/third_party/fbgemm/external/googletest/LICENSE",
+          "sha256": "9702de7e4117a8e2b20dafab11ffda58c198aede066406496bef670d40a22138",
+          "bytes": 1475
+        },
+        {
+          "path": "licenses/dependencies/torch/licenses/third_party/fbgemm/external/hipify_torch/LICENSE.txt",
+          "sha256": "ecf819d55b17c2f091b3ba0934d044368aa0680d8a81374860306aa2b91aa1eb",
+          "bytes": 1112
+        },
+        {
+          "path": "licenses/dependencies/torch/licenses/third_party/fbgemm/fbgemm_gpu/docs/src/general/LICENSE.rst",
+          "sha256": "28e8a7bea8e35cc341133847d66ca4b34e7156724e31e7fb62e37872d4259416",
+          "bytes": 148
+        },
+        {
+          "path": "licenses/dependencies/torch/licenses/third_party/fbgemm/fbgemm_gpu/experimental/hstu/LICENSE",
+          "sha256": "e364577f7a53353281c4462d5810e284e14d5e801414a9117a108ff2da987bcd",
+          "bytes": 2124
+        },
+        {
+          "path": "licenses/dependencies/torch/licenses/third_party/fbgemm/fbgemm_gpu/src/quantize_ops/mx/LICENSE",
+          "sha256": "c2cfccb812fe482101a8f04597dfc5a9991a6b2748266c47ac91b6a5aae15383",
+          "bytes": 1141
+        },
+        {
+          "path": "licenses/dependencies/torch/licenses/third_party/fbgemm/fbgemm_gpu/test/quantize/mx/LICENSE",
+          "sha256": "c2cfccb812fe482101a8f04597dfc5a9991a6b2748266c47ac91b6a5aae15383",
+          "bytes": 1141
+        },
+        {
+          "path": "licenses/dependencies/torch/licenses/third_party/flash-attention/LICENSE",
+          "sha256": "8c9ccb96c065e706135b6cbad279b721da6156e51f3a5f27c6b3329af9416d73",
+          "bytes": 1558
+        },
+        {
+          "path": "licenses/dependencies/torch/licenses/third_party/flash-attention/csrc/composable_kernel/LICENSE",
+          "sha256": "20f3b83dfda01bd18d285e0edbb9d044be6dde04cdf76a1ec18d9fc7127936bf",
+          "bytes": 1726
+        },
+        {
+          "path": "licenses/dependencies/torch/licenses/third_party/flash-attention/csrc/composable_kernel/docs/LICENSE.rst",
+          "sha256": "527eec8a9670f793119a685a3510369e5fd64b45515a885c7226641777ecff8b",
+          "bytes": 330
+        },
+        {
+          "path": "licenses/dependencies/torch/licenses/third_party/flash-attention/csrc/cutlass/LICENSE.txt",
+          "sha256": "80a7a18b73d41f64dd9ca881af35938f8de88b18c728703251f4c94d1299884d",
+          "bytes": 1854
+        },
+        {
+          "path": "licenses/dependencies/torch/licenses/third_party/flash-attention/csrc/cutlass/python/LICENSE.txt",
+          "sha256": "42fec630f410aa308f70a51a89fadcd19586fa620f9831a32bee528a9a10000e",
+          "bytes": 1547
+        },
+        {
+          "path": "licenses/dependencies/torch/licenses/third_party/flash-attention/flash_attn/cute/LICENSE",
+          "sha256": "8c9ccb96c065e706135b6cbad279b721da6156e51f3a5f27c6b3329af9416d73",
+          "bytes": 1558
+        },
+        {
+          "path": "licenses/dependencies/torch/licenses/third_party/flash-attention/third_party/aiter/3rdparty/composable_kernel/LICENSE",
+          "sha256": "20f3b83dfda01bd18d285e0edbb9d044be6dde04cdf76a1ec18d9fc7127936bf",
+          "bytes": 1726
+        },
+        {
+          "path": "licenses/dependencies/torch/licenses/third_party/flash-attention/third_party/aiter/3rdparty/composable_kernel/docs/LICENSE.rst",
+          "sha256": "527eec8a9670f793119a685a3510369e5fd64b45515a885c7226641777ecff8b",
+          "bytes": 330
+        },
+        {
+          "path": "licenses/dependencies/torch/licenses/third_party/flash-attention/third_party/aiter/LICENSE",
+          "sha256": "0baca809927cad448401b252ce3bae12687c2987597ad7088cf3423f872d5bcd",
+          "bytes": 1100
+        },
+        {
+          "path": "licenses/dependencies/torch/licenses/third_party/flatbuffers/LICENSE",
+          "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+          "bytes": 11358
+        },
+        {
+          "path": "licenses/dependencies/torch/licenses/third_party/flatbuffers/dart/LICENSE",
+          "sha256": "edd9b3459bee4c79b549a5ef66d06d12bd144ddb8d08e0b448fb421267f43dd5",
+          "bytes": 11341
+        },
+        {
+          "path": "licenses/dependencies/torch/licenses/third_party/flatbuffers/swift/LICENSE",
+          "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+          "bytes": 11358
+        },
+        {
+          "path": "licenses/dependencies/torch/licenses/third_party/fmt/LICENSE",
+          "sha256": "07580f2a3b35709ce703d523f447b242f6dfec7582a8c0df102c7fa2849375f8",
+          "bytes": 1431
+        },
+        {
+          "path": "licenses/dependencies/torch/licenses/third_party/gemmlowp/gemmlowp/LICENSE",
+          "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+          "bytes": 11358
+        },
+        {
+          "path": "licenses/dependencies/torch/licenses/third_party/gloo/LICENSE",
+          "sha256": "2afbc572cf7f60888159bc2ca48ba58f8adec06682ae5de820d61449d1eeea81",
+          "bytes": 1525
+        },
+        {
+          "path": "licenses/dependencies/torch/licenses/third_party/googletest/LICENSE",
+          "sha256": "9702de7e4117a8e2b20dafab11ffda58c198aede066406496bef670d40a22138",
+          "bytes": 1475
+        },
+        {
+          "path": "licenses/dependencies/torch/licenses/third_party/ideep/LICENSE",
+          "sha256": "a26add03107a53a605a89711b9b7dbd4f5dd668ae193a912e01a879366a23b0e",
+          "bytes": 1062
+        },
+        {
+          "path": "licenses/dependencies/torch/licenses/third_party/ideep/mkl-dnn/LICENSE",
+          "sha256": "e9fc874fc09801b9acf3411ba72394098473704d832d713404b6c4861a086318",
+          "bytes": 11607
+        },
+        {
+          "path": "licenses/dependencies/torch/licenses/third_party/ideep/mkl-dnn/third_party/gtest/LICENSE",
+          "sha256": "9702de7e4117a8e2b20dafab11ffda58c198aede066406496bef670d40a22138",
+          "bytes": 1475
+        },
+        {
+          "path": "licenses/dependencies/torch/licenses/third_party/ideep/mkl-dnn/third_party/opencl/LICENSE",
+          "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+          "bytes": 11358
+        },
+        {
+          "path": "licenses/dependencies/torch/licenses/third_party/kineto/LICENSE",
+          "sha256": "6f3d59b9103e72e5c977eecf61b261c2e1546a9be2995847e3ee2d31021fd39b",
+          "bytes": 1609
+        },
+        {
+          "path": "licenses/dependencies/torch/licenses/third_party/kineto/libkineto/third_party/dynolog/LICENSE",
+          "sha256": "52412d7bc7ce4157ea628bbaacb8829e0a9cb3c58f57f99176126bc8cf2bfc85",
+          "bytes": 1086
+        },
+        {
+          "path": "licenses/dependencies/torch/licenses/third_party/kineto/libkineto/third_party/dynolog/third_party/DCGM/LICENSE",
+          "sha256": "6617037401b04db6d1e89a9bec00e25a063edab9354dba63f84bf4e7e1345470",
+          "bytes": 587
+        },
+        {
+          "path": "licenses/dependencies/torch/licenses/third_party/kineto/libkineto/third_party/dynolog/third_party/DCGM/testing/python3/libs_3rdparty/colorama/LICENSE.txt",
+          "sha256": "90ba34a1de1a8f02b8a9896aa2c83b9a960376b85bc7d0d20f39b84c9174c7c1",
+          "bytes": 1721
+        },
+        {
+          "path": "licenses/dependencies/torch/licenses/third_party/kineto/libkineto/third_party/dynolog/third_party/cpr/LICENSE",
+          "sha256": "df77cacba01d8f241a2e7af01b9a636c0037cf810d80bbcfdbcc405c99a2d563",
+          "bytes": 1229
+        },
+        {
+          "path": "licenses/dependencies/torch/licenses/third_party/kineto/libkineto/third_party/dynolog/third_party/cpr/test/LICENSE",
+          "sha256": "7d412b7a16a0ca54f6a026b7e24394f9ac3621fba8301976db4044711135842b",
+          "bytes": 35231
+        },
+        {
+          "path": "licenses/dependencies/torch/licenses/third_party/kineto/libkineto/third_party/dynolog/third_party/fmt/LICENSE.rst",
+          "sha256": "825c9324e70f8c839c8ba910543dd4a7daee243b86ef960594c11381a19980b8",
+          "bytes": 1408
+        },
+        {
+          "path": "licenses/dependencies/torch/licenses/third_party/kineto/libkineto/third_party/dynolog/third_party/googletest/LICENSE",
+          "sha256": "9702de7e4117a8e2b20dafab11ffda58c198aede066406496bef670d40a22138",
+          "bytes": 1475
+        },
+        {
+          "path": "licenses/dependencies/torch/licenses/third_party/kineto/libkineto/third_party/dynolog/third_party/json/test/thirdparty/doctest/LICENSE.txt",
+          "sha256": "21d5cc7eacfbe785d8a7642457ecf630a611220683aa7d7d8cd9febfdb0d06fc",
+          "bytes": 1086
+        },
+        {
+          "path": "licenses/dependencies/torch/licenses/third_party/kineto/libkineto/third_party/dynolog/third_party/json/third_party/cpplint/LICENSE",
+          "sha256": "02fd655b9adb79e771fd60267a722f0862d43381f95bb38bd6ada5e2080272c4",
+          "bytes": 1502
+        },
+        {
+          "path": "licenses/dependencies/torch/licenses/third_party/kineto/libkineto/third_party/dynolog/third_party/pfs/LICENSE",
+          "sha256": "d86de50046bd9fd5e47f305236f2a1b342865e367e6da1fbd4185791be5f741a",
+          "bytes": 10767
+        },
+        {
+          "path": "licenses/dependencies/torch/licenses/third_party/kineto/libkineto/third_party/dynolog/third_party/prometheus-cpp/3rdparty/civetweb/examples/rest/cJSON/LICENSE",
+          "sha256": "a36dda207c36db5818729c54e7ad4e8b0c6fba847491ba64f372c1a2037b6d5c",
+          "bytes": 1084
+        },
+        {
+          "path": "licenses/dependencies/torch/licenses/third_party/kineto/libkineto/third_party/dynolog/third_party/prometheus-cpp/3rdparty/civetweb/src/third_party/duktape-1.5.2/LICENSE.txt",
+          "sha256": "f95a124945067d1143f1c6de9a990f2db2426456408ee0f0bfe6de2f568a899f",
+          "bytes": 1172
+        },
+        {
+          "path": "licenses/dependencies/torch/licenses/third_party/kineto/libkineto/third_party/dynolog/third_party/prometheus-cpp/3rdparty/civetweb/src/third_party/duktape-1.8.0/LICENSE.txt",
+          "sha256": "5358498534dac625c89a69c10becf3dcc40f9af58e6b69ee358ebdf6934f49c6",
+          "bytes": 1172
+        },
+        {
+          "path": "licenses/dependencies/torch/licenses/third_party/kineto/libkineto/third_party/dynolog/third_party/prometheus-cpp/3rdparty/googletest/LICENSE",
+          "sha256": "9702de7e4117a8e2b20dafab11ffda58c198aede066406496bef670d40a22138",
+          "bytes": 1475
+        },
+        {
+          "path": "licenses/dependencies/torch/licenses/third_party/kineto/libkineto/third_party/dynolog/third_party/prometheus-cpp/3rdparty/googletest/googlemock/scripts/generator/LICENSE",
+          "sha256": "5e0df8c845c742e76f2f64d2d9ce1b7e74a2422fddbc577ae6a56319083de0bf",
+          "bytes": 11386
+        },
+        {
+          "path": "licenses/dependencies/torch/licenses/third_party/kineto/libkineto/third_party/dynolog/third_party/prometheus-cpp/LICENSE",
+          "sha256": "631da2561d776749086945e1f5adf2e5f4fcde920ddaacda018d505787de1882",
+          "bytes": 1200
+        },
+        {
+          "path": "licenses/dependencies/torch/licenses/third_party/kineto/libkineto/third_party/fmt/LICENSE",
+          "sha256": "07580f2a3b35709ce703d523f447b242f6dfec7582a8c0df102c7fa2849375f8",
+          "bytes": 1431
+        },
+        {
+          "path": "licenses/dependencies/torch/licenses/third_party/kineto/libkineto/third_party/googletest/LICENSE",
+          "sha256": "9702de7e4117a8e2b20dafab11ffda58c198aede066406496bef670d40a22138",
+          "bytes": 1475
+        },
+        {
+          "path": "licenses/dependencies/torch/licenses/third_party/llvm-openmp/LICENSE.txt",
+          "sha256": "68395143f21a9aa29b8232168c71892af5ec4f1ae2529571cd250a71c9e37a03",
+          "bytes": 17003
+        },
+        {
+          "path": "licenses/dependencies/torch/licenses/third_party/mimalloc/LICENSE",
+          "sha256": "82ade5d7d9b029044b5fbbc326207fc47c2d44ee4dd71e8a559c36d728217de9",
+          "bytes": 1096
+        },
+        {
+          "path": "licenses/dependencies/torch/licenses/third_party/miniz-3.0.2/LICENSE",
+          "sha256": "0115478d567121238cf6cc1c0c361926cf07a49d9e4c9e66da97fac6a01646b3",
+          "bytes": 1184
+        },
+        {
+          "path": "licenses/dependencies/torch/licenses/third_party/mslk/LICENSE",
+          "sha256": "44519cbe722d7bf092cd7e0fa26558b9e3905b88fca4c0c278e2733a9f6b4cf9",
+          "bytes": 1533
+        },
+        {
+          "path": "licenses/dependencies/torch/licenses/third_party/mslk/external/composable_kernel/LICENSE",
+          "sha256": "20f3b83dfda01bd18d285e0edbb9d044be6dde04cdf76a1ec18d9fc7127936bf",
+          "bytes": 1726
+        },
+        {
+          "path": "licenses/dependencies/torch/licenses/third_party/mslk/external/composable_kernel/docs/LICENSE.rst",
+          "sha256": "527eec8a9670f793119a685a3510369e5fd64b45515a885c7226641777ecff8b",
+          "bytes": 330
+        },
+        {
+          "path": "licenses/dependencies/torch/licenses/third_party/mslk/external/cutlass/LICENSE.txt",
+          "sha256": "80a7a18b73d41f64dd9ca881af35938f8de88b18c728703251f4c94d1299884d",
+          "bytes": 1854
+        },
+        {
+          "path": "licenses/dependencies/torch/licenses/third_party/mslk/external/cutlass/python/LICENSE.txt",
+          "sha256": "42fec630f410aa308f70a51a89fadcd19586fa620f9831a32bee528a9a10000e",
+          "bytes": 1547
+        },
+        {
+          "path": "licenses/dependencies/torch/licenses/third_party/mslk/external/googletest/LICENSE",
+          "sha256": "9702de7e4117a8e2b20dafab11ffda58c198aede066406496bef670d40a22138",
+          "bytes": 1475
+        },
+        {
+          "path": "licenses/dependencies/torch/licenses/third_party/mslk/external/hipify_torch/LICENSE.txt",
+          "sha256": "ecf819d55b17c2f091b3ba0934d044368aa0680d8a81374860306aa2b91aa1eb",
+          "bytes": 1112
+        },
+        {
+          "path": "licenses/dependencies/torch/licenses/third_party/mslk/mslk/attention/flash_attn/LICENSE",
+          "sha256": "8c9ccb96c065e706135b6cbad279b721da6156e51f3a5f27c6b3329af9416d73",
+          "bytes": 1558
+        },
+        {
+          "path": "licenses/dependencies/torch/licenses/third_party/nccl/LICENSE.txt",
+          "sha256": "c1f53beabe4dbf05bd87c00f7ca6084c0cb541c3f7bf8edab7913f266018b7be",
+          "bytes": 13261
+        },
+        {
+          "path": "licenses/dependencies/torch/licenses/third_party/nccl/bindings/nccl4py/LICENSE.txt",
+          "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+          "bytes": 11357
+        },
+        {
+          "path": "licenses/dependencies/torch/licenses/third_party/onnx/LICENSE",
+          "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+          "bytes": 11358
+        },
+        {
+          "path": "licenses/dependencies/torch/licenses/third_party/onnx/third_party/pybind11/LICENSE",
+          "sha256": "83965b843b98f670d3a85bd041ed4b372c8ec50d7b4a5995a83ac697ba675dcb",
+          "bytes": 1684
+        },
+        {
+          "path": "licenses/dependencies/torch/licenses/third_party/protobuf/LICENSE",
+          "sha256": "6e5e117324afd944dcf67f36cf329843bc1a92229a8cd9bb573d7a83130fea7d",
+          "bytes": 1732
+        },
+        {
+          "path": "licenses/dependencies/torch/licenses/third_party/protobuf/third_party/benchmark/LICENSE",
+          "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+          "bytes": 11358
+        },
+        {
+          "path": "licenses/dependencies/torch/licenses/third_party/protobuf/third_party/googletest/LICENSE",
+          "sha256": "9702de7e4117a8e2b20dafab11ffda58c198aede066406496bef670d40a22138",
+          "bytes": 1475
+        },
+        {
+          "path": "licenses/dependencies/torch/licenses/third_party/protobuf/third_party/googletest/googlemock/LICENSE",
+          "sha256": "9702de7e4117a8e2b20dafab11ffda58c198aede066406496bef670d40a22138",
+          "bytes": 1475
+        },
+        {
+          "path": "licenses/dependencies/torch/licenses/third_party/protobuf/third_party/googletest/googlemock/scripts/generator/LICENSE",
+          "sha256": "5e0df8c845c742e76f2f64d2d9ce1b7e74a2422fddbc577ae6a56319083de0bf",
+          "bytes": 11386
+        },
+        {
+          "path": "licenses/dependencies/torch/licenses/third_party/protobuf/third_party/googletest/googletest/LICENSE",
+          "sha256": "9702de7e4117a8e2b20dafab11ffda58c198aede066406496bef670d40a22138",
+          "bytes": 1475
+        },
+        {
+          "path": "licenses/dependencies/torch/licenses/third_party/psimd/LICENSE",
+          "sha256": "984ce1e0b8ee89d234e28b960381f240e03a07a8031f35012f9c3256f56964e2",
+          "bytes": 1162
+        },
+        {
+          "path": "licenses/dependencies/torch/licenses/third_party/pthreadpool/LICENSE",
+          "sha256": "57814a606b4d0fb087d9a534919084b6c11b58a4174cb5a4aef200187780dc3a",
+          "bytes": 1378
+        },
+        {
+          "path": "licenses/dependencies/torch/licenses/third_party/pybind11/LICENSE",
+          "sha256": "83965b843b98f670d3a85bd041ed4b372c8ec50d7b4a5995a83ac697ba675dcb",
+          "bytes": 1684
+        },
+        {
+          "path": "licenses/dependencies/torch/licenses/third_party/python-peachpy/LICENSE.rst",
+          "sha256": "e6d6fdbfc09c9cc1bfc55946ca9690dd9276deeaed2b72ac7fc5c79bde80ff32",
+          "bytes": 1443
+        },
+        {
+          "path": "licenses/dependencies/torch/licenses/third_party/sleef/LICENSE.txt",
+          "sha256": "c9bff75738922193e67fa726fa225535870d2aa1059f91452c411736284ad566",
+          "bytes": 1338
+        },
+        {
+          "path": "licenses/dependencies/torch/licenses/third_party/tensorpipe/LICENSE.txt",
+          "sha256": "f4dcef0d1f0520b414d5bfaeed8df02f188e4ec05c0a17bf1c18f25f6cc66245",
+          "bytes": 1535
+        },
+        {
+          "path": "licenses/dependencies/torch/licenses/third_party/tensorpipe/third_party/googletest/LICENSE",
+          "sha256": "9702de7e4117a8e2b20dafab11ffda58c198aede066406496bef670d40a22138",
+          "bytes": 1475
+        },
+        {
+          "path": "licenses/dependencies/torch/licenses/third_party/tensorpipe/third_party/googletest/googlemock/LICENSE",
+          "sha256": "9702de7e4117a8e2b20dafab11ffda58c198aede066406496bef670d40a22138",
+          "bytes": 1475
+        },
+        {
+          "path": "licenses/dependencies/torch/licenses/third_party/tensorpipe/third_party/googletest/googlemock/scripts/generator/LICENSE",
+          "sha256": "5e0df8c845c742e76f2f64d2d9ce1b7e74a2422fddbc577ae6a56319083de0bf",
+          "bytes": 11386
+        },
+        {
+          "path": "licenses/dependencies/torch/licenses/third_party/tensorpipe/third_party/googletest/googletest/LICENSE",
+          "sha256": "9702de7e4117a8e2b20dafab11ffda58c198aede066406496bef670d40a22138",
+          "bytes": 1475
+        },
+        {
+          "path": "licenses/dependencies/torch/licenses/third_party/tensorpipe/third_party/libnop/LICENSE",
+          "sha256": "876e8f7432440974ee5543a2aa1344370ef1f2f7949ad98a1f3899cf722d5631",
+          "bytes": 577
+        },
+        {
+          "path": "licenses/dependencies/torch/licenses/third_party/tensorpipe/third_party/libuv/LICENSE",
+          "sha256": "16de0c32b265cb7d46a6d3bd614f259dd4d693a5e26b3407b04aae8d73041f0c",
+          "bytes": 1079
+        },
+        {
+          "path": "licenses/dependencies/torch/licenses/third_party/tensorpipe/third_party/pybind11/LICENSE",
+          "sha256": "9a37ea54aa3cf12c7f3292799f20822ffd4b9b7142b36a7a9997b28c39264dc9",
+          "bytes": 1676
+        },
+        {
+          "path": "licenses/dependencies/torch/licenses/third_party/tensorpipe/third_party/pybind11/tools/clang/LICENSE.txt",
+          "sha256": "23c817ddf55e9a8ea332a376e6c23469c31a6c833516385cf0662767ba863276",
+          "bytes": 2749
+        }
+      ],
+      "pypi": {
+        "source_url": "https://pypi.org/pypi/torch/2.13.0/json",
+        "observed_at": "2026-10-17T07:43:12.648393+08:00",
+        "method": "system curl with default TLS verification",
+        "exit_code": 0,
+        "stderr": "",
+        "response_sha256": "fc66187fd0528fef3b42b03f59936fa28c9116b7ebc37069bce4af225008781a",
+        "matching_installed_tag_wheels": [
+          {
+            "filename": "torch-2.13.0-cp312-cp312-macosx_14_0_arm64.whl",
+            "url": "https://files.pythonhosted.org/packages/c4/3a/ed0f4d4d1dcde03bced7aac9a28e800abcdc0cbd06b6775044c9fbd877b7/torch-2.13.0-cp312-cp312-macosx_14_0_arm64.whl",
+            "size": 111213045,
+            "digests": {
+              "blake2b_256": "c43aed0f4d4d1dcde03bced7aac9a28e800abcdc0cbd06b6775044c9fbd877b7",
+              "md5": "f26cb7344f512cf40a67afb66c81a545",
+              "sha256": "2fe228aba290d14b9f31b049be550dbd469c3fd3013d7a19705b30454da97027"
+            },
+            "yanked": false,
+            "requires_python": ">=3.10"
+          }
+        ],
+        "status": "fixed_official_wheel_metadata"
+      }
+    },
+    {
+      "name": "trimesh",
+      "version": "4.8.3",
+      "requires_active": [
+        "numpy>=1.20"
+      ],
+      "metadata_sha256": "7e92f63af12986f08c016036dcac5b071a24267bd72e3b1cc36fc8e08fba0fb9",
+      "record_sha256": "a64b48e0bd80b9ee9546583cfefcc51e623ba0d0127f4d657cfa54262e99d9bf",
+      "wheel_text": "Wheel-Version: 1.0\nGenerator: setuptools (80.9.0)\nRoot-Is-Purelib: true\nTag: py3-none-any\n\n",
+      "record_verified_files": 147,
+      "record_unhashed_files": 1,
+      "record_mismatches": [],
+      "license_files": [
+        {
+          "path": "licenses/dependencies/trimesh/licenses/LICENSE.md",
+          "sha256": "fe27b5ef8710676cc85255da28a32f394e2ef3f4ce47075a1c732a9ea1d7bd03",
+          "bytes": 1090
+        }
+      ],
+      "pypi": {
+        "source_url": "https://pypi.org/pypi/trimesh/4.8.3/json",
+        "observed_at": "2026-10-17T07:43:12.682999+08:00",
+        "method": "system curl with default TLS verification",
+        "exit_code": 0,
+        "stderr": "",
+        "response_sha256": "9c7e6f9d763ebc2b36c272b6249f4190e6d8db5d7724c84b047a38733b6d9dbb",
+        "matching_installed_tag_wheels": [
+          {
+            "filename": "trimesh-4.8.3-py3-none-any.whl",
+            "url": "https://files.pythonhosted.org/packages/8e/bc/f36afd1ad03d09cd0d311be5951f2dd705a824f34dd871779d42c277d741/trimesh-4.8.3-py3-none-any.whl",
+            "size": 735464,
+            "digests": {
+              "blake2b_256": "8ebcf36afd1ad03d09cd0d311be5951f2dd705a824f34dd871779d42c277d741",
+              "md5": "cdeab3a08e960d5afcfb4594c49f9e75",
+              "sha256": "f9f1622ecac5f3bed5b65d3a748bb536481f52cd4e4e120e0b637cabe6cf1542"
+            },
+            "yanked": false,
+            "requires_python": ">=3.8"
+          }
+        ],
+        "status": "fixed_official_wheel_metadata"
+      }
+    },
+    {
+      "name": "typing_extensions",
+      "version": "4.16.0",
+      "requires_active": [],
+      "metadata_sha256": "b05084ca1d50879865178d9fff9fabeab61bdfb1f361bfbde95421ffc8f9be46",
+      "record_sha256": "9e07fea845cac76293d927afa7157a14ecba39b318bc8af236b8de530b7656c1",
+      "wheel_text": "Wheel-Version: 1.0\nGenerator: flit 3.12.0\nRoot-Is-Purelib: true\nTag: py3-none-any\n",
+      "record_verified_files": 6,
+      "record_unhashed_files": 1,
+      "record_mismatches": [],
+      "license_files": [
+        {
+          "path": "licenses/dependencies/typing-extensions/licenses/LICENSE",
+          "sha256": "3b2f81fe21d181c499c59a256c8e1968455d6689d269aa85373bfb6af41da3bf",
+          "bytes": 13936
+        }
+      ],
+      "pypi": {
+        "source_url": "https://pypi.org/pypi/typing-extensions/4.16.0/json",
+        "observed_at": "2026-10-17T07:43:12.690269+08:00",
+        "method": "system curl with default TLS verification",
+        "exit_code": 0,
+        "stderr": "",
+        "response_sha256": "2140da00d62dde967f52d0be0ae28444f1d6a3fe603f52c83c23988c32122d5a",
+        "matching_installed_tag_wheels": [
+          {
+            "filename": "typing_extensions-4.16.0-py3-none-any.whl",
+            "url": "https://files.pythonhosted.org/packages/49/d3/b8441a820a491ddfc024b0b0cf0393375b75ea13866d9c66727e54c2fc80/typing_extensions-4.16.0-py3-none-any.whl",
+            "size": 45571,
+            "digests": {
+              "blake2b_256": "49d3b8441a820a491ddfc024b0b0cf0393375b75ea13866d9c66727e54c2fc80",
+              "md5": "aaa249e7f620bbcecbcbf2b7b11fbd12",
+              "sha256": "481caa481374e813c1b176ada14e97f1f67a4539ce9cfeb3f350d78d6370c2e8"
+            },
+            "yanked": false,
+            "requires_python": ">=3.9"
+          }
+        ],
+        "status": "fixed_official_wheel_metadata"
+      }
+    }
+  ],
+  "complete_wheel_lock": true,
+  "new_environment_install_tested": false,
+  "inference_imported": false,
+  "opencv_selection": "headless 4.13.0.92 owns actual cv2 module/binary by matching RECORD; stale opencv-python 5.0.0.93 excluded",
+  "scope": "only current macOS arm64 CPython3.12.7 active dependencies; original numerical binary identity comparison separate",
+  "previous_version": "environment_macos_20261017.json"
+}

@@ -1,0 +1,45 @@
+{
+  "schema": "r12_public_vendor_sources_v1",
+  "sources": [
+    {
+      "files": [
+        "vendor/nanodet.py",
+        "vendor/letterbox.py"
+      ],
+      "repo": "opencv/opencv_zoo",
+      "revision": "47534e27c9851bb1128ccc0102f1145e27f23f98",
+      "upstream_paths": [
+        "models/object_detection_nanodet/nanodet.py",
+        "models/object_detection_nanodet/demo.py"
+      ],
+      "upstream_sha256": [
+        "5ba84922eaefdc48d0066cffdfb721d0d434c5f3b92213563161e00da26cea1b",
+        "43aee38581c4b9c22e5aa16317082f998b4a5164b80f4440f3d692f8e30854e1"
+      ],
+      "license": "Apache-2.0",
+      "change": "NanoDet copied unchanged; letterbox functions extracted; current extraction attribution comment added",
+      "current_file_sha256": {
+        "vendor/nanodet.py": "5ba84922eaefdc48d0066cffdfb721d0d434c5f3b92213563161e00da26cea1b",
+        "vendor/letterbox.py": "30da9e32be4c1322c8ee422e66f679ff521d211fe9ccaf63158a313b8839df60"
+      }
+    },
+    {
+      "files": [
+        "vendor/preprocess.py"
+      ],
+      "repo": "mohamdev/InstantHMR",
+      "revision": "5bca8ebeed0dc804189e63365a4967ffa7e5d4ae",
+      "upstream_paths": [
+        "instanthmr/inference.py"
+      ],
+      "upstream_sha256": [
+        "45d4a8973845a5d87b3a950a2045600881f44cf05f6d35e898977ef737cd4e1e"
+      ],
+      "license": "Apache-2.0 source; SAM weights separately",
+      "change": "static method extraction with class-only decorator removed; body/signature preserved; attribution comment added",
+      "current_file_sha256": {
+        "vendor/preprocess.py": "444587e8f542b456d4ee75f0624971078c7314c95ef4843ccf120e41102079a9"
+      }
+    }
+  ]
+}

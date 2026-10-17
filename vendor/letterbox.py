@@ -1,3 +1,6 @@
+# Extracted letterbox/unletterbox; unrelated demo CLI/UI omitted.
+# Source: https://github.com/opencv/opencv_zoo/blob/47534e27c9851bb1128ccc0102f1145e27f23f98/models/object_detection_nanodet/demo.py
+# Apache-2.0; retained paired license and notices in licenses/.
 import numpy as np
 import cv2 as cv
 

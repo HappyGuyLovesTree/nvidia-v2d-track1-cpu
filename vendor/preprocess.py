@@ -1,3 +1,6 @@
+# Extracted _preprocess from a static method; class decorator removed, numerical body preserved.
+# Source: https://github.com/mohamdev/InstantHMR/blob/5bca8ebeed0dc804189e63365a4967ffa7e5d4ae/instanthmr/inference.py
+# Apache-2.0; retained paired license and notices in licenses/.
 import math
 import numpy as np
 import cv2
