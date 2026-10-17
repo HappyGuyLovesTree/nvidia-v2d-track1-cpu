@@ -59,8 +59,10 @@ class FreshCutoff(unittest.TestCase):
     def test_expired_new_episode_refuses_before_lease_or_request(self):
         self.deadlines(new=-1,candidate=120,hard=180)
         with patch.object(fresh,'execute_attempt') as attempt:
-            with self.assertRaisesRegex(st.BudgetStop,'fresh_new_episode_stop'):
+            with self.assertRaises(fresh.SupervisionFailure) as caught:
                 fresh.execute(self.root,[0],allow_models=True)
+        self.assertEqual(caught.exception.record['errors']['primary_error']['message'],'fresh_new_episode_stop')
+        self.assertIsInstance(caught.exception.__cause__,st.BudgetStop)
         attempt.assert_not_called();self.assert_no_leases_or_calls()
 
     def test_open_window_requests_a_b_c(self):
@@ -76,8 +78,9 @@ class FreshCutoff(unittest.TestCase):
 
     def test_candidate_stop_refuses_b_after_completed_a(self):
         self.deadlines(new=-2,candidate=-1,hard=180)
-        with self.assertRaisesRegex(st.BudgetStop,'fresh_monotonic_candidate_stop'):
+        with self.assertRaises(fresh.SupervisionFailure) as caught:
             self.controller(completed_a=True)
+        self.assertEqual(caught.exception.record['errors']['primary_error']['message'],'fresh_monotonic_candidate_stop')
         self.assert_no_leases_or_calls()
 
     def test_hard_stop_refuses_controller(self):
@@ -91,17 +94,15 @@ class FreshCutoff(unittest.TestCase):
     def test_new_episode_crossed_during_queue_refuses_preflight(self):
         # Keep real monotonic progression except at the deterministic crossing.
         # The lease has been issued, but the supervisor preflight must not spawn.
-        clock=time.monotonic;deadline=self.session['monotonic_deadlines']['new_episode_stop']
+        deadline=self.session['monotonic_deadlines']['new_episode_stop']
         def queued(kw):
             self.assertEqual(kw['stage'],'A')
             with patch.object(fresh.time,'monotonic',return_value=deadline):
-                with self.assertRaisesRegex(st.BudgetStop,'fresh_new_episode_stop'):
-                    kw['preflight']()
-            raise st.BudgetStop('queue_refused_before_spawn')
-        with self.assertRaisesRegex(st.BudgetStop,'queue_refused_before_spawn'):
+                kw['preflight']()
+        with self.assertRaises(fresh.SupervisionFailure) as caught:
             self.controller(before_preflight=queued)
+        self.assertEqual(caught.exception.record['errors']['primary_error']['message'],'fresh_new_episode_stop')
         self.assertEqual(len(list((self.root/'leases').glob('*.json'))),1)
-        self.assertGreater(clock(),0)
 
     def test_deadline_equality_and_wall_rollback_use_monotonic(self):
         cfg,_=fresh.runtime_config(self.root)
@@ -120,7 +121,10 @@ class FreshCutoff(unittest.TestCase):
         with patch.object(fresh_worker,'validate_lease'),patch.object(r11_inputs,'verify_episode'),patch.object(signal,'signal'),patch.object(signal,'setitimer'),patch.object(r11_worker,'stage_a',return_value={'SYNTHETIC':True}) as a,patch.object(r11_worker,'stage_b',return_value={'SYNTHETIC':True}) as b,patch.object(fresh_worker,'dense_stage',return_value={'SYNTHETIC':True}) as c:
             failure=None
             try:result=fresh_worker.main(argv)
-            except st.BudgetStop as exc:failure=exc;result=None
+            except fresh.SupervisionFailure as exc:
+                self.assertIsInstance(exc.__cause__,st.BudgetStop)
+                self.assertEqual(exc.record['supervisor_outcome'],'failed')
+                failure=exc.__cause__;result=None
         return result,failure,[a.call_count,b.call_count,c.call_count]
 
     def test_worker_a_rechecks_before_first_work(self):
