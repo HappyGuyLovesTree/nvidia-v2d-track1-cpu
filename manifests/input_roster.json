@@ -3,7 +3,7 @@
   "created_at": "2026-10-17T07:25:08.373872+08:00",
   "original_roster_sha256": "6e90f2404ba4623a2ca8f22d962d3feaef3ac2b81329e6c433017207444d7f80",
   "sample_sha256": "1db56c5ec7267cdb7a68d42928f85c092c6b8e9bfbc0dc98a2b020d7a48bc621",
-  "source_verification_status": "inherited frozen declarations; final official binding must use the designated source task receipt",
+  "source_verification_status": "30 local actual-content/size/full-PTS chains verified in project receipts; independent official metadata historically verified only for episode16, other29 pending; no observed hash conflict",
   "episodes": [
     {
       "episode": 0,
@@ -228,7 +228,9 @@
         "video.pix_fmt": "yuv420p",
         "video.is_depth_map": false,
         "has_audio": false
-      }
+      },
+      "content_hash_evidence": "local actual file content validated against the frozen declaration in project receipts; no new file hash operation in this update",
+      "official_independent_metadata_status": "pending"
     },
     {
       "episode": 1,
@@ -458,7 +460,9 @@
         "video.pix_fmt": "yuv420p",
         "video.is_depth_map": false,
         "has_audio": false
-      }
+      },
+      "content_hash_evidence": "local actual file content validated against the frozen declaration in project receipts; no new file hash operation in this update",
+      "official_independent_metadata_status": "pending"
     },
     {
       "episode": 2,
@@ -583,7 +587,9 @@
         "video.pix_fmt": "yuv420p",
         "video.is_depth_map": false,
         "has_audio": false
-      }
+      },
+      "content_hash_evidence": "local actual file content validated against the frozen declaration in project receipts; no new file hash operation in this update",
+      "official_independent_metadata_status": "pending"
     },
     {
       "episode": 3,
@@ -984,7 +990,9 @@
         "video.pix_fmt": "yuv420p",
         "video.is_depth_map": false,
         "has_audio": false
-      }
+      },
+      "content_hash_evidence": "local actual file content validated against the frozen declaration in project receipts; no new file hash operation in this update",
+      "official_independent_metadata_status": "pending"
     },
     {
       "episode": 4,
@@ -1539,7 +1547,9 @@
         "video.pix_fmt": "yuv420p",
         "video.is_depth_map": false,
         "has_audio": false
-      }
+      },
+      "content_hash_evidence": "local actual file content validated against the frozen declaration in project receipts; no new file hash operation in this update",
+      "official_independent_metadata_status": "pending"
     },
     {
       "episode": 5,
@@ -2007,7 +2017,9 @@
         "video.pix_fmt": "yuv420p",
         "video.is_depth_map": false,
         "has_audio": false
-      }
+      },
+      "content_hash_evidence": "local actual file content validated against the frozen declaration in project receipts; no new file hash operation in this update",
+      "official_independent_metadata_status": "pending"
     },
     {
       "episode": 6,
@@ -2674,7 +2686,9 @@
         "video.pix_fmt": "yuv420p",
         "video.is_depth_map": false,
         "has_audio": false
-      }
+      },
+      "content_hash_evidence": "local actual file content validated against the frozen declaration in project receipts; no new file hash operation in this update",
+      "official_independent_metadata_status": "pending"
     },
     {
       "episode": 7,
@@ -3302,7 +3316,9 @@
         "video.pix_fmt": "yuv420p",
         "video.is_depth_map": false,
         "has_audio": false
-      }
+      },
+      "content_hash_evidence": "local actual file content validated against the frozen declaration in project receipts; no new file hash operation in this update",
+      "official_independent_metadata_status": "pending"
     },
     {
       "episode": 8,
@@ -3787,7 +3803,9 @@
         "video.pix_fmt": "yuv420p",
         "video.is_depth_map": false,
         "has_audio": false
-      }
+      },
+      "content_hash_evidence": "local actual file content validated against the frozen declaration in project receipts; no new file hash operation in this update",
+      "official_independent_metadata_status": "pending"
     },
     {
       "episode": 9,
@@ -4143,7 +4161,9 @@
         "video.pix_fmt": "yuv420p",
         "video.is_depth_map": false,
         "has_audio": false
-      }
+      },
+      "content_hash_evidence": "local actual file content validated against the frozen declaration in project receipts; no new file hash operation in this update",
+      "official_independent_metadata_status": "pending"
     },
     {
       "episode": 10,
@@ -4592,7 +4612,9 @@
         "video.pix_fmt": "yuv420p",
         "video.is_depth_map": false,
         "has_audio": false
-      }
+      },
+      "content_hash_evidence": "local actual file content validated against the frozen declaration in project receipts; no new file hash operation in this update",
+      "official_independent_metadata_status": "pending"
     },
     {
       "episode": 11,
@@ -5426,7 +5448,9 @@
         "video.pix_fmt": "yuv420p",
         "video.is_depth_map": false,
         "has_audio": false
-      }
+      },
+      "content_hash_evidence": "local actual file content validated against the frozen declaration in project receipts; no new file hash operation in this update",
+      "official_independent_metadata_status": "pending"
     },
     {
       "episode": 12,
@@ -5686,7 +5710,9 @@
         "video.pix_fmt": "yuv420p",
         "video.is_depth_map": false,
         "has_audio": false
-      }
+      },
+      "content_hash_evidence": "local actual file content validated against the frozen declaration in project receipts; no new file hash operation in this update",
+      "official_independent_metadata_status": "pending"
     },
     {
       "episode": 13,
@@ -5838,7 +5864,9 @@
         "video.pix_fmt": "yuv420p",
         "video.is_depth_map": false,
         "has_audio": false
-      }
+      },
+      "content_hash_evidence": "local actual file content validated against the frozen declaration in project receipts; no new file hash operation in this update",
+      "official_independent_metadata_status": "pending"
     },
     {
       "episode": 14,
@@ -5967,7 +5995,9 @@
         "video.pix_fmt": "yuv420p",
         "video.is_depth_map": false,
         "has_audio": false
-      }
+      },
+      "content_hash_evidence": "local actual file content validated against the frozen declaration in project receipts; no new file hash operation in this update",
+      "official_independent_metadata_status": "pending"
     },
     {
       "episode": 15,
@@ -6354,7 +6384,9 @@
         "video.pix_fmt": "yuv420p",
         "video.is_depth_map": false,
         "has_audio": false
-      }
+      },
+      "content_hash_evidence": "local actual file content validated against the frozen declaration in project receipts; no new file hash operation in this update",
+      "official_independent_metadata_status": "pending"
     },
     {
       "episode": 16,
@@ -6625,7 +6657,9 @@
         "video.pix_fmt": "yuv420p",
         "video.is_depth_map": false,
         "has_audio": false
-      }
+      },
+      "content_hash_evidence": "local actual file content validated against the frozen declaration in project receipts; no new file hash operation in this update",
+      "official_independent_metadata_status": "historically_verified"
     },
     {
       "episode": 17,
@@ -6933,7 +6967,9 @@
         "video.pix_fmt": "yuv420p",
         "video.is_depth_map": false,
         "has_audio": false
-      }
+      },
+      "content_hash_evidence": "local actual file content validated against the frozen declaration in project receipts; no new file hash operation in this update",
+      "official_independent_metadata_status": "pending"
     },
     {
       "episode": 18,
@@ -7384,7 +7420,9 @@
         "video.pix_fmt": "yuv420p",
         "video.is_depth_map": false,
         "has_audio": false
-      }
+      },
+      "content_hash_evidence": "local actual file content validated against the frozen declaration in project receipts; no new file hash operation in this update",
+      "official_independent_metadata_status": "pending"
     },
     {
       "episode": 19,
@@ -7698,7 +7736,9 @@
         "video.pix_fmt": "yuv420p",
         "video.is_depth_map": false,
         "has_audio": false
-      }
+      },
+      "content_hash_evidence": "local actual file content validated against the frozen declaration in project receipts; no new file hash operation in this update",
+      "official_independent_metadata_status": "pending"
     },
     {
       "episode": 20,
@@ -8109,7 +8149,9 @@
         "video.pix_fmt": "yuv420p",
         "video.is_depth_map": false,
         "has_audio": false
-      }
+      },
+      "content_hash_evidence": "local actual file content validated against the frozen declaration in project receipts; no new file hash operation in this update",
+      "official_independent_metadata_status": "pending"
     },
     {
       "episode": 21,
@@ -8487,7 +8529,9 @@
         "video.pix_fmt": "yuv420p",
         "video.is_depth_map": false,
         "has_audio": false
-      }
+      },
+      "content_hash_evidence": "local actual file content validated against the frozen declaration in project receipts; no new file hash operation in this update",
+      "official_independent_metadata_status": "pending"
     },
     {
       "episode": 22,
@@ -8970,7 +9014,9 @@
         "video.pix_fmt": "yuv420p",
         "video.is_depth_map": false,
         "has_audio": false
-      }
+      },
+      "content_hash_evidence": "local actual file content validated against the frozen declaration in project receipts; no new file hash operation in this update",
+      "official_independent_metadata_status": "pending"
     },
     {
       "episode": 23,
@@ -9400,7 +9446,9 @@
         "video.pix_fmt": "yuv420p",
         "video.is_depth_map": false,
         "has_audio": false
-      }
+      },
+      "content_hash_evidence": "local actual file content validated against the frozen declaration in project receipts; no new file hash operation in this update",
+      "official_independent_metadata_status": "pending"
     },
     {
       "episode": 24,
@@ -9673,7 +9721,9 @@
         "video.pix_fmt": "yuv420p",
         "video.is_depth_map": false,
         "has_audio": false
-      }
+      },
+      "content_hash_evidence": "local actual file content validated against the frozen declaration in project receipts; no new file hash operation in this update",
+      "official_independent_metadata_status": "pending"
     },
     {
       "episode": 25,
@@ -9923,7 +9973,9 @@
         "video.pix_fmt": "yuv420p",
         "video.is_depth_map": false,
         "has_audio": false
-      }
+      },
+      "content_hash_evidence": "local actual file content validated against the frozen declaration in project receipts; no new file hash operation in this update",
+      "official_independent_metadata_status": "pending"
     },
     {
       "episode": 26,
@@ -10235,7 +10287,9 @@
         "video.pix_fmt": "yuv420p",
         "video.is_depth_map": false,
         "has_audio": false
-      }
+      },
+      "content_hash_evidence": "local actual file content validated against the frozen declaration in project receipts; no new file hash operation in this update",
+      "official_independent_metadata_status": "pending"
     },
     {
       "episode": 27,
@@ -10509,7 +10563,9 @@
         "video.pix_fmt": "yuv420p",
         "video.is_depth_map": false,
         "has_audio": false
-      }
+      },
+      "content_hash_evidence": "local actual file content validated against the frozen declaration in project receipts; no new file hash operation in this update",
+      "official_independent_metadata_status": "pending"
     },
     {
       "episode": 28,
@@ -10687,7 +10743,9 @@
         "video.pix_fmt": "yuv420p",
         "video.is_depth_map": false,
         "has_audio": false
-      }
+      },
+      "content_hash_evidence": "local actual file content validated against the frozen declaration in project receipts; no new file hash operation in this update",
+      "official_independent_metadata_status": "pending"
     },
     {
       "episode": 29,
@@ -10985,7 +11043,61 @@
         "video.pix_fmt": "yuv420p",
         "video.is_depth_map": false,
         "has_audio": false
-      }
+      },
+      "content_hash_evidence": "local actual file content validated against the frozen declaration in project receipts; no new file hash operation in this update",
+      "official_independent_metadata_status": "pending"
     }
-  ]
+  ],
+  "hash_evidence_scope": {
+    "as_of": "2026-10-17",
+    "expected_hash_origin": "frozen revision declarations; local actual video content hashes/size/wholePTS verified in project evidence, not rehashed in this documentation increment",
+    "official_independent_metadata": {
+      "historically_verified_episodes": [
+        16
+      ],
+      "pending_episodes": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29
+      ],
+      "verified_count": 1,
+      "pending_count": 29,
+      "all_LFS_metadata_matched": false,
+      "content_conflict_observed": false
+    },
+    "PUB04_coordinator_ruling": {
+      "source": "R012_范围采纳_20261017a2.md",
+      "source_sha256": "9f8d92fc2ceb856df122789ac7923e02f8eef776c6ec4113cc79da3c4801ad63",
+      "independent_metadata_not_a_blocker_for_source_release_or_local_stock_pack": true,
+      "full_R12_AC22_passed": false,
+      "if_content_conflict_appears": "stop affected submission and report; preserve original values/evidence",
+      "Kaggle_identity_rules_entry_quota_and_complete_pack_gates_unchanged": true
+    }
+  }
 }
