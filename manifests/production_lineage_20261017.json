@@ -1,0 +1,1164 @@
+{
+  "schema": "r12_public_historical_production_lineage_v1",
+  "date": "2026-10-17",
+  "scope": "path-free source and content-hash summary only; not a prediction cache, runtime pack provenance, or submission receipt",
+  "production_status": "full30 complete and producer self-checked; independent full30 review pending at this snapshot",
+  "historical_numeric_signature": "f1a77d55d0b33eb7c2f093182e26b361ff2f140697078535b9e00ff77f6fb308",
+  "original_C2": {
+    "commit": "483f8d61690d7df229c57dca43750b23afcfbf57",
+    "tree": "488470c7217dedb23e72abe70e896ca4b3e078d8"
+  },
+  "actual_new7_C3": {
+    "commit": "b433752cdd1828c34fa2ca9c328dd8b6ac2157e0",
+    "tree": "ec91ae800b38723b4ecfe79374b8169e7a70789f"
+  },
+  "source_evidence_sha256": {
+    "producer_report": "02a2bf3b460c7ee56e20444665eb6ea637e513d06bfc636ef181f886ec9d16fa",
+    "full30_index": "4a11fad8ec634249411f1c2dbfba027944fefd1cca477cf593f4507bc87b7e92",
+    "full30_view": "10dfe9edda6340b5d87ddcb9b301e53a63d8a4d645540f252fe9658576e26820"
+  },
+  "totals": {
+    "episodes": 30,
+    "required_frames": 9877,
+    "source_runs": 65,
+    "native_candidate_rows": 740780,
+    "actual_new7_frames": 1798,
+    "actual_new7_closed_calls_reported": 7213
+  },
+  "native_local_candidate": {
+    "sha256": "3f4942d08d52eccc1a5f44e38a45a099f196a9ca60de97b0aac1dca9dd49dc13",
+    "code_marker": "local-git:b433752cdd1828c34fa2ca9c328dd8b6ac2157e0",
+    "official_stock_writer_executed": false,
+    "submission_eligible": false
+  },
+  "build_identity_policy": "The source build and pack commit are resolved from the actual clean checkout after commit freeze, outside Git. This summary never changes numerical producer identities. Its own future SHA is not embedded.",
+  "input_metadata": {
+    "historically_verified_episode_ids": [
+      16
+    ],
+    "pending_count": 29,
+    "all_LFS_matched": false,
+    "no_content_conflict_observed": true,
+    "pending_not_blocker_for_source_or_local_stock_pack_per_PUB04": true
+  },
+  "limitations": [
+    "Existing wrong-person/pose/proxy quality failures remain.",
+    "True scale, contact, surface and GT accuracy remain unverified.",
+    "Historical C22 exit/reap remains unverified.",
+    "OpenCV requested1/reported8 GCD; effective single-thread execution not proven.",
+    "Complete fresh30 and cross-machine bitwise equality have not been tested.",
+    "Formal stock pack, actual public commit access and Kaggle score/leaderboard are separate evidence."
+  ],
+  "episodes": [
+    {
+      "episode": 0,
+      "required_frames": 169,
+      "source_runs": 6,
+      "sample_rows": 16681,
+      "prediction_producer_commit": "483f8d61690d7df229c57dca43750b23afcfbf57",
+      "producer_tree": "488470c7217dedb23e72abe70e896ca4b3e078d8",
+      "recipe_commit": "483f8d61690d7df229c57dca43750b23afcfbf57",
+      "imported": true,
+      "importer_commit": "b433752cdd1828c34fa2ca9c328dd8b6ac2157e0",
+      "controller_commit": "b433752cdd1828c34fa2ca9c328dd8b6ac2157e0",
+      "exporter_commit": "b433752cdd1828c34fa2ca9c328dd8b6ac2157e0",
+      "input_hash": "1eb6293e4552397668a5013adbcee95e0bf230dd8c79a594aa7d7f8ea4991ab1",
+      "required_digest": "2ab8f032bbefdac2f0c26c8d2bea655ce52773297fbdc70fc0fcb7bc4992f229",
+      "artifacts": {
+        "mask": {
+          "logical_path": "masks/episode_000000.npz",
+          "sha256": "b65e8f52caec268e34ac3b24a263cf79edbc640f660afaac567236030c71304e",
+          "bytes": 745
+        },
+        "mesh": {
+          "logical_path": "meshes/episode_000000.npz",
+          "sha256": "50f6c48b3d434bba8f99c527daceb7bee5247a5dcb71968afaecc6bbe6043a99",
+          "bytes": 715
+        },
+        "npz": {
+          "logical_path": "episodes/episode_000000.npz",
+          "sha256": "d224c07fa19f5bfd9f916968f6d54ad39ab9a7ef9b2f6691475475dae9717156",
+          "bytes": 80006
+        },
+        "obj": {
+          "logical_path": "episodes/episode_000000_object.obj",
+          "sha256": "5b07d8045600af3cadefb25f471cda8f3ada0d784e9bc684798416657a5266b6",
+          "bytes": 678
+        }
+      }
+    },
+    {
+      "episode": 1,
+      "required_frames": 174,
+      "source_runs": 6,
+      "sample_rows": 16931,
+      "prediction_producer_commit": "483f8d61690d7df229c57dca43750b23afcfbf57",
+      "producer_tree": "488470c7217dedb23e72abe70e896ca4b3e078d8",
+      "recipe_commit": "483f8d61690d7df229c57dca43750b23afcfbf57",
+      "imported": true,
+      "importer_commit": "b433752cdd1828c34fa2ca9c328dd8b6ac2157e0",
+      "controller_commit": "b433752cdd1828c34fa2ca9c328dd8b6ac2157e0",
+      "exporter_commit": "b433752cdd1828c34fa2ca9c328dd8b6ac2157e0",
+      "input_hash": "1198635d7f04f73aa9466e02d105fa89b3630b2aa92a5e4f249898023ecfed30",
+      "required_digest": "92ecf895dda59fa6a24f0c2d88a38d24b1743e7c337d5210b73b2d5a8bb5ff72",
+      "artifacts": {
+        "mask": {
+          "logical_path": "masks/episode_000001.npz",
+          "sha256": "4e827afc4b37c5031590b53dd597a5467c68cdb45b17db12c87d2c1513ee667b",
+          "bytes": 742
+        },
+        "mesh": {
+          "logical_path": "meshes/episode_000001.npz",
+          "sha256": "5b8e2515baa42b7d7cc7dc3418c55b7a8849459d2f0de6a8c82b5cfdd25e4308",
+          "bytes": 713
+        },
+        "npz": {
+          "logical_path": "episodes/episode_000001.npz",
+          "sha256": "5de1804cdefa557a75e8db80a154b2c36d685bd8e417d8cba90931026ed1c8bc",
+          "bytes": 81633
+        },
+        "obj": {
+          "logical_path": "episodes/episode_000001_object.obj",
+          "sha256": "f9333ec58151b1d42a43f132a9f4b09701fa8eb52c39997f8d03de785dfa48e7",
+          "bytes": 678
+        }
+      }
+    },
+    {
+      "episode": 2,
+      "required_frames": 84,
+      "source_runs": 3,
+      "sample_rows": 12431,
+      "prediction_producer_commit": "483f8d61690d7df229c57dca43750b23afcfbf57",
+      "producer_tree": "488470c7217dedb23e72abe70e896ca4b3e078d8",
+      "recipe_commit": "483f8d61690d7df229c57dca43750b23afcfbf57",
+      "imported": true,
+      "importer_commit": "b433752cdd1828c34fa2ca9c328dd8b6ac2157e0",
+      "controller_commit": "b433752cdd1828c34fa2ca9c328dd8b6ac2157e0",
+      "exporter_commit": "b433752cdd1828c34fa2ca9c328dd8b6ac2157e0",
+      "input_hash": "2ccb43dd362c2a430d341611e888ef1ea79e3a3989e8af2a015d34e0b2196747",
+      "required_digest": "d115c2263e257aca07cef57f1f1fd4e8d62493eac27fe68069234bff2751fa21",
+      "artifacts": {
+        "mask": {
+          "logical_path": "masks/episode_000002.npz",
+          "sha256": "da33953e4d1d62d850b585a197fd74b67c0e3335b18575b4c418fc7ee9cc29ef",
+          "bytes": 605
+        },
+        "mesh": {
+          "logical_path": "meshes/episode_000002.npz",
+          "sha256": "244ae548e3425c8c8043dc39e01a40754645304cf16e27f22427cef4775cfa24",
+          "bytes": 715
+        },
+        "npz": {
+          "logical_path": "episodes/episode_000002.npz",
+          "sha256": "3ff47cfab7d88adead5bad42a9ad104c171c70dfd7b6d48c886255ad7df8ba37",
+          "bytes": 41315
+        },
+        "obj": {
+          "logical_path": "episodes/episode_000002_object.obj",
+          "sha256": "1cb414f5aa75cb861451f9c29f4b7e8daa17384571d21de8a1757d46fbba4d3b",
+          "bytes": 686
+        }
+      }
+    },
+    {
+      "episode": 3,
+      "required_frames": 340,
+      "source_runs": 7,
+      "sample_rows": 25231,
+      "prediction_producer_commit": "483f8d61690d7df229c57dca43750b23afcfbf57",
+      "producer_tree": "488470c7217dedb23e72abe70e896ca4b3e078d8",
+      "recipe_commit": "483f8d61690d7df229c57dca43750b23afcfbf57",
+      "imported": true,
+      "importer_commit": "b433752cdd1828c34fa2ca9c328dd8b6ac2157e0",
+      "controller_commit": "b433752cdd1828c34fa2ca9c328dd8b6ac2157e0",
+      "exporter_commit": "b433752cdd1828c34fa2ca9c328dd8b6ac2157e0",
+      "input_hash": "8eb7153abeeb32895741d80dc79305143967b701094af2eea9321260577a6b39",
+      "required_digest": "2e03a35812bf197fef134dd6a2ed3a90bf98f3d90889e2be30f710ec6ef73049",
+      "artifacts": {
+        "mask": {
+          "logical_path": "masks/episode_000003.npz",
+          "sha256": "542ca8c1916adfa9b8aecd087e3e44268255c510fe9410eb8859395ca1298af6",
+          "bytes": 1019
+        },
+        "mesh": {
+          "logical_path": "meshes/episode_000003.npz",
+          "sha256": "7413bf69fbdee4a514de6c849350ab0f854de4ab9a3a975efb94e5197d06b831",
+          "bytes": 715
+        },
+        "npz": {
+          "logical_path": "episodes/episode_000003.npz",
+          "sha256": "c6fdeb61d71f51b56cf360aa679bb64ee0385e25eaa469c0d987ccffd6f11acc",
+          "bytes": 148588
+        },
+        "obj": {
+          "logical_path": "episodes/episode_000003_object.obj",
+          "sha256": "1b6a205e4c234ec86255382fcb5e758dfa148fe69b96709d85806f3bf80f0fb2",
+          "bytes": 678
+        }
+      }
+    },
+    {
+      "episode": 4,
+      "required_frames": 519,
+      "source_runs": 2,
+      "sample_rows": 34181,
+      "prediction_producer_commit": "483f8d61690d7df229c57dca43750b23afcfbf57",
+      "producer_tree": "488470c7217dedb23e72abe70e896ca4b3e078d8",
+      "recipe_commit": "483f8d61690d7df229c57dca43750b23afcfbf57",
+      "imported": true,
+      "importer_commit": "b433752cdd1828c34fa2ca9c328dd8b6ac2157e0",
+      "controller_commit": "b433752cdd1828c34fa2ca9c328dd8b6ac2157e0",
+      "exporter_commit": "b433752cdd1828c34fa2ca9c328dd8b6ac2157e0",
+      "input_hash": "f1cadfa308b37dc91a3f296c2e5a2b538236cbe8a76d76d651df19554386cce6",
+      "required_digest": "ac79757556656c751d799f6bf061253e048f20e35075a0c5cd392dbd04c04d90",
+      "artifacts": {
+        "mask": {
+          "logical_path": "masks/episode_000004.npz",
+          "sha256": "135a20ca71c59bf98e2a4a16e78ae467f2917e7ab2e231708d75a1f58b22383f",
+          "bytes": 1264
+        },
+        "mesh": {
+          "logical_path": "meshes/episode_000004.npz",
+          "sha256": "6d48cd3406d35353680cf3f3f7eb0aa058e83c574eec542201838fb8883782fd",
+          "bytes": 714
+        },
+        "npz": {
+          "logical_path": "episodes/episode_000004.npz",
+          "sha256": "708e3f21f25e1aa940b34f38f9646229b62d0f0fa6c211d69b7187cb8acf97b2",
+          "bytes": 230993
+        },
+        "obj": {
+          "logical_path": "episodes/episode_000004_object.obj",
+          "sha256": "e150f9ecf42023160c80a94819a958a79fed97b3a776b4321d7934f9e2f404f5",
+          "bytes": 662
+        }
+      }
+    },
+    {
+      "episode": 5,
+      "required_frames": 412,
+      "source_runs": 6,
+      "sample_rows": 28831,
+      "prediction_producer_commit": "483f8d61690d7df229c57dca43750b23afcfbf57",
+      "producer_tree": "488470c7217dedb23e72abe70e896ca4b3e078d8",
+      "recipe_commit": "483f8d61690d7df229c57dca43750b23afcfbf57",
+      "imported": true,
+      "importer_commit": "b433752cdd1828c34fa2ca9c328dd8b6ac2157e0",
+      "controller_commit": "b433752cdd1828c34fa2ca9c328dd8b6ac2157e0",
+      "exporter_commit": "b433752cdd1828c34fa2ca9c328dd8b6ac2157e0",
+      "input_hash": "9613c76d9a4f9f34ecaf7697f2129ee2c59b6b03b0f014ee531a53d1fe39c30e",
+      "required_digest": "d3e48bc71aa88fcc61ca70ca2240afc4fa9a0e0a416270b65fc55d0d42a74b93",
+      "artifacts": {
+        "mask": {
+          "logical_path": "masks/episode_000005.npz",
+          "sha256": "3e06b00e0dd750f432519a3de4e15585522d77cea7edf12727a2d2537c6379b9",
+          "bytes": 1115
+        },
+        "mesh": {
+          "logical_path": "meshes/episode_000005.npz",
+          "sha256": "c38d98900873674d2e6f949984ec33d138b6d48cca8d16bef4d80731001d7c0b",
+          "bytes": 715
+        },
+        "npz": {
+          "logical_path": "episodes/episode_000005.npz",
+          "sha256": "50013c37f5993c2cb6bbe956a461c0a263b5c104591807988193f8e47963a653",
+          "bytes": 184026
+        },
+        "obj": {
+          "logical_path": "episodes/episode_000005_object.obj",
+          "sha256": "fa1ddfbae1b31a86acf2d19615e95965ea0404f0e07d6fbc916e1876f6ee82bd",
+          "bytes": 678
+        }
+      }
+    },
+    {
+      "episode": 6,
+      "required_frames": 636,
+      "source_runs": 1,
+      "sample_rows": 40031,
+      "prediction_producer_commit": "483f8d61690d7df229c57dca43750b23afcfbf57",
+      "producer_tree": "488470c7217dedb23e72abe70e896ca4b3e078d8",
+      "recipe_commit": "483f8d61690d7df229c57dca43750b23afcfbf57",
+      "imported": true,
+      "importer_commit": "b433752cdd1828c34fa2ca9c328dd8b6ac2157e0",
+      "controller_commit": "b433752cdd1828c34fa2ca9c328dd8b6ac2157e0",
+      "exporter_commit": "b433752cdd1828c34fa2ca9c328dd8b6ac2157e0",
+      "input_hash": "295db21337393fc4ffbb0a872c4156580cfe1fbda26bf1df211b07cfecf979e4",
+      "required_digest": "2ffcfa976eda8a496c0eb052595e0367989cefc36fe930892b5c0b692494e893",
+      "artifacts": {
+        "mask": {
+          "logical_path": "masks/episode_000006.npz",
+          "sha256": "a871024db31a5e147618d62e7a93cd117ad335ab48c59324f121c8cbd7d41de1",
+          "bytes": 1436
+        },
+        "mesh": {
+          "logical_path": "meshes/episode_000006.npz",
+          "sha256": "27b37904e5cf519e77c51bf117a62d759e23398f605704a3f5f15e8e187a582f",
+          "bytes": 715
+        },
+        "npz": {
+          "logical_path": "episodes/episode_000006.npz",
+          "sha256": "dd755eb160cdf5feddb09627a496309eeee20b7269cb5c4ec44b5f2086ff28dd",
+          "bytes": 274413
+        },
+        "obj": {
+          "logical_path": "episodes/episode_000006_object.obj",
+          "sha256": "bcb831f3e6a702f779e8d9a8cd40e9209febad4c55615b8178998e65124efca3",
+          "bytes": 678
+        }
+      }
+    },
+    {
+      "episode": 7,
+      "required_frames": 597,
+      "source_runs": 1,
+      "sample_rows": 38081,
+      "prediction_producer_commit": "483f8d61690d7df229c57dca43750b23afcfbf57",
+      "producer_tree": "488470c7217dedb23e72abe70e896ca4b3e078d8",
+      "recipe_commit": "483f8d61690d7df229c57dca43750b23afcfbf57",
+      "imported": true,
+      "importer_commit": "b433752cdd1828c34fa2ca9c328dd8b6ac2157e0",
+      "controller_commit": "b433752cdd1828c34fa2ca9c328dd8b6ac2157e0",
+      "exporter_commit": "b433752cdd1828c34fa2ca9c328dd8b6ac2157e0",
+      "input_hash": "e76d386123f8221e390d9accd35d8d19794efb1279d78a02a0e56553e4f9948d",
+      "required_digest": "49d7d864ea85a461d4fefb597f778f24c3c19d5ff96b27e1e018e617244942ff",
+      "artifacts": {
+        "mask": {
+          "logical_path": "masks/episode_000007.npz",
+          "sha256": "5695935a01cc8f1802e733fad47cd06fca012024815062b075e9ac8f8b1d19b5",
+          "bytes": 1380
+        },
+        "mesh": {
+          "logical_path": "meshes/episode_000007.npz",
+          "sha256": "7071e574619f74ddcc725db1148472ed8ebd6667b4dc1f21d509427c9eba9981",
+          "bytes": 714
+        },
+        "npz": {
+          "logical_path": "episodes/episode_000007.npz",
+          "sha256": "4cb1b1158643c600b245a1f1062a1222f451d37649a6d43bd80c0bbaaafe5fc2",
+          "bytes": 263495
+        },
+        "obj": {
+          "logical_path": "episodes/episode_000007_object.obj",
+          "sha256": "fc0cacd98420cac081babcb9f3d5e3e22943203211282103e390966b77190d53",
+          "bytes": 678
+        }
+      }
+    },
+    {
+      "episode": 8,
+      "required_frames": 454,
+      "source_runs": 1,
+      "sample_rows": 30931,
+      "prediction_producer_commit": "483f8d61690d7df229c57dca43750b23afcfbf57",
+      "producer_tree": "488470c7217dedb23e72abe70e896ca4b3e078d8",
+      "recipe_commit": "483f8d61690d7df229c57dca43750b23afcfbf57",
+      "imported": true,
+      "importer_commit": "b433752cdd1828c34fa2ca9c328dd8b6ac2157e0",
+      "controller_commit": "b433752cdd1828c34fa2ca9c328dd8b6ac2157e0",
+      "exporter_commit": "b433752cdd1828c34fa2ca9c328dd8b6ac2157e0",
+      "input_hash": "7f2967bd12518ded44094c9ac397bed826c572f7cbfbab7c9909735a240c2770",
+      "required_digest": "221eed41698e3db752d2546bf39ea92e260cac57333d7a7604c7efcf98b69b41",
+      "artifacts": {
+        "mask": {
+          "logical_path": "masks/episode_000008.npz",
+          "sha256": "0b98c35677bbc6e49296fcac363f87248dfa1a17ab863ea4ea50af20025f0a00",
+          "bytes": 1158
+        },
+        "mesh": {
+          "logical_path": "meshes/episode_000008.npz",
+          "sha256": "c98aa7ac88499028ded958160834452e19823df61649a20d923e308b192e72b8",
+          "bytes": 714
+        },
+        "npz": {
+          "logical_path": "episodes/episode_000008.npz",
+          "sha256": "87051bbfba0e02e8363b1669d8962891fcd1771db2842acf6bf8b35dd210a7bc",
+          "bytes": 196457
+        },
+        "obj": {
+          "logical_path": "episodes/episode_000008_object.obj",
+          "sha256": "a3ffcc3b8870373dd5ed8b48a0ce775babefdd25bd8061c5f3d6eb176f4eca9e",
+          "bytes": 678
+        }
+      }
+    },
+    {
+      "episode": 9,
+      "required_frames": 325,
+      "source_runs": 1,
+      "sample_rows": 24481,
+      "prediction_producer_commit": "483f8d61690d7df229c57dca43750b23afcfbf57",
+      "producer_tree": "488470c7217dedb23e72abe70e896ca4b3e078d8",
+      "recipe_commit": "483f8d61690d7df229c57dca43750b23afcfbf57",
+      "imported": true,
+      "importer_commit": "b433752cdd1828c34fa2ca9c328dd8b6ac2157e0",
+      "controller_commit": "b433752cdd1828c34fa2ca9c328dd8b6ac2157e0",
+      "exporter_commit": "b433752cdd1828c34fa2ca9c328dd8b6ac2157e0",
+      "input_hash": "4fe69ca521fc2717e2938339b0a37843ada391f4b074753584c7cd8c2e36a277",
+      "required_digest": "0b0a03004c359f43565bf3d58f182466648d016830f9f051d8d28929bd16d600",
+      "artifacts": {
+        "mask": {
+          "logical_path": "masks/episode_000009.npz",
+          "sha256": "04c047be1af273f63d1b9217f1d5fe86d2747712ecf4e03bc6270d055a82c03e",
+          "bytes": 976
+        },
+        "mesh": {
+          "logical_path": "meshes/episode_000009.npz",
+          "sha256": "fba7f03c0b46ff38a9b536378e707d7b279b63f1653a12e8b5987905e168e657",
+          "bytes": 715
+        },
+        "npz": {
+          "logical_path": "episodes/episode_000009.npz",
+          "sha256": "d80c7fd7f866e255d1d8ee3f4dd69be3195ae72faf432ef6db91388c97d3a47b",
+          "bytes": 139082
+        },
+        "obj": {
+          "logical_path": "episodes/episode_000009_object.obj",
+          "sha256": "1f2de2496a842f99f5ee03d8fe5b138f26e716d0f5975124bdfe80d7d096613e",
+          "bytes": 678
+        }
+      }
+    },
+    {
+      "episode": 10,
+      "required_frames": 418,
+      "source_runs": 1,
+      "sample_rows": 29131,
+      "prediction_producer_commit": "483f8d61690d7df229c57dca43750b23afcfbf57",
+      "producer_tree": "488470c7217dedb23e72abe70e896ca4b3e078d8",
+      "recipe_commit": "483f8d61690d7df229c57dca43750b23afcfbf57",
+      "imported": true,
+      "importer_commit": "b433752cdd1828c34fa2ca9c328dd8b6ac2157e0",
+      "controller_commit": "b433752cdd1828c34fa2ca9c328dd8b6ac2157e0",
+      "exporter_commit": "b433752cdd1828c34fa2ca9c328dd8b6ac2157e0",
+      "input_hash": "4a75aec2a5d5621295979c8cd4b8b7c346c24ff6e9a4241b39dcfda623e94c39",
+      "required_digest": "ac0fcdaa3bc1e50dcc3e62aa6fffa88359fe01bff90c8d1440535026789c5c21",
+      "artifacts": {
+        "mask": {
+          "logical_path": "masks/episode_000010.npz",
+          "sha256": "b63d03a61f22e1c1db8bc90af61e2ef68db062d4b77fb4d00de130a260638b79",
+          "bytes": 1106
+        },
+        "mesh": {
+          "logical_path": "meshes/episode_000010.npz",
+          "sha256": "92cde8e95e32e60c4bdc14dcff4ab11329c7c4879405f18a65f4b208e3beed8e",
+          "bytes": 715
+        },
+        "npz": {
+          "logical_path": "episodes/episode_000010.npz",
+          "sha256": "0f35323b70752c0cdea60f09d2047d134b09d2948fef2ae83ea135a4c986ffed",
+          "bytes": 185523
+        },
+        "obj": {
+          "logical_path": "episodes/episode_000010_object.obj",
+          "sha256": "16e5425fdfd8be8da33d97b7e1c6e4c013a1a2b6ca60d11ac199b568388938f9",
+          "bytes": 662
+        }
+      }
+    },
+    {
+      "episode": 11,
+      "required_frames": 803,
+      "source_runs": 1,
+      "sample_rows": 48381,
+      "prediction_producer_commit": "483f8d61690d7df229c57dca43750b23afcfbf57",
+      "producer_tree": "488470c7217dedb23e72abe70e896ca4b3e078d8",
+      "recipe_commit": "483f8d61690d7df229c57dca43750b23afcfbf57",
+      "imported": true,
+      "importer_commit": "b433752cdd1828c34fa2ca9c328dd8b6ac2157e0",
+      "controller_commit": "b433752cdd1828c34fa2ca9c328dd8b6ac2157e0",
+      "exporter_commit": "b433752cdd1828c34fa2ca9c328dd8b6ac2157e0",
+      "input_hash": "1b5c95978413d92320b4a5ac4e1094194966f2e1eb399143ded367bb682eec40",
+      "required_digest": "94802b90fe4af0b0d0f0eab3fe3035b57dd1f91b75f0e7a93af6dc343c139694",
+      "artifacts": {
+        "mask": {
+          "logical_path": "masks/episode_000011.npz",
+          "sha256": "bbca09b954eade0e5f6c0bcbe9073920b8b124af7a698c18f19b3f2fdbb8bfa0",
+          "bytes": 1692
+        },
+        "mesh": {
+          "logical_path": "meshes/episode_000011.npz",
+          "sha256": "2fdd408155bd01ab1289e0c1b416ebce023c66e386f8c3e1909ef927a19eae9b",
+          "bytes": 715
+        },
+        "npz": {
+          "logical_path": "episodes/episode_000011.npz",
+          "sha256": "8aca0e64124a7f9eac6392abb4a2ddb09de7925c1dc7abc98bf52fe1cdcd026e",
+          "bytes": 356331
+        },
+        "obj": {
+          "logical_path": "episodes/episode_000011_object.obj",
+          "sha256": "cf04ebdbb67f7d867041deb2069fdea2491d89c87f7cb18ad4b465f189c0f8c7",
+          "bytes": 678
+        }
+      }
+    },
+    {
+      "episode": 12,
+      "required_frames": 209,
+      "source_runs": 5,
+      "sample_rows": 18681,
+      "prediction_producer_commit": "483f8d61690d7df229c57dca43750b23afcfbf57",
+      "producer_tree": "488470c7217dedb23e72abe70e896ca4b3e078d8",
+      "recipe_commit": "483f8d61690d7df229c57dca43750b23afcfbf57",
+      "imported": true,
+      "importer_commit": "b433752cdd1828c34fa2ca9c328dd8b6ac2157e0",
+      "controller_commit": "b433752cdd1828c34fa2ca9c328dd8b6ac2157e0",
+      "exporter_commit": "b433752cdd1828c34fa2ca9c328dd8b6ac2157e0",
+      "input_hash": "6494246c131a9161eb342c615ea835988d254b9c09abb659349bdb05e6935b39",
+      "required_digest": "c18c326fee06c3bf46392a9d6bf6afa7a77394f06f601f24812b5687baae5362",
+      "artifacts": {
+        "mask": {
+          "logical_path": "masks/episode_000012.npz",
+          "sha256": "1f3ad25bb8f1f8596f30661db6bbd72bc1dfde9f259011574514508a3a5d77db",
+          "bytes": 777
+        },
+        "mesh": {
+          "logical_path": "meshes/episode_000012.npz",
+          "sha256": "6d36830d8b1c21a81b03e49b21e77fd1e9360419221b66c740c3314a60058036",
+          "bytes": 714
+        },
+        "npz": {
+          "logical_path": "episodes/episode_000012.npz",
+          "sha256": "d11d75d9dc5ba7ef1ed63f9bb29d9651913e3193842e10b197e50a82eb768cfd",
+          "bytes": 96515
+        },
+        "obj": {
+          "logical_path": "episodes/episode_000012_object.obj",
+          "sha256": "7faaa3e846adbac2638c1ca4ca4786478d43accce490c6941db434e9d5847c03",
+          "bytes": 678
+        }
+      }
+    },
+    {
+      "episode": 13,
+      "required_frames": 106,
+      "source_runs": 4,
+      "sample_rows": 13531,
+      "prediction_producer_commit": "483f8d61690d7df229c57dca43750b23afcfbf57",
+      "producer_tree": "488470c7217dedb23e72abe70e896ca4b3e078d8",
+      "recipe_commit": "483f8d61690d7df229c57dca43750b23afcfbf57",
+      "imported": true,
+      "importer_commit": "b433752cdd1828c34fa2ca9c328dd8b6ac2157e0",
+      "controller_commit": "b433752cdd1828c34fa2ca9c328dd8b6ac2157e0",
+      "exporter_commit": "b433752cdd1828c34fa2ca9c328dd8b6ac2157e0",
+      "input_hash": "fa74d6754b90eebc9513909e8570dfd2dd7726c71dba16df45cb17cc49e79f1a",
+      "required_digest": "2a24b9a14bb9cd44ff49c9d891ca4d96c48c56cd3438c999c3a506c4e6747d16",
+      "artifacts": {
+        "mask": {
+          "logical_path": "masks/episode_000013.npz",
+          "sha256": "20865575f024a9f78d7c3ce385822529bba805fc2238a12760e231d413656838",
+          "bytes": 612
+        },
+        "mesh": {
+          "logical_path": "meshes/episode_000013.npz",
+          "sha256": "704ab333f382a796ddd16b90ea2e25a3ff923d3ae3670fa200185b7720cd54b5",
+          "bytes": 715
+        },
+        "npz": {
+          "logical_path": "episodes/episode_000013.npz",
+          "sha256": "26b33c645eacfd73d3ceea8aa18beafc421a980739195d847dcf9d88d511097b",
+          "bytes": 50894
+        },
+        "obj": {
+          "logical_path": "episodes/episode_000013_object.obj",
+          "sha256": "8dad2078e21946f0a6f391482e72a5dee640e918d55de51724044d7b8260cd8a",
+          "bytes": 678
+        }
+      }
+    },
+    {
+      "episode": 14,
+      "required_frames": 83,
+      "source_runs": 4,
+      "sample_rows": 12381,
+      "prediction_producer_commit": "483f8d61690d7df229c57dca43750b23afcfbf57",
+      "producer_tree": "488470c7217dedb23e72abe70e896ca4b3e078d8",
+      "recipe_commit": "483f8d61690d7df229c57dca43750b23afcfbf57",
+      "imported": true,
+      "importer_commit": "b433752cdd1828c34fa2ca9c328dd8b6ac2157e0",
+      "controller_commit": "b433752cdd1828c34fa2ca9c328dd8b6ac2157e0",
+      "exporter_commit": "b433752cdd1828c34fa2ca9c328dd8b6ac2157e0",
+      "input_hash": "f9f2bed8abe60898aef8f62c245ff03ed32f94b76b079c128e363fdfd4a7e70e",
+      "required_digest": "70cdb4f8a78968d6917aa1093bb05971bdcd2e0fd172a36fa908586aa96fd697",
+      "artifacts": {
+        "mask": {
+          "logical_path": "masks/episode_000014.npz",
+          "sha256": "463873f348d7c7e7fd2e90c386afda8c8882d0ddeee35f67822042c6ef1df089",
+          "bytes": 571
+        },
+        "mesh": {
+          "logical_path": "meshes/episode_000014.npz",
+          "sha256": "73edf8212cc933599d2fa47525d7b3ec8d4fc1412761e5d2c4b1dec1fc4ff1e9",
+          "bytes": 715
+        },
+        "npz": {
+          "logical_path": "episodes/episode_000014.npz",
+          "sha256": "d9ddaa18ccd98bd4f076e5c7d5aa6e67209bda1269f1802f34caae1a91f75fe7",
+          "bytes": 41016
+        },
+        "obj": {
+          "logical_path": "episodes/episode_000014_object.obj",
+          "sha256": "7b2dc8c400de47cf6e95efe4765e06c6a569bd4c5ffcc4f7b6c0bdd9b21ed35c",
+          "bytes": 670
+        }
+      }
+    },
+    {
+      "episode": 15,
+      "required_frames": 356,
+      "source_runs": 1,
+      "sample_rows": 26031,
+      "prediction_producer_commit": "483f8d61690d7df229c57dca43750b23afcfbf57",
+      "producer_tree": "488470c7217dedb23e72abe70e896ca4b3e078d8",
+      "recipe_commit": "483f8d61690d7df229c57dca43750b23afcfbf57",
+      "imported": true,
+      "importer_commit": "b433752cdd1828c34fa2ca9c328dd8b6ac2157e0",
+      "controller_commit": "b433752cdd1828c34fa2ca9c328dd8b6ac2157e0",
+      "exporter_commit": "b433752cdd1828c34fa2ca9c328dd8b6ac2157e0",
+      "input_hash": "c368809329e922b75629c1d94c39c1c820c9211464a5e5a77a4cdb55803400f0",
+      "required_digest": "c70ab5b1224531aea66606187ca82e8e355ee24f65979890e50698e804bcc498",
+      "artifacts": {
+        "mask": {
+          "logical_path": "masks/episode_000015.npz",
+          "sha256": "c1f36a662474d6d8bf475117e8a460ae3c61541d97222080fd0b84aee495244c",
+          "bytes": 1022
+        },
+        "mesh": {
+          "logical_path": "meshes/episode_000015.npz",
+          "sha256": "b3d4e9b227a1182b1fd42033f425561f82e0305813285cb03eae9e1555b78409",
+          "bytes": 715
+        },
+        "npz": {
+          "logical_path": "episodes/episode_000015.npz",
+          "sha256": "b91da67c3abbaabc336ac364c4d6f5ef91c960316e9f5fa7193c653d64ad913c",
+          "bytes": 156531
+        },
+        "obj": {
+          "logical_path": "episodes/episode_000015_object.obj",
+          "sha256": "071870957da0a3298e0279f57e9c6865cb02b89d99970ca36aab9125a232be57",
+          "bytes": 678
+        }
+      }
+    },
+    {
+      "episode": 16,
+      "required_frames": 240,
+      "source_runs": 1,
+      "sample_rows": 20231,
+      "prediction_producer_commit": "483f8d61690d7df229c57dca43750b23afcfbf57",
+      "producer_tree": "488470c7217dedb23e72abe70e896ca4b3e078d8",
+      "recipe_commit": "483f8d61690d7df229c57dca43750b23afcfbf57",
+      "imported": true,
+      "importer_commit": "b433752cdd1828c34fa2ca9c328dd8b6ac2157e0",
+      "controller_commit": "b433752cdd1828c34fa2ca9c328dd8b6ac2157e0",
+      "exporter_commit": "b433752cdd1828c34fa2ca9c328dd8b6ac2157e0",
+      "input_hash": "a37a978ef0f3d0eeaad74f2ed75fb32502d8a1a047587291c14433d052f9eb74",
+      "required_digest": "5fddc19b6993cbb1d3303eb1a4b8439bc57594eb8dc38b30377563761e64a56b",
+      "artifacts": {
+        "mask": {
+          "logical_path": "masks/episode_000016.npz",
+          "sha256": "75fe1a4cb21397607417aab785c72dad8b3421d8612b08018c07a74d0a047ecf",
+          "bytes": 853
+        },
+        "mesh": {
+          "logical_path": "meshes/episode_000016.npz",
+          "sha256": "21e59b2395470fdf808023324b3b6a8882b6d101abf14479fad8c7b164dc70c8",
+          "bytes": 715
+        },
+        "npz": {
+          "logical_path": "episodes/episode_000016.npz",
+          "sha256": "e8ce010d2be73fdef2b239d94c424058ef6fe40119a8d333b45331a18d8ff6fd",
+          "bytes": 107855
+        },
+        "obj": {
+          "logical_path": "episodes/episode_000016_object.obj",
+          "sha256": "66bc7c113ac0050b9bf941b8fb6d996d8d63e49c42d5e6f39fb63873874b8f28",
+          "bytes": 670
+        }
+      }
+    },
+    {
+      "episode": 17,
+      "required_frames": 277,
+      "source_runs": 1,
+      "sample_rows": 22081,
+      "prediction_producer_commit": "483f8d61690d7df229c57dca43750b23afcfbf57",
+      "producer_tree": "488470c7217dedb23e72abe70e896ca4b3e078d8",
+      "recipe_commit": "483f8d61690d7df229c57dca43750b23afcfbf57",
+      "imported": true,
+      "importer_commit": "b433752cdd1828c34fa2ca9c328dd8b6ac2157e0",
+      "controller_commit": "b433752cdd1828c34fa2ca9c328dd8b6ac2157e0",
+      "exporter_commit": "b433752cdd1828c34fa2ca9c328dd8b6ac2157e0",
+      "input_hash": "4c536c20aff3e803c0d5caf1f91b0dfab1054444361fdae2799212e5af15a94b",
+      "required_digest": "68dd4e37c261475b8184f3902ed3c36fc772ea66d4a9f25767837d6dac624a98",
+      "artifacts": {
+        "mask": {
+          "logical_path": "masks/episode_000017.npz",
+          "sha256": "a0dc47cdb5428571607c30099d3ad2a5ac57945778b7512672d4165e09c10fdf",
+          "bytes": 912
+        },
+        "mesh": {
+          "logical_path": "meshes/episode_000017.npz",
+          "sha256": "c8f852ac696ed02aa0e7c4460810cebfecf60cec7caf2e49b2988bfda39f5eb9",
+          "bytes": 715
+        },
+        "npz": {
+          "logical_path": "episodes/episode_000017.npz",
+          "sha256": "579cfd104129f09032aee898d70e315ddac0a82b0a59ada82d6d3074f6a60f3a",
+          "bytes": 123959
+        },
+        "obj": {
+          "logical_path": "episodes/episode_000017_object.obj",
+          "sha256": "44145e4d335676d1d379e896e1a34977e2fd0308f44160ffee36ae1947b2e367",
+          "bytes": 678
+        }
+      }
+    },
+    {
+      "episode": 18,
+      "required_frames": 420,
+      "source_runs": 1,
+      "sample_rows": 29231,
+      "prediction_producer_commit": "483f8d61690d7df229c57dca43750b23afcfbf57",
+      "producer_tree": "488470c7217dedb23e72abe70e896ca4b3e078d8",
+      "recipe_commit": "483f8d61690d7df229c57dca43750b23afcfbf57",
+      "imported": true,
+      "importer_commit": "b433752cdd1828c34fa2ca9c328dd8b6ac2157e0",
+      "controller_commit": "b433752cdd1828c34fa2ca9c328dd8b6ac2157e0",
+      "exporter_commit": "b433752cdd1828c34fa2ca9c328dd8b6ac2157e0",
+      "input_hash": "e65132e95b0755a720c5e5238654a6fb8a01cd9e5d13fe481bcbb5e5612e44bd",
+      "required_digest": "125e66c9b986608697366b4c2a9bef0d37f2d5a429d8947f60a1c3b9573dc5dd",
+      "artifacts": {
+        "mask": {
+          "logical_path": "masks/episode_000018.npz",
+          "sha256": "dadfc7f4ebf5e9280fac7a539d0ed8ae6827f9e391814d9378d29645fa3be74b",
+          "bytes": 1110
+        },
+        "mesh": {
+          "logical_path": "meshes/episode_000018.npz",
+          "sha256": "1222a334c10e5bde3a5922ece0702beeaba10081e0675b6879d8e3879c2d6e88",
+          "bytes": 714
+        },
+        "npz": {
+          "logical_path": "episodes/episode_000018.npz",
+          "sha256": "3b56014c65f0044c153ae8771408d7728d1f73fd10f774a14cc22f518afe4b58",
+          "bytes": 186450
+        },
+        "obj": {
+          "logical_path": "episodes/episode_000018_object.obj",
+          "sha256": "e91a623d0754dba244eddc37d092e3173a33678500f39a099df42b56df61707d",
+          "bytes": 678
+        }
+      }
+    },
+    {
+      "episode": 19,
+      "required_frames": 283,
+      "source_runs": 1,
+      "sample_rows": 22381,
+      "prediction_producer_commit": "483f8d61690d7df229c57dca43750b23afcfbf57",
+      "producer_tree": "488470c7217dedb23e72abe70e896ca4b3e078d8",
+      "recipe_commit": "483f8d61690d7df229c57dca43750b23afcfbf57",
+      "imported": true,
+      "importer_commit": "b433752cdd1828c34fa2ca9c328dd8b6ac2157e0",
+      "controller_commit": "b433752cdd1828c34fa2ca9c328dd8b6ac2157e0",
+      "exporter_commit": "b433752cdd1828c34fa2ca9c328dd8b6ac2157e0",
+      "input_hash": "730e8392a32944856b3f9e2b02e57c48ba955e0832cfaf40e06d2de72a3a3bc9",
+      "required_digest": "5384d2072e2309b5d66da004a5770d02dc23f08c18330109b7a6fb4e8b2e8a04",
+      "artifacts": {
+        "mask": {
+          "logical_path": "masks/episode_000019.npz",
+          "sha256": "eda7ca3fe6f5bf0a0c670004c1b837ea0a3d2a77ac6c8d5c7b779f42dfc5dac4",
+          "bytes": 917
+        },
+        "mesh": {
+          "logical_path": "meshes/episode_000019.npz",
+          "sha256": "c8e6f9ce8968aa76ff44a348e31f71f5aef4a61b0508ca48238d833ffa45ad61",
+          "bytes": 715
+        },
+        "npz": {
+          "logical_path": "episodes/episode_000019.npz",
+          "sha256": "e76bd6bc23fe4985e81d567fb16c8ae9e56e4435ea791f2143e206c5c8085bfc",
+          "bytes": 124476
+        },
+        "obj": {
+          "logical_path": "episodes/episode_000019_object.obj",
+          "sha256": "c2cf223679d76ffec85b029034dae75ecf91663bb34573b3c574feb6fae785e6",
+          "bytes": 678
+        }
+      }
+    },
+    {
+      "episode": 20,
+      "required_frames": 375,
+      "source_runs": 2,
+      "sample_rows": 26981,
+      "prediction_producer_commit": "483f8d61690d7df229c57dca43750b23afcfbf57",
+      "producer_tree": "488470c7217dedb23e72abe70e896ca4b3e078d8",
+      "recipe_commit": "483f8d61690d7df229c57dca43750b23afcfbf57",
+      "imported": true,
+      "importer_commit": "b433752cdd1828c34fa2ca9c328dd8b6ac2157e0",
+      "controller_commit": "b433752cdd1828c34fa2ca9c328dd8b6ac2157e0",
+      "exporter_commit": "b433752cdd1828c34fa2ca9c328dd8b6ac2157e0",
+      "input_hash": "781ec1de0edcf8bf30cbc9f3847f80efd8cd2e97e53b0b4f80ccb0b505ef03ce",
+      "required_digest": "ff5050fdda8ce183a0014fac7ed2540a5f821a9715abfbbec60588157830c147",
+      "artifacts": {
+        "mask": {
+          "logical_path": "masks/episode_000020.npz",
+          "sha256": "72a1038d853e9a897c15af6747b67d567009813eaf6d7728f76115f7af3fe7f5",
+          "bytes": 1049
+        },
+        "mesh": {
+          "logical_path": "meshes/episode_000020.npz",
+          "sha256": "d9afd3beee7994283a4db9e34ba7102394614dd8e59c6e456107273b61e172ee",
+          "bytes": 715
+        },
+        "npz": {
+          "logical_path": "episodes/episode_000020.npz",
+          "sha256": "c8a0d81759c6bdf570be40d8a9aed78bddf421fef8f254f1065095e5b9108c77",
+          "bytes": 167048
+        },
+        "obj": {
+          "logical_path": "episodes/episode_000020_object.obj",
+          "sha256": "27fd20d59d22a53817444438fbb625082033d06bc0a4ba411d0b87c7537fbd9e",
+          "bytes": 678
+        }
+      }
+    },
+    {
+      "episode": 21,
+      "required_frames": 347,
+      "source_runs": 1,
+      "sample_rows": 25581,
+      "prediction_producer_commit": "483f8d61690d7df229c57dca43750b23afcfbf57",
+      "producer_tree": "488470c7217dedb23e72abe70e896ca4b3e078d8",
+      "recipe_commit": "483f8d61690d7df229c57dca43750b23afcfbf57",
+      "imported": true,
+      "importer_commit": "b433752cdd1828c34fa2ca9c328dd8b6ac2157e0",
+      "controller_commit": "b433752cdd1828c34fa2ca9c328dd8b6ac2157e0",
+      "exporter_commit": "b433752cdd1828c34fa2ca9c328dd8b6ac2157e0",
+      "input_hash": "66443de1239172913edf324e9d4affb960883c99ca4f9e307a7ec76a9264adec",
+      "required_digest": "c051d98fc309f60213746cd8b6a144da7cc1f02deb2e6a15386e3950d867e7b7",
+      "artifacts": {
+        "mask": {
+          "logical_path": "masks/episode_000021.npz",
+          "sha256": "3e6a9cae2e0460532fd42b5df4d5571eb2c29b22536c6a89da391534ed4999fe",
+          "bytes": 1009
+        },
+        "mesh": {
+          "logical_path": "meshes/episode_000021.npz",
+          "sha256": "f1cb8dfb2fa8e80a3c11a48283fe4fa26869482c984f6df480b8fc0c9682715e",
+          "bytes": 715
+        },
+        "npz": {
+          "logical_path": "episodes/episode_000021.npz",
+          "sha256": "50baa879dea90b7be6f190ee97e486aede5b09e6d9efe79c046e48b391b44723",
+          "bytes": 153881
+        },
+        "obj": {
+          "logical_path": "episodes/episode_000021_object.obj",
+          "sha256": "bf74a615c3dcc89c9790697337396d8986d0a67cf45c1c5c04603a90d5cbd7cc",
+          "bytes": 678
+        }
+      }
+    },
+    {
+      "episode": 22,
+      "required_frames": 452,
+      "source_runs": 1,
+      "sample_rows": 30831,
+      "prediction_producer_commit": "483f8d61690d7df229c57dca43750b23afcfbf57",
+      "producer_tree": "488470c7217dedb23e72abe70e896ca4b3e078d8",
+      "recipe_commit": "483f8d61690d7df229c57dca43750b23afcfbf57",
+      "imported": true,
+      "importer_commit": "b433752cdd1828c34fa2ca9c328dd8b6ac2157e0",
+      "controller_commit": "b433752cdd1828c34fa2ca9c328dd8b6ac2157e0",
+      "exporter_commit": "b433752cdd1828c34fa2ca9c328dd8b6ac2157e0",
+      "input_hash": "17e2de04b320c3ff3004f659326cbacfb51402af19c9564ffc4f1fed88fadad0",
+      "required_digest": "0b1d5999acf750a77fc0b859164659840e655919f9593b1442e7a442b4955c4b",
+      "artifacts": {
+        "mask": {
+          "logical_path": "masks/episode_000022.npz",
+          "sha256": "b5c6b2d31e053fbbdd17a18d84f6dc934439ed78d90451e73d4ed2d04af24260",
+          "bytes": 1149
+        },
+        "mesh": {
+          "logical_path": "meshes/episode_000022.npz",
+          "sha256": "fb95cd1b294b253221f966a600fde600fd14e57772dee8f55a62940e8e4270bf",
+          "bytes": 715
+        },
+        "npz": {
+          "logical_path": "episodes/episode_000022.npz",
+          "sha256": "9be3d3785c55723420bd5b677866f3ff34d5c8a89a24b90b76fbda46a041aadb",
+          "bytes": 200337
+        },
+        "obj": {
+          "logical_path": "episodes/episode_000022_object.obj",
+          "sha256": "4d145499c63c0a0503b83271197f4cf277af9039f2044b67f1501fac69fa8690",
+          "bytes": 678
+        }
+      }
+    },
+    {
+      "episode": 23,
+      "required_frames": 399,
+      "source_runs": 1,
+      "sample_rows": 28181,
+      "prediction_producer_commit": "b433752cdd1828c34fa2ca9c328dd8b6ac2157e0",
+      "producer_tree": "ec91ae800b38723b4ecfe79374b8169e7a70789f",
+      "recipe_commit": "b433752cdd1828c34fa2ca9c328dd8b6ac2157e0",
+      "imported": false,
+      "importer_commit": null,
+      "controller_commit": "b433752cdd1828c34fa2ca9c328dd8b6ac2157e0",
+      "exporter_commit": "b433752cdd1828c34fa2ca9c328dd8b6ac2157e0",
+      "input_hash": "4b132f8efe20da727f2d5fd7ba56835cf08b032f11e6dc2800f26bfcfff0f0b5",
+      "required_digest": "de18f2f89cdbab4db64d5d6482c57b6a3ade722262b45e7cbc0ce35ea5b9f6e5",
+      "artifacts": {
+        "mask": {
+          "logical_path": "masks/episode_000023.npz",
+          "sha256": "650dca3abc804caf2fe78b8b50a69ed503fff97000074be0a0d95266d38adcf7",
+          "bytes": 1079
+        },
+        "mesh": {
+          "logical_path": "meshes/episode_000023.npz",
+          "sha256": "87c8d73094ba3906b4303171aebc6547cbe3287c12601b18c4219f774146235f",
+          "bytes": 714
+        },
+        "npz": {
+          "logical_path": "episodes/episode_000023.npz",
+          "sha256": "a15fae1a762ac99ded967add6b8e02d98c03dc51a8739f6a61e54d7161ea301e",
+          "bytes": 177308
+        },
+        "obj": {
+          "logical_path": "episodes/episode_000023_object.obj",
+          "sha256": "684ec659db609ea92d8d1e595743b957a8c6914627e514cb50cf4daafb5e9062",
+          "bytes": 678
+        }
+      }
+    },
+    {
+      "episode": 24,
+      "required_frames": 242,
+      "source_runs": 1,
+      "sample_rows": 20331,
+      "prediction_producer_commit": "b433752cdd1828c34fa2ca9c328dd8b6ac2157e0",
+      "producer_tree": "ec91ae800b38723b4ecfe79374b8169e7a70789f",
+      "recipe_commit": "b433752cdd1828c34fa2ca9c328dd8b6ac2157e0",
+      "imported": false,
+      "importer_commit": null,
+      "controller_commit": "b433752cdd1828c34fa2ca9c328dd8b6ac2157e0",
+      "exporter_commit": "b433752cdd1828c34fa2ca9c328dd8b6ac2157e0",
+      "input_hash": "e36eda1c9ac7f6a1da298412c301da27775055df4c6ff19167f6b1a8c504d2ef",
+      "required_digest": "90a7b6dfd27305d0d7d2c3dcd83c8f308bc910de99985bf3280c85bb4cda2dce",
+      "artifacts": {
+        "mask": {
+          "logical_path": "masks/episode_000024.npz",
+          "sha256": "7f93915f67e91a033664fafdf864fbf7d71cc745d63783779407c4a09685a9d6",
+          "bytes": 844
+        },
+        "mesh": {
+          "logical_path": "meshes/episode_000024.npz",
+          "sha256": "7b949316dff348a9b99461efd42ef053d351edc043ac882be58370534a58c572",
+          "bytes": 713
+        },
+        "npz": {
+          "logical_path": "episodes/episode_000024.npz",
+          "sha256": "72cabc517f30c1191df63063f951c38f8fd9c9b78d9ce5a826d0d8df8428c519",
+          "bytes": 109277
+        },
+        "obj": {
+          "logical_path": "episodes/episode_000024_object.obj",
+          "sha256": "8afd45c8a077ff243922017fe477c20feaef48857673be89e8ec723a7a85622b",
+          "bytes": 678
+        }
+      }
+    },
+    {
+      "episode": 25,
+      "required_frames": 219,
+      "source_runs": 1,
+      "sample_rows": 19181,
+      "prediction_producer_commit": "b433752cdd1828c34fa2ca9c328dd8b6ac2157e0",
+      "producer_tree": "ec91ae800b38723b4ecfe79374b8169e7a70789f",
+      "recipe_commit": "b433752cdd1828c34fa2ca9c328dd8b6ac2157e0",
+      "imported": false,
+      "importer_commit": null,
+      "controller_commit": "b433752cdd1828c34fa2ca9c328dd8b6ac2157e0",
+      "exporter_commit": "b433752cdd1828c34fa2ca9c328dd8b6ac2157e0",
+      "input_hash": "efcce8025e4e94ed92553277bc6fddd5ae7c8d7c7e70d71d09ff9a86a1ea3ae0",
+      "required_digest": "abd6857babe2fcca789a5d9541d204683a70c216b92f1e68b2046b1caf3d5e50",
+      "artifacts": {
+        "mask": {
+          "logical_path": "masks/episode_000025.npz",
+          "sha256": "101305d77116aaa1fd1de726f48ea9d8df8742b030899f8e225bf3f3184fccf6",
+          "bytes": 792
+        },
+        "mesh": {
+          "logical_path": "meshes/episode_000025.npz",
+          "sha256": "5c772a89ecb045a91c421ee1024385f293d5f0814af610218befe0e2f3d33ac1",
+          "bytes": 714
+        },
+        "npz": {
+          "logical_path": "episodes/episode_000025.npz",
+          "sha256": "4e5e72821ef2c3c535f58aefb55256961faeeddfb7fd6ada4bb953298c33d56c",
+          "bytes": 99092
+        },
+        "obj": {
+          "logical_path": "episodes/episode_000025_object.obj",
+          "sha256": "1ce0e6a7659448d9d8d1c77303bac4cb3f028cced7cba2b1a36f26248de38fde",
+          "bytes": 662
+        }
+      }
+    },
+    {
+      "episode": 26,
+      "required_frames": 281,
+      "source_runs": 1,
+      "sample_rows": 22281,
+      "prediction_producer_commit": "b433752cdd1828c34fa2ca9c328dd8b6ac2157e0",
+      "producer_tree": "ec91ae800b38723b4ecfe79374b8169e7a70789f",
+      "recipe_commit": "b433752cdd1828c34fa2ca9c328dd8b6ac2157e0",
+      "imported": false,
+      "importer_commit": null,
+      "controller_commit": "b433752cdd1828c34fa2ca9c328dd8b6ac2157e0",
+      "exporter_commit": "b433752cdd1828c34fa2ca9c328dd8b6ac2157e0",
+      "input_hash": "9cf9112417778299780a3e2a7f009d38bbf24059149eaa1591b8df02551607a4",
+      "required_digest": "55f61ad2e599c8a76fd7ec4426f37f84b24416a3068e22c820ba7beac282ef77",
+      "artifacts": {
+        "mask": {
+          "logical_path": "masks/episode_000026.npz",
+          "sha256": "86b642915f073ee9915bb58f03f557aa4ccbfd7f0c6b5e02ad10a92dc19f2647",
+          "bytes": 917
+        },
+        "mesh": {
+          "logical_path": "meshes/episode_000026.npz",
+          "sha256": "26070d03d8959d8ad1e76b63094bae7affc8f123100bccfa5b66123d5aa388de",
+          "bytes": 715
+        },
+        "npz": {
+          "logical_path": "episodes/episode_000026.npz",
+          "sha256": "e0016e15834b2ac0b6ac77a40716c9b5990fd3375e6eb671c90b9db2fb587302",
+          "bytes": 125822
+        },
+        "obj": {
+          "logical_path": "episodes/episode_000026_object.obj",
+          "sha256": "baa7996ed7f4c08f347c35f14787b626b4ed80dc8ec09819561e8db9fa33bb7e",
+          "bytes": 678
+        }
+      }
+    },
+    {
+      "episode": 27,
+      "required_frames": 243,
+      "source_runs": 1,
+      "sample_rows": 20381,
+      "prediction_producer_commit": "b433752cdd1828c34fa2ca9c328dd8b6ac2157e0",
+      "producer_tree": "ec91ae800b38723b4ecfe79374b8169e7a70789f",
+      "recipe_commit": "b433752cdd1828c34fa2ca9c328dd8b6ac2157e0",
+      "imported": false,
+      "importer_commit": null,
+      "controller_commit": "b433752cdd1828c34fa2ca9c328dd8b6ac2157e0",
+      "exporter_commit": "b433752cdd1828c34fa2ca9c328dd8b6ac2157e0",
+      "input_hash": "07790526fc281dfb37f84cc9fa4cc25925e7e8fa6cd5600fd5cd9179ecd03e37",
+      "required_digest": "3c6dd445dbd18239e13b83e928e4dccd19e25e6d25c8fceea316c7d08e00a682",
+      "artifacts": {
+        "mask": {
+          "logical_path": "masks/episode_000027.npz",
+          "sha256": "612c3b9c9f9b1b3610164599db60aa22068a2089d2d833f1b58650dc86188cc9",
+          "bytes": 853
+        },
+        "mesh": {
+          "logical_path": "meshes/episode_000027.npz",
+          "sha256": "5c9315fe164b5d620dedced0725135e2c5c59d26df655747ad305b5cbad650cc",
+          "bytes": 715
+        },
+        "npz": {
+          "logical_path": "episodes/episode_000027.npz",
+          "sha256": "2cff8fc0766edc088a1ff375acd0f92e755639f54a2b6c7030733d60da670af8",
+          "bytes": 109091
+        },
+        "obj": {
+          "logical_path": "episodes/episode_000027_object.obj",
+          "sha256": "dc176e6be90cc3ce47be0cc146a62e264a8b432263fcb9f0e09ca09f11882b2a",
+          "bytes": 662
+        }
+      }
+    },
+    {
+      "episode": 28,
+      "required_frames": 147,
+      "source_runs": 1,
+      "sample_rows": 15581,
+      "prediction_producer_commit": "b433752cdd1828c34fa2ca9c328dd8b6ac2157e0",
+      "producer_tree": "ec91ae800b38723b4ecfe79374b8169e7a70789f",
+      "recipe_commit": "b433752cdd1828c34fa2ca9c328dd8b6ac2157e0",
+      "imported": false,
+      "importer_commit": null,
+      "controller_commit": "b433752cdd1828c34fa2ca9c328dd8b6ac2157e0",
+      "exporter_commit": "b433752cdd1828c34fa2ca9c328dd8b6ac2157e0",
+      "input_hash": "9f84471dcd5e44113cc21e5bd40e8877ad6c5bcc1ba1d03cfdbc866b8df61538",
+      "required_digest": "69bb1971a7a6de2a1ed936600b7e5c17d4a1df548f469ac5c25fb38f5706a6e7",
+      "artifacts": {
+        "mask": {
+          "logical_path": "masks/episode_000028.npz",
+          "sha256": "1ffdcba412de5ff7013ee99a93ce9cf5aed79024ea6f755cab6ce6f7c23b1db5",
+          "bytes": 691
+        },
+        "mesh": {
+          "logical_path": "meshes/episode_000028.npz",
+          "sha256": "cec894033b5c57612ac45ce0cb23b015f5bbc487995d2bbfe3cccc3c294a2cc1",
+          "bytes": 715
+        },
+        "npz": {
+          "logical_path": "episodes/episode_000028.npz",
+          "sha256": "24c592be8b319da0b0e4a16b252c90064f7b5cb358f72ddd6af2410fc63bd3b2",
+          "bytes": 66913
+        },
+        "obj": {
+          "logical_path": "episodes/episode_000028_object.obj",
+          "sha256": "0d6ce5ee1b6a5a139f1770d8258f40c5ab58fcc15a28f0934c76ec0f2a06d917",
+          "bytes": 678
+        }
+      }
+    },
+    {
+      "episode": 29,
+      "required_frames": 267,
+      "source_runs": 1,
+      "sample_rows": 21581,
+      "prediction_producer_commit": "b433752cdd1828c34fa2ca9c328dd8b6ac2157e0",
+      "producer_tree": "ec91ae800b38723b4ecfe79374b8169e7a70789f",
+      "recipe_commit": "b433752cdd1828c34fa2ca9c328dd8b6ac2157e0",
+      "imported": false,
+      "importer_commit": null,
+      "controller_commit": "b433752cdd1828c34fa2ca9c328dd8b6ac2157e0",
+      "exporter_commit": "b433752cdd1828c34fa2ca9c328dd8b6ac2157e0",
+      "input_hash": "0a2288f183e4d0fffff1c55688c1ea27c09e60588dfc9f52c10137b3abc1b5e1",
+      "required_digest": "60652c6ae504de66d83c50f55dfc7b3eabecad167a4cee1d48c400875d5d787b",
+      "artifacts": {
+        "mask": {
+          "logical_path": "masks/episode_000029.npz",
+          "sha256": "737efb37dc3d07f74b85f0825c7b08ea726f06f42689bd90e12b88e90b2a3c84",
+          "bytes": 898
+        },
+        "mesh": {
+          "logical_path": "meshes/episode_000029.npz",
+          "sha256": "288fe7103d152380326080c789a023131a9e0b3ede1eec23aad00cf1c7451ee7",
+          "bytes": 715
+        },
+        "npz": {
+          "logical_path": "episodes/episode_000029.npz",
+          "sha256": "1e03834c71f86f974295edce91eb9bde96d055927e6fd192946e409fda21e40b",
+          "bytes": 119593
+        },
+        "obj": {
+          "logical_path": "episodes/episode_000029_object.obj",
+          "sha256": "8421c7faa3093966e42d22f7fa7752adeb0edd136f3c60e9dda3c9ec6b2b4594",
+          "bytes": 678
+        }
+      }
+    }
+  ]
+}

@@ -1,5 +1,7 @@
-# V2D public reconstruction candidate
+# V2D CPU reconstruction source
 
-See [README_PUBLIC_C4_20261017a1.md](README_PUBLIC_C4_20261017a1.md) for the implemented public pipeline and explicit input evidence scope:30 local chains verified; independent official metadata1 historical/29 pending. No claim of all-LFS matching. Public release and actual new7 provenance remain pending.
+Start with [the current reconstruction and stock guide](README_PUBLIC_C4_20261017a3.md), [actual historical30 lineage](manifests/production_lineage_20261017.json), and [license scope](THIRD_PARTY_NOTICES_20261017a2.md).
 
-The [fresh cutoff correction](README_PUBLIC_C4_20261017a2.md) defines new-A admission and B/C completion at the existing session deadlines.
+The historical run reused23 C2 episodes and computed7 with actual C3:9877 required frames,65 source runs. The740780-row local native candidate is producer-self-checked; independent full30 acceptance, formal stock packing, public access and competition outcomes are separate. Public fresh replay uses its own real producer and empty budget baseline.
+
+Official independent input metadata remains1 historically verified/29 pending; no all-LFS-match claim. Earlier dated files retain their snapshot status; the current guide supersedes their pending integration/production statements.
