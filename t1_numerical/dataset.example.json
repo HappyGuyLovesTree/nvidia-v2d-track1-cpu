@@ -1,0 +1,16 @@
+{
+  "schema": "t1_r0_dataset_v1",
+  "fixture": false,
+  "prefix_map": [],
+  "expected": {},
+  "episodes": [
+    {
+      "episode": 0,
+      "run_root": "r0-run",
+      "dense": "r0-export/episodes/episode_000000.npz",
+      "mask": "r0-export/masks/episode_000000.npz",
+      "obj": "r0-export/episodes/episode_000000_object.obj",
+      "mesh": "r0-export/meshes/episode_000000.npz"
+    }
+  ]
+}
