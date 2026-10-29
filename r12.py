@@ -25,7 +25,7 @@ def registry_lock(cfg):
 def initialize(root,chain_ref,handover_ref,authorization,diff_ref,minutes):
     root=Path(root).resolve();base=validate_chain(chain_ref);chain=load(chain_ref['path'])
     cfg,roster=load_config(chain['parent_config_ref']['path']);code=code_identity()
-    require(Path(sys.executable).resolve()==Path('/Users/zhuanz/.venvs/openwebui/bin/python').resolve(),'use frozen Python')
+    require(bool(cfg.get('python_executable') or os.environ.get('V2D_LEGACY_PYTHON')) and Path(sys.executable).resolve()==Path(cfg.get('python_executable') or os.environ['V2D_LEGACY_PYTHON']).resolve(),'use frozen Python')
     require(not root.exists(),'new root already exists; use new-session to preserve its charges')
     with registry_lock(cfg) as directory:
         require(not (directory/'registry.json').exists(),'root already registered; reuse existing root')

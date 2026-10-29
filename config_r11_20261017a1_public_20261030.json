@@ -1,0 +1,109 @@
+{
+  "schema": "r11_config_C2_v1",
+  "root": "${LOCAL_PROJECT_ROOT}",
+  "date": "2026-10-17",
+  "method": "single_iou_low_v1",
+  "kit": "${LOCAL_PROJECT_ROOT}/DD/证据/Q009.11/kit/v2d_submission_kit",
+  "mesh_site": "${LOCAL_PROJECT_ROOT}/运行环境/track1-pack/site-packages",
+  "assets": {
+    "nanodet": {
+      "path": "${LOCAL_PROJECT_ROOT}/DD/实验/T009.10_NanoDet八帧/resume_direct_20261016/assets/object_detection_nanodet_2022nov.onnx",
+      "sha256": "4b82da9944b88577175ee23a459dce2e26e6e4be573def65b1055dc2d9720186"
+    },
+    "hmr": {
+      "path": "${LOCAL_PROJECT_ROOT}/DD/证据/Q007.01/instanthmr.onnx",
+      "sha256": "f717558094f57d7c9cd084d7981874dbcc3f08e7308501eb98c12844e2cce3b7"
+    },
+    "rig": {
+      "path": "${LOCAL_PROJECT_ROOT}/DD/实验/T009.07_MHR成员取回/assets/mhr_model.pt",
+      "sha256": "352e271a6c42729c68554ceaea0c955e866970160c31e35506d782dc0f7377bc"
+    },
+    "sample": {
+      "path": "${LOCAL_PROJECT_ROOT}/DD/证据/Q009.11/kit/v2d_submission_kit/data/track_1_sample_submission.parquet",
+      "sha256": "1db56c5ec7267cdb7a68d42928f85c092c6b8e9bfbc0dc98a2b020d7a48bc621"
+    },
+    "semantics": {
+      "path": "${LOCAL_PROJECT_ROOT}/DD/证据/Q009.04/mhr70.py",
+      "sha256": "695c2c7d472e32757c480114fdb054d54ee4af53f69b2a6e040b00a55b270dc9"
+    },
+    "roster": {
+      "path": "${LOCAL_PROJECT_ROOT}/DD/证据/Q010.02/manifest_30_20261016.json",
+      "sha256": "6e90f2404ba4623a2ca8f22d962d3feaef3ac2b81329e6c433017207444d7f80"
+    }
+  },
+  "data_evidence": "${LOCAL_PROJECT_ROOT}/DD/证据/T011.05",
+  "data_code_freeze": {
+    "path": "${LOCAL_PROJECT_ROOT}/DD/证据/T011.05/code_freeze_20261017.json",
+    "sha256": "e4010d441b9eb99a76f3adc680d478746834014a819bee1b2f43a720271347c8"
+  },
+  "spec": {
+    "path": "${LOCAL_PROJECT_ROOT}/DD/SPEC/DD_ASE100_SPEC反推_Q011_20261017a2.md",
+    "sha256": "c90a07cc08879b99700c37cd3180860e24a45ad11277761cf1851680dcb75c7c"
+  },
+  "adoption": {
+    "path": "${LOCAL_PROJECT_ROOT}/DD/任务/R011_范围采纳_20261017a3.md",
+    "sha256": "dd074d23e8d8241dcb77b9d339e458ae1ea58e22ba68a74464db7ab0e142ff2b"
+  },
+  "deadlines": {
+    "new_episode_stop": "2026-10-17T04:40:00+08:00",
+    "candidate_freeze": "2026-10-17T04:50:00+08:00",
+    "hard_stop": "2026-10-17T05:06:00+08:00",
+    "candidate_stop": "2026-10-17T04:49:55+08:00"
+  },
+  "window_start": "2026-10-17T01:06:03+08:00",
+  "call_limits": {
+    "detector": 10240,
+    "hmr": 10240,
+    "rig": 20280,
+    "dnn_load": 35,
+    "ort_session_load": 35,
+    "rig_load": 35
+  },
+  "storage_limits": {
+    "A": 1610612736,
+    "images": 268435456,
+    "B": 268435456,
+    "mesh": 134217728,
+    "C": 536870912,
+    "small": 134217728
+  },
+  "stage_limits": {
+    "A": {
+      "rss_bytes": 2147483648,
+      "wall_s": 2400
+    },
+    "B": {
+      "rss_bytes": 2147483648,
+      "wall_s": 1800
+    },
+    "C": {
+      "rss_bytes": 3221225472,
+      "wall_s": 360
+    }
+  },
+  "global_new_file_limit": 4294967296,
+  "global_scan_interval_s": 45,
+  "monitor_interval_s": 1,
+  "numerical_contract": {
+    "nms_iou": 0.6,
+    "score_floor": 0.1,
+    "high_score": 0.35,
+    "high_iou": 0.3,
+    "low_iou": 0.5,
+    "hold_frames": 2,
+    "identity": "componentwise_numpy_median_finite_204_45_cam",
+    "root": "copy_then_root_plus_10_F_cam",
+    "host": "once_F_div100",
+    "proxy": "original_head70_no_filter",
+    "fallback": "nearest_same_source_earlier_tie",
+    "warmup": 0,
+    "automatic_model_retry": 0
+  },
+  "model_cache_import": "disabled",
+  "submission_eligible": false,
+  "budget_parent": {
+    "path": "${LOCAL_PROJECT_ROOT}/DD/证据/T011.07/parent_C1_20261017/budget_parent_20261017.json",
+    "sha256": "438f29b8da16b46af8b47927060bc88e6d6922706f9afa0e1a42444650a2a0a2"
+  },
+  "budget_run_root": "${LOCAL_PROJECT_ROOT}/DD/实验/T011.08_R011_C2_20261017"
+}

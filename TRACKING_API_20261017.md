@@ -24,10 +24,10 @@ worker.stageA按CFG.method选择旧common.Tracker/.35或新LowScoreTracker/.10�
 
 ## 局部检查
 
-Python `/Users/zhuanz/.venvs/openwebui/bin/python`，cwd `/Volumes/My PSSD/NIVIDA/DD/生产/track1/source`：
+Python `${PYTHON_EXECUTABLE}`，cwd `${LOCAL_PROJECT_ROOT}/DD/生产/track1/source`：
 
 ```sh
-PYTHONDONTWRITEBYTECODE=1 /Users/zhuanz/.venvs/openwebui/bin/python check_tracking.py --root '/Volumes/My PSSD/NIVIDA' --output '/Volumes/My PSSD/NIVIDA/DD/证据/T011.06/local_checks_20261017a2.json'
+PYTHONDONTWRITEBYTECODE=1 ${PYTHON_EXECUTABLE} check_tracking.py --root '${LOCAL_PROJECT_ROOT}' --output '${LOCAL_PROJECT_ROOT}/DD/证据/T011.06/local_checks_20261017a2.json'
 ```
 
 输出采用exclusive-create，已有文件不可覆盖，应按日期序号递增。检查13组合成行为及多个断点、冻结32raw逐帧decision/基线/16变框及5个真实回放断点；测试identity是独立合成值，raw和旧decision按Q011.02冻结hash核验。NanoDet.__new__仅构建后处理元数据，绝不调用构造器/readNet/forward或图像视频解码。

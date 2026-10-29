@@ -25,7 +25,7 @@ def prepare(root,config):
     cfg,roster=load_config(config);require(cfg.get('budget_parent'),'C2 requires explicit closed C1 budget parent');require(root==Path(cfg['budget_run_root']).resolve(),'C2 only approved production root; no budget reset roots');ledger=Ledger(root,cfg);ledger.check_time(model=True);ledger.assert_no_unknown()
     code=code_identity()
     for v in cfg['assets'].values():verify_ref(v)
-    require(Path(sys.executable).resolve()==Path('/Users/zhuanz/.venvs/openwebui/bin/python').resolve(),'use frozen Python environment')
+    require(bool(cfg.get('python_executable') or os.environ.get('V2D_LEGACY_PYTHON')) and Path(sys.executable).resolve()==Path(cfg.get('python_executable') or os.environ['V2D_LEGACY_PYTHON']).resolve(),'use frozen Python environment')
     audit=audit_set(roster);manifest_path=root/'run_manifest.json';writer=Writer(ledger)
     if manifest_path.exists():
         man=load(manifest_path);require(man['config']==ref(config) and man['code']==code and man['audit']==audit,'existing run identity changed')

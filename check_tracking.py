@@ -141,7 +141,7 @@ def replay(root):
     return {'baseline_branches':dict(collections.Counter(r['baseline_branch'] for r in rows)),'candidate_branches':dict(collections.Counter(r['branch'] for r in rows)), 'changed_bbox_frames':changed,'restore_breakpoints':[51,53,63,70,81],'rows':rows}
 
 def main():
-    ap=argparse.ArgumentParser();ap.add_argument('--root',type=Path,default=Path('/Volumes/My PSSD/NIVIDA'));ap.add_argument('--output',type=Path,required=True);args=ap.parse_args()
+    ap=argparse.ArgumentParser();ap.add_argument('--root',type=Path,required=True);ap.add_argument('--output',type=Path,required=True);args=ap.parse_args()
     start=time.perf_counter();cases=synthetic();result=replay(args.root)
     result.update(schema='tracking_local_checks_v1',date='2026-10-17',status='passed',synthetic_cases=cases,synthetic_case_count=len(cases),new_model_loads=0,new_forwards=0,image_decodes=0,video_decodes=0,runtime={'numpy':np.__version__,'python':__import__('sys').version,'executable':__import__('sys').executable,'cv2':__import__('cv2').__version__},elapsed_s=time.perf_counter()-start,peak_rss_bytes=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss,source_hashes={n:sha(Path(__file__).parent/n) for n in ('tracking.py','check_tracking.py','worker.py','common.py','vendor/nanodet.py','vendor/letterbox.py')})
     with args.output.open('x') as f:json.dump(result,f,ensure_ascii=False,indent=2,allow_nan=False)

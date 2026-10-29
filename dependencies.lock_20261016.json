@@ -1,61 +1,61 @@
 {
   "python": "3.12.7 (v3.12.7:0b05ead877f, Sep 30 2024, 23:18:00) [Clang 13.0.0 (clang-1300.0.29.30)]",
-  "executable": "/Users/zhuanz/.venvs/openwebui/bin/python",
+  "executable": "${PYTHON_EXECUTABLE}",
   "modules": {
     "numpy": {
       "actual_version": "2.5.2",
-      "actual_file": "/Users/zhuanz/.venvs/openwebui/lib/python3.12/site-packages/numpy/__init__.py"
+      "actual_file": "${PYTHON_SITE_PACKAGES}/numpy/__init__.py"
     },
     "cv2": {
       "actual_version": "4.13.0",
-      "actual_file": "/Users/zhuanz/.venvs/openwebui/lib/python3.12/site-packages/cv2/__init__.py"
+      "actual_file": "${PYTHON_SITE_PACKAGES}/cv2/__init__.py"
     },
     "av": {
       "actual_version": "18.1.0",
-      "actual_file": "/Users/zhuanz/.venvs/openwebui/lib/python3.12/site-packages/av/__init__.py"
+      "actual_file": "${PYTHON_SITE_PACKAGES}/av/__init__.py"
     },
     "onnxruntime": {
       "actual_version": "1.26.0",
-      "actual_file": "/Users/zhuanz/.venvs/openwebui/lib/python3.12/site-packages/onnxruntime/__init__.py"
+      "actual_file": "${PYTHON_SITE_PACKAGES}/onnxruntime/__init__.py"
     },
     "torch": {
       "actual_version": "2.13.0",
-      "actual_file": "/Users/zhuanz/.venvs/openwebui/lib/python3.12/site-packages/torch/__init__.py"
+      "actual_file": "${PYTHON_SITE_PACKAGES}/torch/__init__.py"
     },
     "pandas": {
       "actual_version": "3.0.3",
-      "actual_file": "/Users/zhuanz/.venvs/openwebui/lib/python3.12/site-packages/pandas/__init__.py"
+      "actual_file": "${PYTHON_SITE_PACKAGES}/pandas/__init__.py"
     },
     "pyarrow": {
       "actual_version": "20.0.0",
-      "actual_file": "/Users/zhuanz/.venvs/openwebui/lib/python3.12/site-packages/pyarrow/__init__.py"
+      "actual_file": "${PYTHON_SITE_PACKAGES}/pyarrow/__init__.py"
     },
     "trimesh": {
       "actual_version": "4.8.3",
-      "actual_file": "/Volumes/My PSSD/NIVIDA/运行环境/track1-pack/site-packages/trimesh/__init__.py"
+      "actual_file": "${LOCAL_PROJECT_ROOT}/运行环境/track1-pack/site-packages/trimesh/__init__.py"
     },
     "fast_simplification": {
       "actual_version": "0.1.12",
-      "actual_file": "/Volumes/My PSSD/NIVIDA/运行环境/track1-pack/site-packages/fast_simplification/__init__.py"
+      "actual_file": "${LOCAL_PROJECT_ROOT}/运行环境/track1-pack/site-packages/fast_simplification/__init__.py"
     },
     "psutil": {
       "actual_version": "7.2.2",
-      "actual_file": "/Users/zhuanz/.venvs/openwebui/lib/python3.12/site-packages/psutil/__init__.py"
+      "actual_file": "${PYTHON_SITE_PACKAGES}/psutil/__init__.py"
     }
   },
   "wheels": [
     {
-      "path": "/Volumes/My PSSD/NIVIDA/运行环境/track1-pack/wheels/trimesh-4.8.3-py3-none-any.whl",
+      "path": "${LOCAL_PROJECT_ROOT}/运行环境/track1-pack/wheels/trimesh-4.8.3-py3-none-any.whl",
       "sha256": "f9f1622ecac5f3bed5b65d3a748bb536481f52cd4e4e120e0b637cabe6cf1542",
       "bytes": 735464
     },
     {
-      "path": "/Volumes/My PSSD/NIVIDA/运行环境/track1-pack/wheels/fast_simplification-0.1.12-cp312-cp312-macosx_11_0_arm64.whl",
+      "path": "${LOCAL_PROJECT_ROOT}/运行环境/track1-pack/wheels/fast_simplification-0.1.12-cp312-cp312-macosx_11_0_arm64.whl",
       "sha256": "84d88e8f08ba5ae974f3f70c8120ccea2388dc29b5c33fbdaf5a186bff910d8a",
       "bytes": 228771
     }
   ],
-  "mesh_install_scope": "/Volumes/My PSSD/NIVIDA/运行环境/track1-pack/site-packages",
+  "mesh_install_scope": "${LOCAL_PROJECT_ROOT}/运行环境/track1-pack/site-packages",
   "shared_environment_modified": false,
   "opencv_metadata": {
     "opencv-python": "5.0.0.93",
